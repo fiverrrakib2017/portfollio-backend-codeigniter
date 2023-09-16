@@ -14,7 +14,7 @@
 
                         <a href="<?= base_url('/');?>"class="logo logo-light">
                             <span class="logo-sm">
-                                <img class="img-fluid" src="<?=base_url('assets/images/logo.png');?>" alt="" height="22" width="auto">
+                                <img class="img-fluid" src="<?=base_url('assets/images/logo.png');?>" alt="" height="22" width="50px">
                             </span>
                             <span class="logo-lg">
                                 <img src="<?=base_url('assets/images/logo.png');?>" alt="" height="36">

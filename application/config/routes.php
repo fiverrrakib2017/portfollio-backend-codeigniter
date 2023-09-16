@@ -28,5 +28,7 @@ $route=array(
     'service'=>'serviceController/index',
     'service/delete'=>'serviceController/delete_service',
     'service/add'=>'serviceController/add_service',
+    'service/get'=>'serviceController/get_service',
+    'service/update'=>'serviceController/update_service',
     
 );

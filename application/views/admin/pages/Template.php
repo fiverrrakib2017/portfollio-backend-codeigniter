@@ -251,22 +251,18 @@
 					}else if(response == 2){
                         toastr.error("Large file not allow");
                         $('#addBtn').html('Add Template');
-                        console.log(response);
                     }
 					else if(response == 3){
                         toastr.error("Error moving the uploaded file");
                         $('#addBtn').html('Add Template');
-                        console.log(response);
                     }
 					else if(response == 0){
                         toastr.error("Invalid file extension");
                         $('#addBtn').html('Add Template');
-                        console.log(response);
                     }
 					else {
 						toastr.error('Something was wrong!! ');
                         $('#addBtn').html('Add Template');
-                        console.log(response);
 					}
 				}
 			});

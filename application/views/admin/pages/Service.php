@@ -128,14 +128,14 @@
         <div class="modal-dialog card shadow">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Home Section </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Service Section </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
                 <form id="editForm" enctype="multipart/form-data">
                         <div class="form-group d-none">
                             <label >ID</label>
-                            <input type="text" id="update_home_id"class="form-control" value="">
+                            <input type="text" id="update_service_id"class="form-control" value="">
                         </div>
                         <div class="form-group mb-3 ">
                         <label for="name">Select Template</label>
@@ -181,7 +181,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Home Section </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Service Section </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body card shadow">
@@ -219,7 +219,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="addBtn"  class="btn btn-success">Add Home Section</button>
+                    <button type="button" id="addBtn"  class="btn btn-success">Add Service Section</button>
                 </div>
             </div>
         </div>
@@ -265,7 +265,7 @@
                 }
             });
         }
-    /* TEMPLATE Add Ajax call  */
+    /* Service Add Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
 		var template_id=$("#template_id").val();
@@ -337,12 +337,12 @@
 		}
 	});
 
-    /* Student Update Ajax call  */
+    /* service Update Ajax call  */
 	$(document).on('click', '#updateBtn', function (e) {
     e.preventDefault();
 
     // GET the form data
-   var update_home_id= $('#update_home_id').val();
+   var update_service_id= $('#update_service_id').val();
    var update_template_id= $('#update_template_id').val();
    var update_title= $('#update_title').val();
    var update_description= $('#update_description').val();
@@ -371,7 +371,7 @@
         var form_data = new FormData();
         form_data.append('update_image', update_image);
         form_data.append('old_image', imageName);
-        form_data.append('update_home_id', update_home_id);
+        form_data.append('update_service_id', update_service_id);
         form_data.append('update_template_id', update_template_id);
         form_data.append('update_title', update_title);
         form_data.append('update_description', update_description);
@@ -381,7 +381,7 @@
         // AJAX call to update the student data
         $.ajax({
             type: 'POST',
-            url: '<?=base_url('home/update')?>', 
+            url: '<?=base_url('service/update')?>', 
             data: form_data,
             dataType: 'script',
             cache: false,
@@ -439,27 +439,27 @@
         });
 	});
 
-/* Edit Home section Script */
+/* Edit Service section Script */
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
 
     $.ajax({
         type: 'GET',
-        url:'<?=base_url('home/get')?>',
-        data: {get_home_data:0,id:dataId},
+        url:'<?=base_url('service/get')?>',
+        data: {get_service_data:0,id:dataId},
         cache: false,
         success: function(response) {
-             var homeData = JSON.parse(response);
+             var service_data = JSON.parse(response);
             
-            for(var i = 0; i < homeData.length; i++) {
-                var home = homeData[i];
+            for(var i = 0; i < service_data.length; i++) {
+                var service_data = service_data[i];
 
-                $('#update_home_id').val(home.id);
-                $('#update_title').val(home.title);
-                $('#update_description').val(home.description);
-                $('#old_image').attr('src', home.banner);
-                    if (home.status === '1'||home.status==='0') {
+                $('#update_service_id').val(service_data.id);
+                $('#update_title').val(service_data.title);
+                $('#update_description').val(service_data.description);
+                $('#old_image').attr('src', service_data.icon);
+                    if (service_data.status === '1'||service_data.status==='0') {
                         $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
                         $('#update_status').append('<option value="0" >inActive</option>');
                     } else {
@@ -469,7 +469,7 @@ $(document).on('click','#editModalBtn',function(){
                 $.ajax({
                     type: 'GET',
                     url:'<?=base_url('template/get')?>',
-                    data: { template_id: home.template_id },
+                    data: { template_id: service_data.template_id },
                     cache: false,
                     success: function (response) {
                         var templateData = JSON.parse(response);

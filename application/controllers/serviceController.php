@@ -18,6 +18,13 @@ class serviceController extends CI_Controller{
         $this->load->view('admin/pages/Service', $data);
        
     }
+    public function get_service(){
+        if (isset($_GET['get_service_data'])) {
+            $id=$_GET['id'];
+            $query =$this->db->query("SELECT * FROM services WHERE id='$id'");
+           echo json_encode($query->result());
+        }
+    }
     public function add_service(){
         if (isset($_POST['add_data'])) {
 
@@ -73,6 +80,54 @@ class serviceController extends CI_Controller{
          
         }
 
+    }
+    public function update_service(){
+        if (isset($_POST['update_data'])) {
+
+            $template_id=$_POST['update_template_id'];
+            $id=$_POST['update_service_id'];
+            $title=$_POST['update_title'];
+            $description=$_POST['update_description'];
+            $status=$_POST['update_status'];
+
+            if (isset($_FILES['update_image'])) {
+                /* GET THE FILE NAME AND SIZE */
+                $file_name= $_FILES['update_image']['name'];
+                $file_size= $_FILES['update_image']['size'];
+
+                /* GET The file name path extension*/
+                $extension=pathinfo($file_name,PATHINFO_EXTENSION);
+
+                /* SET The file Valid extension*/
+                $valid_extension=array("jpg","jped","gif","png");
+
+                /* SET The file Size*/
+                $maxSize=2*1024*1024;
+                /* Check The file Size*/
+                if($file_size >$maxSize){
+                    echo 2;
+                }else{
+                    if (in_array($extension,$valid_extension)) {
+                        $new_name=rand().".".$extension;
+                        $path="image/".$new_name;
+                        move_uploaded_file($_FILES['update_image']['tmp_name'],$path);
+
+                        // Delete the old image file if it exists
+                        if (file_exists($_POST['old_image'])) {
+                            unlink('./'.$_POST['old_image']);
+                        } 
+
+                    }else{
+                        // 'Invalid file extension.';
+                        echo 0;
+                    }
+                }
+            }else{
+                $path= $_POST['old_image'];
+            }
+            $this->db->query("UPDATE `services` SET `template_id`='$template_id',`title`='$title',`description`='$description',`icon`='$path',`status`='$status' WHERE id='$id' "); 
+            echo 1;
+        }
     }
     public function delete_service(){
         if (isset($_POST['delete_data'])) {
