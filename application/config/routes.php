@@ -26,5 +26,7 @@ $route=array(
 
     /* Home Route */
     'service'=>'serviceController/index',
+    'service/delete'=>'serviceController/delete_service',
+    'service/add'=>'serviceController/add_service',
     
 );
