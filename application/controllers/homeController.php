@@ -12,23 +12,26 @@ class homeController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-
-        // $this->db->select('*');
-        // $this->db->from('home');
-        // $this->db->join('template', 'home.template_id = template.id');
-        // $query = $this->db->get();
-        // $result = $query->result();
         $sql = "SELECT home.id, template.template_name, home.title, home.description, home.banner, home.status FROM home JOIN template ON home.template_id = template.id";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
         $this->load->view('admin/pages/Home', $data);
        
     }
-    public function add_template(){
-        if (isset($_POST['add_template_data'])) {
+    public function get_home(){
+        if (isset($_GET['get_home_data'])) {
+            $id=$_GET['id'];
+            $query =$this->db->query("SELECT * FROM home WHERE id='$id'");
+           echo json_encode($query->result());
+        }
+    }
+    public function add_home(){
+        if (isset($_POST['add_data'])) {
 
-            $template_name=$_POST['template_name'];
-            $template_status=$_POST['template_status'];
+            $template_id=$_POST['template_id'];
+            $title=$_POST['title'];
+            $description=$_POST['description'];
+            $status=$_POST['status'];
             /* GET THE FILE NAME AND SIZE */
             $file_name= $_FILES['file']['name'];
             $file_size= $_FILES['file']['size'];
@@ -52,12 +55,14 @@ class homeController extends CI_Controller{
                     $result=move_uploaded_file($_FILES['file']['tmp_name'],$path);
                     if ($result) {
                         $data = array(
-                            'template_name' => $template_name,
-                            'template_image' => $path,
-                            'status' => $template_status
+                            'template_id' => $template_id,
+                            'title' => $title,
+                            'description' => $description,
+                            'banner' => $path,
+                            'status' => $status,
                         );
-                        /* Insert The data students Database*/
-                        $this->db->insert('template', $data);
+                        /* Insert The data home table Database*/
+                        $this->db->insert('home', $data);
                         //insert successfully; 
                         echo 1;
                         exit;
@@ -76,22 +81,23 @@ class homeController extends CI_Controller{
         }
 
     }
-    public function delete_template(){
+    public function delete_home(){
         if (isset($_POST['delete_data'])) {
-            $template_id= $_POST['id'];
-            $this->db->delete('template', array('id' => $template_id));
+            $id= $_POST['id'];
+            $this->db->delete('home', array('id' => $id));
             echo 1;
         }
     }
 
 
-    public function update_template(){
+    public function update_home(){
         if (isset($_POST['update_data'])) {
-           
 
-            $template_name=$_POST['template_name'];
-            $template_status=$_POST['template_status'];
-            $update_template_id=$_POST['update_template_id'];
+            $template_id=$_POST['update_template_id'];
+            $id=$_POST['update_home_id'];
+            $title=$_POST['update_title'];
+            $description=$_POST['update_description'];
+            $status=$_POST['update_status'];
 
             if (isset($_FILES['update_image'])) {
                 /* GET THE FILE NAME AND SIZE */
@@ -128,7 +134,7 @@ class homeController extends CI_Controller{
             }else{
                 $path= $_POST['old_image'];
             }
-            $this->db->query("UPDATE `template` SET `template_name`='$template_name',`template_image`='$path',`status`='$template_status' WHERE id=$update_template_id"); 
+            $this->db->query("UPDATE `home` SET `template_id`='$template_id',`title`='$title',`description`='$description',`banner`='$path',`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }

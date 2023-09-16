@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="service.php" class="waves-effect">
+                        <a href="<?= base_url('service');?>" class="waves-effect">
                             <i class="mdi mdi-arrow-right-bold-circle"></i>
                             <span>Service Section</span>
                         </a>

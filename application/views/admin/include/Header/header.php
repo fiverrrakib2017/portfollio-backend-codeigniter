@@ -3,21 +3,21 @@
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
-                        <a href="index.php" class="logo logo-dark">
+                        <a href="<?= base_url('/');?>" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="assets/images/logo.png" alt="" height="22">
+                                <img src="<?=base_url('assets/images/logo.png');?>" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="assets/images/logo-dark.png" alt="" height="17">
+                                <img src="<?=base_url('assets/images/logo.png');?>" alt="" height="17">
                             </span>
                         </a>
 
-                        <a href="index.php" class="logo logo-light">
+                        <a href="<?= base_url('/');?>"class="logo logo-light">
                             <span class="logo-sm">
-                                <img class="img-fluid" src="assets/images/it-fast.png" alt="" height="22" width="auto">
+                                <img class="img-fluid" src="<?=base_url('assets/images/logo.png');?>" alt="" height="22" width="auto">
                             </span>
                             <span class="logo-lg">
-                                <img src="assets/images/it-fast.png" alt="" height="36">
+                                <img src="<?=base_url('assets/images/logo.png');?>" alt="" height="36">
                             </span>
                         </a>
                     </div>

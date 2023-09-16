@@ -66,7 +66,8 @@
                                                         <?php endif; ?>
                                                     </td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $item->id; ?>"><i class="fas fa-edit"></i></button>
+                                                        <button type="button" data-id="<?php echo $item->id; ?>" class="btn btn-primary"  id="editModalBtn"><i class="fas fa-edit"></i></button>
+
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $item->id; ?>"><i class="fas fa-trash"></i></button>
                                                     </td>
                                                 </tr>
@@ -95,48 +96,7 @@
                                                     </div>
 
 
-                                                    <div class="modal fade" id="editModal<?php echo  $item->id;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog card shadow">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Update Template </h5>
-                                                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body ">
-                                                                    <form id="editForm" enctype="multipart/form-data">
-                                                                            <div class="form-group d-none">
-                                                                                <label >Template ID</label>
-                                                                                <input type="text" id="update_template_id"class="form-control" value="<?php echo  $item->id;?>">
-                                                                            </div>
-                                                                            <div class="form-group mb-3 ">
-                                                                                <label >Template Name</label>
-                                                                                <input type="text" id="update_name"class="form-control" value="<?php echo  $item->template_name;?>">
-                                                                            </div>
-                                                                            <div class="form-group mb-3">
-                                                                                <label for="image">Template Image</label>
-                                                                                <input type="file" id="update_image"  class="form-control">
-                                                                            </div>
-                                                                            <div class="form-group mb-3">
-                                                                                <img src="<?php echo base_url(); ?>/<?php echo $item->template_image; ?>" alt="" class="img-fluid img-thumbnail" id="old_image" style="max-width: 200px; height: 100px;">
-                                                                            </div>
-
-
-                                                                            <div class="form-group mb-3 ">
-                                                                                <label >Class</label>
-                                                                                <select id="update_status" class="form-select">
-                                                                                    <option value="1" <?php if($item->status == 'Active') echo "selected"; ?>>Active</option>
-                                                                                <option value="0" <?php if($item->status == 'inActive') echo "selected"; ?>>inActive</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="button" id="updateBtn"  class="btn btn-success">Update Template</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-							                        </div>
+                                                   
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>
@@ -164,46 +124,106 @@
         </div>
     <!-- END layout-wrapper -->
 
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog card shadow">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Home Section </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                <form id="editForm" enctype="multipart/form-data">
+                        <div class="form-group d-none">
+                            <label >ID</label>
+                            <input type="text" id="update_home_id"class="form-control" value="">
+                        </div>
+                        <div class="form-group mb-3 ">
+                        <label for="name">Select Template</label>
+                            <select type="text" id="update_template_id" class="form-select">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="image">Title</label>
+                            <input type="text" id="update_title" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="image">Description</label>
+                            <textarea type="text" id="update_description" class="form-control" placeholder="Enter Description"></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="image">Banner Image</label>
+                            <input type="file" id="update_image"  class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <img src="" alt="" class="img-fluid img-thumbnail" id="old_image" style="max-width: 200px; height: 100px;">
+                        </div>
 
+
+                        <div class="form-group mb-3 ">
+                            <label >Status</label>
+                            <select id="update_status" class="form-select">
+                                
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="updateBtn"  class="btn btn-success">Update Now</button>
+                </div>
+            </div>
+        </div>
+	</div>
 
 
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Add Template </h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body card shadow">
-			<form id="addForm" enctype="multipart/form-data">
-                    <div class="form-group mb-3 ">
-                        <label for="name">Template Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter Template Name" class="form-control">
-                    </div>
-                    <div class="form-group mb-3 ">
-                        <label for="image">Template Image</label>
-                        <input type="file" id="image" name="image" class="form-control">
-                    </div>
-					<div class="form-group mb-3 ">
-                        <img src="https://www.pngitem.com/pimgs/m/35-350426_profile-icon-png-default-profile-picture-png-transparent.png" alt="" class="img-fluid img-thumbnail" id="imgPreview" style="max-width: 200px; height: 100px;">
-                    </div>
-                    <div class="form-group mb-3 ">
-                        <label for="Status">Status</label>
-                        <select id="template_status" name="template_status" class="form-select">
-                            <option >----Select---</option>
-                            <option value="1">Active</option>
-                            <option value="0">inActive</option>
-                        </select>
-                    </div>
-                </form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
-				<button type="button" id="addBtn"  class="btn btn-success">Add Template</button>
-			</div>
-		</div>
-	</div>
-</div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Home Section </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body card shadow">
+                <form id="addForm" enctype="multipart/form-data">
+                        <div class="form-group mb-3 ">
+                            <label for="name">Select Template</label>
+                            <select type="text" id="template_id" class="form-select">
+                                <option value="">----Select----</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="image">Title</label>
+                            <input type="text" id="title" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="image">Description</label>
+                            <textarea type="text" id="description" class="form-control" placeholder="Enter Description"></textarea>
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="image">Banner</label>
+                            <input type="file" id="image" class="form-control">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <img src="https://www.pngitem.com/pimgs/m/35-350426_profile-icon-png-default-profile-picture-png-transparent.png" alt="" class="img-fluid img-thumbnail" id="imgPreview" style="max-width: 200px; height: 100px;">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="Status">Status</label>
+                            <select id="_status"  class="form-select">
+                                <option >----Select---</option>
+                                <option value="1">Active</option>
+                                <option value="0">inActive</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="addBtn"  class="btn btn-success">Add Home Section</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -219,34 +239,70 @@
 				imgPreview.src = URL.createObjectURL(file)
 			}
     	}
+
+    /* Get template data Ajax call  */
+    get_template();
+        function get_template(){
+            $.ajax({
+            type: 'GET',
+            url:'<?=base_url('template/get')?>',
+            data: {get_template:0},
+            cache: false,
+                success: function(response) {
+                    var templates = JSON.parse(response);
+
+                    var selectElement = document.getElementById('template_id');
+                    //var selectElement = document.getElementById('update_template_id');
+
+                    // Loop through the templates
+                    for(var i = 0; i < templates.length; i++) {
+                        var template = templates[i];
+                        var option = document.createElement('option');
+                        option.value = template.id;
+                        option.textContent = template.template_name;
+                        selectElement.appendChild(option);
+                    }
+                }
+            });
+        }
     /* TEMPLATE Add Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
-		var template_name=$("#name").val();
+		var template_id=$("#template_id").val();
+		var title=$("#title").val();
+		var description=$("#description").val();
+		var status=$("#_status").val();
 		var imageData = $("#image").prop('files')[0];
-		var template_status=$("#template_status").val();
         
 
         
 		
 		/* Validation ruls  */
-		if (template_name.length==0) {
-			toastr.error('Template Name is Require');
-		}else if(template_status.length==0){
+		if (template_id.length==0) {
+			toastr.error('Please Template Select');
+		}else if(title.length==0){
+			toastr.error('Title is Require');
+		}else if(description.length==0){
+			toastr.error('Description is Require');
+		}else if(status.length==0){
 			toastr.error('Status is Require');
-		}else{
-			var add_template_data = "0";
+		}
+        
+        else{
+			var add_data = "0";
             $('#addBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
 			form_data.append('file', imageData);
-			form_data.append('template_name', template_name);
-			form_data.append('template_status', template_status);
-			form_data.append('add_template_data', add_template_data);
+			form_data.append('template_id', template_id);
+			form_data.append('title', title);
+			form_data.append('description', description);
+			form_data.append('status', status);
+			form_data.append('add_data', add_data);
 			/*Ajax calll Request Start */
 			$.ajax({
 				type: 'POST',
-				url:'<?=base_url('template/add')?>',
+				url:'<?=base_url('home/add')?>',
 				data: form_data,
 				dataType: 'script',
 				cache: false,
@@ -255,29 +311,25 @@
 				success: function(response) {
 					if (response == 1) {
                         $("#addModal").modal('hide');
-                        toastr.success('Template Added');
+                        toastr.success('Added Successfully');
                         setTimeout(() => {
                             location.reload();
                         }, 1000);
 					}else if(response == 2){
                         toastr.error("Large file not allow");
-                        $('#addBtn').html('Add Template');
-                        console.log(response);
+                        $('#addBtn').html('Add Now');
                     }
 					else if(response == 3){
                         toastr.error("Error moving the uploaded file");
-                        $('#addBtn').html('Add Template');
-                        console.log(response);
+                        $('#addBtn').html('Add Now');
                     }
 					else if(response == 0){
                         toastr.error("Invalid file extension");
-                        $('#addBtn').html('Add Template');
-                        console.log(response);
+                        $('#addBtn').html('Add Now');
                     }
 					else {
 						toastr.error('Something was wrong!! ');
-                        $('#addBtn').html('Add Template');
-                        console.log(response);
+                        $('#addBtn').html('Add Now');
 					}
 				}
 			});
@@ -290,9 +342,12 @@
     e.preventDefault();
 
     // GET the form data
-    var update_template_id = $("#update_template_id").val();
-    var template_name = $("#update_name").val();
-    var template_status = $("#update_status").val();
+   var update_home_id= $('#update_home_id').val();
+   var update_template_id= $('#update_template_id').val();
+   var update_title= $('#update_title').val();
+   var update_description= $('#update_description').val();
+   var update_status= $('#update_status').val();
+
     var update_image = $("#update_image").prop('files')[0];
 	var update_data=0;
 
@@ -307,24 +362,26 @@
 		//console.log("Image Name: " + imageName);
 
     /* Validation rules */
-    if (template_name.length == 0) {
-        toastr.error('Template Name is required');
-    } else if (template_status.length == 0) {
-        toastr.error('Status  is required');
+    if (update_title.length == 0) {
+        toastr.error('Title is required');
+    } else if (update_description.length == 0) {
+        toastr.error('Description  is required');
     } else {
         // Create a FormData object and append the data
         var form_data = new FormData();
         form_data.append('update_image', update_image);
         form_data.append('old_image', imageName);
-        form_data.append('template_name', template_name);
-        form_data.append('template_status', template_status);
+        form_data.append('update_home_id', update_home_id);
         form_data.append('update_template_id', update_template_id);
+        form_data.append('update_title', update_title);
+        form_data.append('update_description', update_description);
+        form_data.append('update_status', update_status);
         form_data.append('update_data', update_data);
 
         // AJAX call to update the student data
         $.ajax({
             type: 'POST',
-            url: '<?=base_url('template/update')?>', 
+            url: '<?=base_url('home/update')?>', 
             data: form_data,
             dataType: 'script',
             cache: false,
@@ -332,17 +389,17 @@
             processData: false,
             success: function (response) {
                 if (response == 1) {
-                    $("#editModal"+update_template_id).modal('hide');
+                    $("#editModal").modal('hide');
                         toastr.success('Template Update');
                         setTimeout(() => {
                             location.reload();
                         }, 1000);
                 } else {
-                    alert('Something went wrong: ' + response);
+                    toastr.error('Something went wrong: ' + response);
                 }
             },
             error: function (xhr, status, error) {
-                alert('Error: ' + error);
+                toastr.error('Error: ' + error);
             }
         });
     }
@@ -358,15 +415,15 @@
 
     /* Delete Template Script */
     $(document).on('click','#deleteConfirmBtn',function(){
-		var template_id=$(this).data('id');
+		var id=$(this).data('id');
 		$.ajax({
-            url: '<?=base_url('template/delete')?>', 
+            url: '<?=base_url('home/delete')?>', 
             type: 'POST',
-            data: { id: template_id , delete_data:0},
+            data: { id: id , delete_data:0},
             success: function(response) {
                 if (response==1) {
-					$("#deleteModal"+template_id).modal('hide');
-                        toastr.success('Template Delete');
+					$("#deleteModal"+id).modal('hide');
+                        toastr.success('Delete Successful');
                         setTimeout(() => {
                             location.reload();
                     }, 1000);
@@ -381,6 +438,80 @@
             }
         });
 	});
+
+/* Edit Home section Script */
+$(document).on('click','#editModalBtn',function(){
+    $('#editModal').modal('show');
+    var dataId=$(this).data('id');
+
+    $.ajax({
+        type: 'GET',
+        url:'<?=base_url('home/get')?>',
+        data: {get_home_data:0,id:dataId},
+        cache: false,
+        success: function(response) {
+             var homeData = JSON.parse(response);
+            
+            for(var i = 0; i < homeData.length; i++) {
+                var home = homeData[i];
+
+                $('#update_home_id').val(home.id);
+                $('#update_title').val(home.title);
+                $('#update_description').val(home.description);
+                $('#old_image').attr('src', home.banner);
+                    if (home.status === '1'||home.status==='0') {
+                        $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
+                        $('#update_status').append('<option value="0" >inActive</option>');
+                    } else {
+                       // $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "inactive"
+                    }
+                // Fetch template name based on template_id
+                $.ajax({
+                    type: 'GET',
+                    url:'<?=base_url('template/get')?>',
+                    data: { template_id: home.template_id },
+                    cache: false,
+                    success: function (response) {
+                        var templateData = JSON.parse(response);
+                        // Populate the select element with options
+
+                        for(var i=0; i<templateData.length; i++){
+                            var template_data=templateData[i];
+                            var selectElement = $('#update_template_id');
+                            selectElement.empty(); 
+
+                            // Add the selected option
+                            var selectedOption = $('<option></option>');
+                            selectedOption.val(template_data.id).text(template_data.template_name);
+                            selectElement.append(selectedOption);
+                        }
+                        //Fetch and add other template names
+                        $.ajax({
+                            type: 'GET',
+                            url: '<?=base_url('template/get')?>', 
+                            data: { get_template: 0 },
+                            cache: false,
+                            success: function (responsedata) {
+                                var data = JSON.parse(responsedata);
+                                data.forEach(function (template) {
+                                    var option = $('<option></option>');
+                                    option.val(template.id).text(template.template_name);
+                                    selectElement.append(option);
+                                });
+                            }
+                        });
+                    }
+                });
+
+                
+                
+            }
+            
+        }
+    });
+
+});
+    
 
 </script>
 

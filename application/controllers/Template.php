@@ -16,6 +16,17 @@ class Template extends CI_Controller{
         $data['template_data'] = $query->result();
         $this->load->view('admin/pages/Template', $data);
     }
+    public function get_template(){
+        if (isset($_GET['get_template'])) {
+            $query =$this->db->query('SELECT * FROM template');
+           echo json_encode($query->result());
+        }else if(isset($_GET['template_id'])){
+            $ID=$_GET['template_id'];
+            $query =$this->db->query("SELECT * FROM template where id='$ID' ");
+            echo json_encode($query->result());
+        }
+        
+    }
     public function add_template(){
         if (isset($_POST['add_template_data'])) {
 
