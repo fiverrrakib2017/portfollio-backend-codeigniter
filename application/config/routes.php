@@ -38,6 +38,15 @@ $route=array(
     'about/add'=>'aboutController/add_about',
     'about/get'=>'aboutController/get_about',
     'about/delete'=>'aboutController/delete_about',
-    'about/update'=>'aboutController/update_about',
+    'about/update'=>'aboutController/update_about', 
+    
+    
+    /* About Route */
+
+    'blog'=>'blogController/index',
+    'blog/get'=>'blogController/blog_get',
+    'blog/add'=>'blogController/add_blog',
+    'blog/update'=>'blogController/update_blog',
+    'blog/delete'=>'blogController/delete_data',
      
 );

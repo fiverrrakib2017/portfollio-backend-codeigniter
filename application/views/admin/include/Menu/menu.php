@@ -27,6 +27,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="<?= base_url('blog');?>" class="waves-effect">
+                        <i class="mdi mdi-arrow-right-bold-circle"></i>
+                            <span>Blog</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?= base_url('service');?>" class="waves-effect">
                             <i class="mdi mdi-arrow-right-bold-circle"></i>
                             <span>Service Section</span>
