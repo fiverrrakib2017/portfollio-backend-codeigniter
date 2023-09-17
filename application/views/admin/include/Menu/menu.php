@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="about.php" class="waves-effect">
+                        <a href="<?= base_url('about');?>" class="waves-effect">
                         <i class="mdi mdi-arrow-right-bold-circle"></i>
                             <span>About Section</span>
                         </a>

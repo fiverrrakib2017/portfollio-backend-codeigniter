@@ -34,7 +34,9 @@
                                                     <th class="th-sm">Template Name</th>
                                                     <th class="th-sm">Title</th>
                                                     <th class="th-sm">Description</th>
-                                                    <th class="th-sm">Banner Image</th>
+                                                    <th class="th-sm">Image</th>
+                                                    <th class="th-sm">Website</th>
+                                                    <th class="th-sm">Phone</th>
                                                     <th class="th-sm">Status</th>
                                                     <th class="th-sm">Action</th>
                                                 </tr>
@@ -57,7 +59,9 @@
                                                         }
                                                         ?>
                                                     </td>
-                                                    <td><img src="<?php echo base_url() . '/' . $item->banner; ?>" height="50px" width="100px" class="rounded" /></td>
+                                                    <td><img src="<?php echo base_url() . '/' . $item->image; ?>" height="50px" width="100px" class="rounded" /></td>
+                                                    <td><?php echo $item->website; ?></td>
+                                                    <td><?php echo $item->phone; ?></td>
                                                     <td>
                                                         <?php if ($item->status == 1) : ?>
                                                             <span class="badge bg-success">Active</span>
@@ -128,14 +132,14 @@
         <div class="modal-dialog card shadow">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Home Section </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Service Section </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
                 <form id="editForm" enctype="multipart/form-data">
                         <div class="form-group d-none">
                             <label >ID</label>
-                            <input type="text" id="update_home_id"class="form-control" value="">
+                            <input type="text" id="update_about_id"class="form-control" value="">
                         </div>
                         <div class="form-group mb-3 ">
                         <label for="name">Select Template</label>
@@ -152,13 +156,32 @@
                             <textarea type="text" id="update_description" class="form-control" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="image">Banner Image</label>
+                            <label for="image">Image</label>
                             <input type="file" id="update_image"  class="form-control">
                         </div>
                         <div class="form-group mb-3">
                             <img src="" alt="" class="img-fluid img-thumbnail" id="old_image" style="max-width: 200px; height: 100px;">
                         </div>
-
+                        <div class="form-group mb-3 ">
+                            <label for="image">Website</label>
+                            <input type="text" id="update_website" class="form-control" placeholder="Enter Website">
+                        </div>                                   
+                        <div class="form-group mb-3 ">
+                            <label for="image">Phone</label>
+                            <input type="number" id="update_phone" class="form-control" placeholder="Enter Phone">
+                        </div>                                   
+                        <div class="form-group mb-3 ">
+                            <label for="image">Age</label>
+                            <input type="number" id="update_age" class="form-control" placeholder="Enter Age">
+                        </div>                                   
+                        <div class="form-group mb-3 ">
+                            <label for="image">Degree</label>
+                            <input type="text" id="update_degree" class="form-control" placeholder="Enter Degree">
+                        </div>                                   
+                        <div class="form-group mb-3 ">
+                            <label for="city">City</label>
+                            <input type="text" id="update_city" class="form-control" placeholder="Enter City">
+                        </div>                                   
 
                         <div class="form-group mb-3 ">
                             <label >Status</label>
@@ -181,7 +204,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Home Section </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add About Section </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body card shadow">
@@ -193,6 +216,13 @@
                             </select>
                         </div>
                         <div class="form-group mb-3 ">
+                            <label for="name">Upload Image</label>
+                            <input type="file" id="image" class="form-control">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <img src="https://www.pngitem.com/pimgs/m/35-350426_profile-icon-png-default-profile-picture-png-transparent.png" alt="" class="img-fluid img-thumbnail" id="imgPreview" style="max-width: 200px; height: 100px;">
+                        </div>
+                        <div class="form-group mb-3 ">
                             <label for="image">Title</label>
                             <input type="text" id="title" class="form-control" placeholder="Enter Title">
                         </div>
@@ -201,11 +231,24 @@
                             <textarea type="text" id="description" class="form-control" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="image">Banner</label>
-                            <input type="file" id="image" class="form-control">
+                            <label for="image">Phone</label>
+                            <input type="number" id="phone" class="form-control" placeholder="Enter Phone">
                         </div>
                         <div class="form-group mb-3 ">
-                            <img src="https://www.pngitem.com/pimgs/m/35-350426_profile-icon-png-default-profile-picture-png-transparent.png" alt="" class="img-fluid img-thumbnail" id="imgPreview" style="max-width: 200px; height: 100px;">
+                            <label for="image">Website</label>
+                            <input type="text" id="website" class="form-control" placeholder="Enter Web Address">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="Age">Age</label>
+                            <input type="number" id="age" class="form-control" placeholder="Enter Age">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="Degree">Degree</label>
+                            <input type="text" id="degree" class="form-control" placeholder="Enter Degree">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="image">City</label>
+                            <input type="text" id="city" class="form-control" placeholder="Enter City">
                         </div>
                         <div class="form-group mb-3 ">
                             <label for="Status">Status</label>
@@ -219,7 +262,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="addBtn"  class="btn btn-success">Add Home Section</button>
+                    <button type="button" id="addBtn"  class="btn btn-success">Add About Section</button>
                 </div>
             </div>
         </div>
@@ -265,12 +308,17 @@
                 }
             });
         }
-    /* TEMPLATE Add Ajax call  */
+    /* Service Add Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
 		var template_id=$("#template_id").val();
 		var title=$("#title").val();
 		var description=$("#description").val();
+		var phone=$("#phone").val();
+		var website=$("#website").val();
+		var age=$("#age").val();
+		var degree=$("#degree").val();
+		var city=$("#city").val();
 		var status=$("#_status").val();
 		var imageData = $("#image").prop('files')[0];
         
@@ -284,7 +332,16 @@
 			toastr.error('Title is Require');
 		}else if(description.length==0){
 			toastr.error('Description is Require');
-		}else if(status.length==0){
+		}else if(phone.length==0){
+            toastr.error('Phone Number is Require');
+        }else if(website.length==0){
+            toastr.error('Web Address is Require');
+        }
+        else if(age.length==0){
+            toastr.error('Age is Require');
+        }else if(degree.length==0){
+            toastr.error('Degree is Require');
+        }else if(status.length==0){
 			toastr.error('Status is Require');
 		}
         
@@ -297,12 +354,17 @@
 			form_data.append('template_id', template_id);
 			form_data.append('title', title);
 			form_data.append('description', description);
+			form_data.append('phone', phone);
+			form_data.append('website', website);
+			form_data.append('age', age);
+			form_data.append('degree', degree);
+			form_data.append('city', city);
 			form_data.append('status', status);
 			form_data.append('add_data', add_data);
 			/*Ajax calll Request Start */
 			$.ajax({
 				type: 'POST',
-				url:'<?=base_url('home/add')?>',
+				url:'<?=base_url('about/add')?>',
 				data: form_data,
 				dataType: 'script',
 				cache: false,
@@ -337,18 +399,24 @@
 		}
 	});
 
-    /* Student Update Ajax call  */
+    /* service Update Ajax call  */
 	$(document).on('click', '#updateBtn', function (e) {
     e.preventDefault();
 
     // GET the form data
-   var update_home_id= $('#update_home_id').val();
-   var update_template_id= $('#update_template_id').val();
-   var update_title= $('#update_title').val();
-   var update_description= $('#update_description').val();
+    var update_about_id= $('#update_about_id').val();
+    var update_template_id= $('#update_template_id').val();
+    var update_title=   $('#update_title').val();
+    var update_description=$('#update_description').val();
+    var update_website=$('#update_website').val();
+    var update_phone=$('#update_phone').val();
+    var update_degree=$('#update_degree').val();
+    var update_age=$('#update_age').val();
+    var update_city=$('#update_city').val();
    var update_status= $('#update_status').val();
 
     var update_image = $("#update_image").prop('files')[0];
+
 	var update_data=0;
 
 
@@ -366,22 +434,34 @@
         toastr.error('Title is required');
     } else if (update_description.length == 0) {
         toastr.error('Description  is required');
-    } else {
+    }else if(update_phone.length==0){
+        toastr.error('Phone  is required');
+    }else if(update_age.length==0){
+        toastr.error('Age is required');
+    }else if(update_city.length==0){
+        toastr.error('City is required');
+    }
+     else {
         // Create a FormData object and append the data
         var form_data = new FormData();
         form_data.append('update_image', update_image);
         form_data.append('old_image', imageName);
-        form_data.append('update_home_id', update_home_id);
+        form_data.append('update_about_id', update_about_id);
         form_data.append('update_template_id', update_template_id);
         form_data.append('update_title', update_title);
         form_data.append('update_description', update_description);
+        form_data.append('update_website', update_website);
+        form_data.append('update_phone', update_phone);
+        form_data.append('update_degree', update_degree);
+        form_data.append('update_age', update_age);
+        form_data.append('update_city', update_city);
         form_data.append('update_status', update_status);
         form_data.append('update_data', update_data);
 
-        // AJAX call to update the student data
+        // AJAX call to update the About data
         $.ajax({
             type: 'POST',
-            url: '<?=base_url('home/update')?>', 
+            url: '<?=base_url('about/update')?>', 
             data: form_data,
             dataType: 'script',
             cache: false,
@@ -390,7 +470,7 @@
             success: function (response) {
                 if (response == 1) {
                     $("#editModal").modal('hide');
-                        toastr.success('Template Update');
+                        toastr.success('Update Successfully');
                         setTimeout(() => {
                             location.reload();
                         }, 1000);
@@ -405,11 +485,19 @@
     }
 });
 
+
+
+
+
+
+
+
+
     /* Delete Template Script */
     $(document).on('click','#deleteConfirmBtn',function(){
 		var id=$(this).data('id');
 		$.ajax({
-            url: '<?=base_url('home/delete')?>', 
+            url: '<?=base_url('about/delete')?>', 
             type: 'POST',
             data: { id: id , delete_data:0},
             success: function(response) {
@@ -431,37 +519,45 @@
         });
 	});
 
-/* Edit Home section Script */
+/* Edit Service section Script */
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
 
     $.ajax({
         type: 'GET',
-        url:'<?=base_url('home/get')?>',
-        data: {get_home_data:0,id:dataId},
+        url:'<?=base_url('about/get')?>',
+        data: {get_about_data:0,id:dataId},
         cache: false,
         success: function(response) {
-             var homeData = JSON.parse(response);
+             var about_data = JSON.parse(response);
             
-            for(var i = 0; i < homeData.length; i++) {
-                var home = homeData[i];
+            for(var i = 0; i < about_data.length; i++) {
+                var about_data = about_data[i];
 
-                $('#update_home_id').val(home.id);
-                $('#update_title').val(home.title);
-                $('#update_description').val(home.description);
-                $('#old_image').attr('src', home.banner);
-                    if (home.status === '1'||home.status==='0') {
-                        $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
+                $('#update_about_id').val(about_data.id);
+                $('#update_title').val(about_data.title);
+                $('#update_description').val(about_data.description);
+                $('#update_website').val(about_data.website);
+                $('#update_phone').val(about_data.phone);
+                $('#update_degree').val(about_data.degree);
+                $('#update_age').val(about_data.age);
+                $('#update_city').val(about_data.city);
+                $('#old_image').attr('src', about_data.image);
+
+
+                    if (about_data.status === '1') {
+                        $('#update_status').html('<option value="1" selected>Active</option>');
                         $('#update_status').append('<option value="0" >inActive</option>');
                     } else {
-                       // $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "inactive"
+                        $('#update_status').html('<option value="0" selected>inActive</option>'); 
+                        $('#update_status').append('<option value="1">Active</option>');
                     }
                 // Fetch template name based on template_id
                 $.ajax({
                     type: 'GET',
                     url:'<?=base_url('template/get')?>',
-                    data: { template_id: home.template_id },
+                    data: { template_id: about_data.template_id },
                     cache: false,
                     success: function (response) {
                         var templateData = JSON.parse(response);

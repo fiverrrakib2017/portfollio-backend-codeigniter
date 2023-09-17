@@ -413,7 +413,7 @@
 
 
 
-    /* Delete Template Script */
+    /* Delete Service Script */
     $(document).on('click','#deleteConfirmBtn',function(){
 		var id=$(this).data('id');
 		$.ajax({

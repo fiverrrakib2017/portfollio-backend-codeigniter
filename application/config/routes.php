@@ -24,11 +24,20 @@ $route=array(
     'home/update'=>'homeController/update_home',
 
 
-    /* Home Route */
+    /* Service Route */
     'service'=>'serviceController/index',
     'service/delete'=>'serviceController/delete_service',
     'service/add'=>'serviceController/add_service',
     'service/get'=>'serviceController/get_service',
     'service/update'=>'serviceController/update_service',
     
+
+
+     /* About Route */
+    'about'=>'aboutController/index',
+    'about/add'=>'aboutController/add_about',
+    'about/get'=>'aboutController/get_about',
+    'about/delete'=>'aboutController/delete_about',
+    'about/update'=>'aboutController/update_about',
+     
 );
