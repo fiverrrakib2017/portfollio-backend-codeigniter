@@ -56,13 +56,17 @@ $route=array(
     'blog/comment/approve'=>'blog_commentController/approve_comment',
 
 
-    /* Blog Comment  Route */
+    /* Contract  Route */
      'contract'=>'contractController/index',
      'contract/delete'=>'contractController/delete_data',
      'contract/add'=>'contractController/add_contract',
      'contract/get'=>'contractController/get_contract',
      'contract/update'=>'contractController/update_contract',
 
-
-     
+     /*Educational  Route */
+     'education'=>'educationController/index',
+     'education/add'=>'educationController/add_education',
+     'education/delete'=>'educationController/delete_education',
+     'education/get'=>'educationController/get_education',
+     'education/update'=>'educationController/update_education',
 );

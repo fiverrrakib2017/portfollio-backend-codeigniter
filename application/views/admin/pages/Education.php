@@ -20,8 +20,8 @@
                         <div class="col-md-12">
                             <div class="card shadow">
                                 <div class="card-header">
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn-sm btn btn-success mb-2"><i class="mdi mdi-account-plus"></i>
-                                        Add Now 
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn-sm btn btn-success mb-2"><i class="fas fa-solid fa-user-graduate"></i>
+                                         Add New Education 
                                     </button>
                                 </div>
                                 <div class="card-body">
@@ -32,9 +32,10 @@
                                                 <tr>
                                                     <th class="th-sm">ID</th>
                                                     <th class="th-sm">Template Name</th>
-                                                    <th class="th-sm">Email Address</th>
-                                                    <th class="th-sm">Phone Number</th>
-                                                    <th class="th-sm">Location</th>
+                                                    <th class="th-sm">Title</th>
+                                                    <th class="th-sm">Description</th>
+                                                    <th class="th-sm">Start Date</th>
+                                                    <th class="th-sm">End Date</th>
                                                     <th class="th-sm">Status</th>
                                                     <th class="th-sm">Action</th>
                                                 </tr>
@@ -45,9 +46,22 @@
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
                                                     <td><?php echo $item->template_name; ?></td>
-                                                    <td><?php echo $item->email_address; ?></td>
-                                                    <td><?php echo $item->phone_number; ?></td>
-                                                    <td><?php echo $item->location; ?></td>
+                                                    <td><?php echo $item->title; ?></td>
+                                                        <td>
+                                                        
+                                                            <?php 
+                                                                $description = $item->description; 
+                                                                $maxChars = 50;
+                                                                if (strlen($description) > $maxChars) {
+                                                                    echo $trimmedDescription = substr($description, 0, $maxChars).'...........';
+                                                                } else {
+                                                                    echo $description;
+                                                                }
+                                                                ?>
+                                                
+                                                        </td>
+                                                    <td><?php echo $item->start_date; ?></td>
+                                                    <td><?php echo $item->end_date; ?></td>
                                                     <td>
                                                         <?php if ($item->status == 1) : ?>
                                                             <span class="badge bg-success">Active</span>
@@ -118,14 +132,14 @@
         <div class="modal-dialog card shadow">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Contract Section </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-solid fa-user-graduate"></i> Update Education </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
                 <form id="editForm" enctype="multipart/form-data">
                         <div class="form-group d-none">
                             <label >ID</label>
-                            <input type="text" id="update_contract_id"class="form-control" value="">
+                            <input type="text" id="update_education_id"class="form-control" value="">
                         </div>
                         <div class="form-group mb-3 ">
                         <label for="name">Select Template</label>
@@ -134,22 +148,24 @@
                             </select>
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="image">Email</label>
-                            <input type="email" id="update_email" class="form-control" placeholder="Enter Email">
+                            <label for="title">Title</label>
+                            <input type="text" id="update_title" class="form-control" placeholder="Enter Title">
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="image">Phone</label>
-                            <input type="number" id="update_phone" class="form-control" placeholder="Enter Phone">
+                            <label for="description">Description</label>
+                            <textarea type="text" id="update_description" class="form-control" placeholder="Enter Description"></textarea>
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="image">Location</label>
-                            <input type="text" id="update_location"  class="form-control">
-                        </div>
-
-
                         <div class="form-group mb-3 ">
-                            <label >Status</label>
-                            <select id="update_status" class="form-select">
+                            <label for="sdate">Start Date</label>
+                            <input type="date" id="update_sdate" class="form-control" placeholder="Start Date">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="edate">End Date</label>
+                            <input type="date" id="update_edate" class="form-control" placeholder="End Date">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="Status">Status</label>
+                            <select id="update_status"  class="form-select">
                                 
                             </select>
                         </div>
@@ -157,7 +173,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="updateBtn"  class="btn btn-success">Update Now</button>
+                    <button type="button" id="updateBtn"  class="btn btn-success"><i class="fas fa-solid fa-user-graduate"></i> Update Now</button>
                 </div>
             </div>
         </div>
@@ -168,7 +184,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Contract Section </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-solid fa-user-graduate"></i> Add New Education </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body card shadow">
@@ -180,16 +196,20 @@
                             </select>
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter Email Address">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" class="form-control" placeholder="Enter Title">
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="image">Phone</label>
-                            <input type="number" id="add_phone" class="form-control" placeholder="Enter Phone">
+                            <label for="description">Description</label>
+                            <textarea type="text" id="description" class="form-control" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="image">Location</label>
-                            <input type="text" id="location" class="form-control" placeholder="Enter Location">
+                            <label for="sdate">Start Date</label>
+                            <input type="date" id="sdate" class="form-control" placeholder="Start Date">
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="edate">End Date</label>
+                            <input type="date" id="edate" class="form-control" placeholder="End Date">
                         </div>
                         <div class="form-group mb-3 ">
                             <label for="Status">Status</label>
@@ -203,7 +223,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="addBtn"  class="btn btn-success">Add Contract Section</button>
+                    <button type="button" id="addBtn"  class="btn btn-success"><i class="fas fa-solid fa-user-graduate"></i> Add New Education</button>
                 </div>
             </div>
         </div>
@@ -245,9 +265,10 @@
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
 		var template_id=$("#template_id").val();
-		var email=$("#email").val();
-		var phone=$("#add_phone").val();
-		var location=$("#location").val();
+		var title=$("#title").val();
+		var description=$("#description").val();
+		var sdate=$("#sdate").val();
+		var edate=$("#edate").val();
 		var status=$("#_status").val();
         
 
@@ -256,12 +277,14 @@
 		/* Validation ruls  */
 		if (template_id.length==0) {
 			toastr.error('Please Template Select');
-		}else if(email.length==0){
-			toastr.error('Email Address is Require');
-		}else if(phone.length==0){
-			toastr.error('Phone Number is Require');
-		}else if(location.length==0){
-			toastr.error('Location is Require');
+		}else if(title.length==0){
+			toastr.error('Title  Require');
+		}else if(description.length==0){
+			toastr.error('Description  Require');
+		}else if(sdate.length==0){
+			toastr.error('Start Date Require');
+		}else if(edate.length==0){
+			toastr.error('End Date Require');
 		}else if(status.length==0){
 			toastr.error('Status is Require');
 		}
@@ -272,15 +295,16 @@
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
 			form_data.append('template_id', template_id);
-			form_data.append('email', email);
-			form_data.append('phone', phone);
-			form_data.append('location', location);
+			form_data.append('title', title);
+			form_data.append('description', description);
+			form_data.append('sdate', sdate);
+			form_data.append('edate', edate);
 			form_data.append('status', status);
 			form_data.append('add_data', add_data);
 			/*Ajax calll Request Start */
 			$.ajax({
 				type: 'POST',
-				url:'<?=base_url('contract/add')?>',
+				url:'<?=base_url('education/add')?>',
 				data: form_data,
 				dataType: 'script',
 				cache: false,
@@ -308,11 +332,12 @@
     e.preventDefault();
 
     // GET the form data
-   var update_contract_id= $('#update_contract_id').val();
+   var update_education_id= $('#update_education_id').val();
    var update_template_id= $('#update_template_id').val();
-   var update_email= $('#update_email').val();
-   var update_phone= $('#update_phone').val();
-   var update_location= $('#update_location').val();
+   var update_title= $('#update_title').val();
+   var update_description= $('#update_description').val();
+   var update_sdate= $('#update_sdate').val();
+   var update_edate= $('#update_edate').val();
    var update_status= $('#update_status').val();
 
 	var update_data=0;
@@ -320,27 +345,31 @@
 
 	
     /* Validation rules */
-    if (update_email.length == 0) {
-        toastr.error('Email Address is required');
-    } else if (update_phone.length == 0) {
-        toastr.error('Phone Number is required');
-    } else if (update_location.length == 0) {
-        toastr.error('Location is required');
+    if (update_title.length == 0) {
+        toastr.error('Title is required');
+    } else if (update_description.length == 0) {
+        toastr.error('Description is required');
+    } else if (update_sdate.length == 0) {
+        toastr.error('Start Date is required');
+    } else if (update_edate.length == 0) {
+        toastr.error('End Date is required');
     } else {
+        $('#updateBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
         // Create a FormData object and append the data
         var form_data = new FormData();
-        form_data.append('update_contract_id', update_contract_id);
+        form_data.append('update_education_id', update_education_id);
         form_data.append('update_template_id', update_template_id);
-        form_data.append('update_email', update_email);
-        form_data.append('update_phone', update_phone);
-        form_data.append('update_location', update_location);
+        form_data.append('update_title', update_title);
+        form_data.append('update_description', update_description);
+        form_data.append('update_sdate', update_sdate);
+        form_data.append('update_edate', update_edate);
         form_data.append('update_status', update_status);
         form_data.append('update_data', update_data);
 
         // AJAX call to update the student data
         $.ajax({
             type: 'POST',
-            url: '<?=base_url('contract/update')?>', 
+            url: '<?=base_url('education/update')?>', 
             data: form_data,
             dataType: 'script',
             cache: false,
@@ -348,11 +377,12 @@
             processData: false,
             success: function (response) {
                 if (response == 1) {
-                    $("#editModal").modal('hide');
                         toastr.success('Contract Update');
+                        $("#editModal").modal('hide'); 
+                        $('#updateBtn').html(`<i class="fas fa-solid fa-user-graduate"></i> Add New Education`);
                         setTimeout(() => {
                             location.reload();
-                        }, 1000);
+                        }, 1000); 
                 } else {
                     toastr.error('Something went wrong: ' + response);
                 }
@@ -368,7 +398,7 @@
     $(document).on('click','#deleteConfirmBtn',function(){
 		var id=$(this).data('id');
 		$.ajax({
-            url: '<?=base_url('contract/delete')?>', 
+            url: '<?=base_url('education/delete')?>', 
             type: 'POST',
             data: { id: id , delete_data:0},
             success: function(response) {
@@ -397,30 +427,36 @@ $(document).on('click','#editModalBtn',function(){
 
     $.ajax({
         type: 'GET',
-        url:'<?=base_url('contract/get')?>',
-        data: {get_contract_data:0,id:dataId},
+        url:'<?=base_url('education/get')?>',
+        data: {get_education_data:0,id:dataId},
         cache: false,
         success: function(response) {
-             var homeData = JSON.parse(response);
+             var jsonData = JSON.parse(response);
             
-            for(var i = 0; i < homeData.length; i++) {
-                var home = homeData[i];
+            for(var i = 0; i < jsonData.length; i++) {
+                var data = jsonData[i];
 
-                $('#update_contract_id').val(home.id);
-                $('#update_email').val(home.email_address);
-                $('#update_phone').val(home.phone_number);
-                $('#update_location').val(home.location);
-                    if (home.status === '1'||home.status==='0') {
+                $('#update_education_id').val(data.id);
+
+                $("#update_title").val(data.title);
+                $("#update_description").val(data.description);
+                $("#update_sdate").val(data.start_date);
+                $("#update_edate").val(data.end_date);
+
+
+                    if (data.status === '1') {
                         $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
                         $('#update_status').append('<option value="0" >inActive</option>');
                     } else {
-                       // $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "inactive"
+                        // Set to "active"
+                        $('#update_status').append('<option value="0" >inActive</option>');
+                        $('#update_status').append('<option value="1" selected>Active</option>'); 
                     }
                 // Fetch template name based on template_id
                 $.ajax({
                     type: 'GET',
                     url:'<?=base_url('template/get')?>',
-                    data: { template_id: home.template_id },
+                    data: { template_id: data.template_id },
                     cache: false,
                     success: function (response) {
                         var templateData = JSON.parse(response);
