@@ -33,6 +33,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="<?= base_url('blog/comment');?>" class="waves-effect">
+                        <i class="mdi mdi-comment"></i>
+                            <span>Blog Comment <span class="badge  bg-danger pull-right">5</span></span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?= base_url('service');?>" class="waves-effect">
                             <i class="mdi mdi-arrow-right-bold-circle"></i>
                             <span>Service Section</span>
@@ -42,6 +48,12 @@
                         <a href="<?= base_url('about');?>" class="waves-effect">
                         <i class="mdi mdi-arrow-right-bold-circle"></i>
                             <span>About Section</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('contract');?>" class="waves-effect">
+                        <i class="mdi mdi-contacts"></i>
+                            <span>Contract Section</span>
                         </a>
                     </li>
                     

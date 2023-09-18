@@ -41,12 +41,24 @@ $route=array(
     'about/update'=>'aboutController/update_about', 
     
     
-    /* About Route */
+    /* Blog Route */
 
     'blog'=>'blogController/index',
     'blog/get'=>'blogController/blog_get',
     'blog/add'=>'blogController/add_blog',
     'blog/update'=>'blogController/update_blog',
     'blog/delete'=>'blogController/delete_data',
+
+
+
+     /* Blog Comment  Route */
+    'blog/comment'=>'blog_commentController/index',
+    'blog/comment/approve'=>'blog_commentController/approve_comment',
+
+
+    /* Blog Comment  Route */
+     'contract'=>'contractController/index',
+
+
      
 );
