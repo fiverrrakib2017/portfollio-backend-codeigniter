@@ -78,12 +78,17 @@ $route=array(
     'experience/update'=>'experienceController/update_experience',
     'experience/get'=>'experienceController/get_experience',
 
-    /*Experience  Route */
-
+    /*Category  Route */
     'category'=>'categoryController/index',
     'category/add'=>'categoryController/add_category',
     'category/delete'=>'categoryController/delete_category',
     'category/get'=>'categoryController/get_category',
     'category/update'=>'categoryController/update_category',
-     
+
+    /*recent work  Route */
+    'work'=>'workController/index',
+    'work/add'=>'workController/add_work',
+    'work/delete'=>'workController/delete_work',
+    'work/get'=>'workController/get_work',
+    'work/update'=>'workController/update_work',
 );

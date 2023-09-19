@@ -23,6 +23,11 @@ class categoryController extends CI_Controller{
             $id=$_GET['id'];
             $query =$this->db->query("SELECT * FROM category WHERE id='$id'");
            echo json_encode($query->result());
+        }else if(isset($_GET['get_all_category'])){
+            $query =$this->db->query("SELECT * FROM category ");
+            echo json_encode($query->result());
+        }else{
+            echo "something else";
         }
     }
     public function add_category(){
