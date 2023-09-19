@@ -33,13 +33,13 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li>
-                                    <a href="add_customer.php" class="waves-effect">
+                                    <a href="<?=base_url('category')?>" class="waves-effect">
                                         <i class="fas fa-list"></i>
                                         <span> Category Add/List</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="customers.php" class="waves-effect">
+                                    <a href="<?=base_url('work'); ?>" class="waves-effect">
                                     <i class="fas fa-business-time"></i>
                                         <span>Add Work</span>
                                     </a>

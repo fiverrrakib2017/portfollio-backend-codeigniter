@@ -77,5 +77,13 @@ $route=array(
     'experience/add'=>'experienceController/add_experience',
     'experience/update'=>'experienceController/update_experience',
     'experience/get'=>'experienceController/get_experience',
+
+    /*Experience  Route */
+
+    'category'=>'categoryController/index',
+    'category/add'=>'categoryController/add_category',
+    'category/delete'=>'categoryController/delete_category',
+    'category/get'=>'categoryController/get_category',
+    'category/update'=>'categoryController/update_category',
      
 );
