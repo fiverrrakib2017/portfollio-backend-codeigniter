@@ -20,8 +20,8 @@
                         <div class="col-md-12">
                             <div class="card shadow">
                                 <div class="card-header">
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn-sm btn btn-success mb-2"><i class="fas fa-solid fa-user-graduate"></i>
-                                         Add New Education 
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn-sm btn btn-success mb-2">
+                                         Add New Experience 
                                     </button>
                                 </div>
                                 <div class="card-body">
@@ -132,14 +132,14 @@
         <div class="modal-dialog card shadow">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-solid fa-user-graduate"></i> Update Education </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Experience </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
                 <form id="editForm" enctype="multipart/form-data">
                         <div class="form-group d-none">
                             <label >ID</label>
-                            <input type="text" id="update_education_id"class="form-control" value="">
+                            <input type="text" id="update_experience_id"class="form-control" value="">
                         </div>
                         <div class="form-group mb-3 ">
                         <label for="name">Select Template</label>
@@ -173,7 +173,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="updateBtn"  class="btn btn-success"><i class="fas fa-solid fa-user-graduate"></i> Update Now</button>
+                    <button type="button" id="updateBtn"  class="btn btn-success">Update Now</button>
                 </div>
             </div>
         </div>
@@ -184,7 +184,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-solid fa-user-graduate"></i> Add New Education </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Experience</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body card shadow">
@@ -223,7 +223,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="addBtn"  class="btn btn-success"><i class="fas fa-solid fa-user-graduate"></i> Add New Education</button>
+                    <button type="button" id="addBtn"  class="btn btn-success">Add New Experience</button>
                 </div>
             </div>
         </div>
@@ -304,7 +304,7 @@
 			/*Ajax calll Request Start */
 			$.ajax({
 				type: 'POST',
-				url:'<?=base_url('education/add')?>',
+				url:'<?=base_url('experience/add')?>',
 				data: form_data,
 				dataType: 'script',
 				cache: false,
@@ -332,7 +332,7 @@
     e.preventDefault();
 
     // GET the form data
-   var update_education_id= $('#update_education_id').val();
+   var update_experience_id= $('#update_experience_id').val();
    var update_template_id= $('#update_template_id').val();
    var update_title= $('#update_title').val();
    var update_description= $('#update_description').val();
@@ -357,7 +357,7 @@
         $('#updateBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
         // Create a FormData object and append the data
         var form_data = new FormData();
-        form_data.append('update_education_id', update_education_id);
+        form_data.append('update_experience_id', update_experience_id);
         form_data.append('update_template_id', update_template_id);
         form_data.append('update_title', update_title);
         form_data.append('update_description', update_description);
@@ -369,7 +369,7 @@
         // AJAX call to update the student data
         $.ajax({
             type: 'POST',
-            url: '<?=base_url('education/update')?>', 
+            url: '<?=base_url('experience/update')?>', 
             data: form_data,
             dataType: 'script',
             cache: false,
@@ -379,7 +379,7 @@
                 if (response == 1) {
                         toastr.success('Update Successfully');
                         $("#editModal").modal('hide'); 
-                        $('#updateBtn').html(`<i class="fas fa-solid fa-user-graduate"></i> Add New Education`);
+                        $('#updateBtn').html(`Update Now`);
                         setTimeout(() => {
                             location.reload();
                         }, 1000); 
@@ -398,7 +398,7 @@
     $(document).on('click','#deleteConfirmBtn',function(){
 		var id=$(this).data('id');
 		$.ajax({
-            url: '<?=base_url('education/delete')?>', 
+            url: '<?=base_url('experience/delete')?>', 
             type: 'POST',
             data: { id: id , delete_data:0},
             success: function(response) {
@@ -427,8 +427,8 @@ $(document).on('click','#editModalBtn',function(){
 
     $.ajax({
         type: 'GET',
-        url:'<?=base_url('education/get')?>',
-        data: {get_education_data:0,id:dataId},
+        url:'<?=base_url('experience/get')?>',
+        data: {get_experience_data:0,id:dataId},
         cache: false,
         success: function(response) {
              var jsonData = JSON.parse(response);
@@ -436,7 +436,7 @@ $(document).on('click','#editModalBtn',function(){
             for(var i = 0; i < jsonData.length; i++) {
                 var data = jsonData[i];
 
-                $('#update_education_id').val(data.id);
+                $('#update_experience_id').val(data.id);
 
                 $("#update_title").val(data.title);
                 $("#update_description").val(data.description);
@@ -444,14 +444,21 @@ $(document).on('click','#editModalBtn',function(){
                 $("#update_edate").val(data.end_date);
 
 
-                    if (data.status === '1') {
-                        $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
-                        $('#update_status').append('<option value="0" >inActive</option>');
-                    } else {
-                        // Set to "active"
-                        $('#update_status').append('<option value="0" >inActive</option>');
-                        $('#update_status').append('<option value="1" selected>Active</option>'); 
-                    }
+                    // if (data.status == '1') {
+                    //     $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
+                    //     $('#update_status').append('<option value="0" >inActive</option>');
+                    // } else {
+                    //     // Set to "active"
+                    //     $('#update_status').append('<option value="0" >inActive</option>');
+                    //     $('#update_status').append('<option value="1" selected>Active</option>'); 
+                    // }
+                    var status = data.status;
+
+                    var activeOption = '<option value="1" selected>Active</option>';
+                    var inactiveOption = '<option value="0">Inactive</option>';
+
+                    $('#update_status').append(status === '1' ? activeOption + inactiveOption : inactiveOption + activeOption);
+
                 // Fetch template name based on template_id
                 $.ajax({
                     type: 'GET',

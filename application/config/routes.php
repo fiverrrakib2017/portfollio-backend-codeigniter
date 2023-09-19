@@ -69,4 +69,13 @@ $route=array(
      'education/delete'=>'educationController/delete_education',
      'education/get'=>'educationController/get_education',
      'education/update'=>'educationController/update_education',
+
+
+    /*Experience  Route */
+    'experience'=>'experienceController/index',
+    'experience/delete'=>'experienceController/delete_experience',
+    'experience/add'=>'experienceController/add_experience',
+    'experience/update'=>'experienceController/update_experience',
+    'experience/get'=>'experienceController/get_experience',
+     
 );
