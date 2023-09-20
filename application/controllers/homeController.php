@@ -12,7 +12,7 @@ class homeController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-        $sql = "SELECT home.id, template.template_name, home.title, home.description, home.banner, home.status FROM home JOIN template ON home.template_id = template.id";
+        $sql = "SELECT * FROM home ";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
         $this->load->view('admin/pages/Home', $data);
@@ -28,7 +28,6 @@ class homeController extends CI_Controller{
     public function add_home(){
         if (isset($_POST['add_data'])) {
 
-            $template_id=$_POST['template_id'];
             $title=$_POST['title'];
             $description=$_POST['description'];
             $status=$_POST['status'];
@@ -55,7 +54,6 @@ class homeController extends CI_Controller{
                     $result=move_uploaded_file($_FILES['file']['tmp_name'],$path);
                     if ($result) {
                         $data = array(
-                            'template_id' => $template_id,
                             'title' => $title,
                             'description' => $description,
                             'banner' => $path,
@@ -92,8 +90,6 @@ class homeController extends CI_Controller{
 
     public function update_home(){
         if (isset($_POST['update_data'])) {
-
-            $template_id=$_POST['update_template_id'];
             $id=$_POST['update_home_id'];
             $title=$_POST['update_title'];
             $description=$_POST['update_description'];
@@ -134,7 +130,7 @@ class homeController extends CI_Controller{
             }else{
                 $path= $_POST['old_image'];
             }
-            $this->db->query("UPDATE `home` SET `template_id`='$template_id',`title`='$title',`description`='$description',`banner`='$path',`status`='$status' WHERE id='$id' "); 
+            $this->db->query("UPDATE `home` SET `title`='$title',`description`='$description',`banner`='$path',`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }
