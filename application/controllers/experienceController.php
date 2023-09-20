@@ -12,7 +12,7 @@ class experienceController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-        $sql = "SELECT experience.id, template.template_name,experience.title, experience.description, experience.start_date,experience.end_date,experience.status FROM experience JOIN template ON experience.template_id = template.id";
+        $sql = "SELECT * FROM experience ";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
         $this->load->view('admin/pages/Experience', $data);
@@ -28,7 +28,6 @@ class experienceController extends CI_Controller{
     public function add_experience(){
         if (isset($_POST['add_data'])) {
 
-            $template_id=$_POST['template_id'];
             $title=$_POST['title'];
             $description=$_POST['description'];
             $sdate=$_POST['sdate'];
@@ -53,7 +52,6 @@ class experienceController extends CI_Controller{
     public function update_experience(){
         if (isset($_POST['update_data'])) {
             
-            $template_id=$_POST['update_template_id'];
             $id=$_POST['update_experience_id'];
             $title=$_POST['update_title'];
             $description=$_POST['update_description'];
@@ -62,7 +60,7 @@ class experienceController extends CI_Controller{
             $status=$_POST['update_status'];
 
 
-            $this->db->query("UPDATE `experience` SET `template_id`='$template_id',`title`='$title',`description`='$description',`start_date`='$sdate',`end_date`='$edate',`status`='$status' WHERE id='$id' "); 
+            $this->db->query("UPDATE `experience` SET `title`='$title',`description`='$description',`start_date`='$sdate',`end_date`='$edate',`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }
