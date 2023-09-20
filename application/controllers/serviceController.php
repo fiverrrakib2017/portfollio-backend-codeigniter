@@ -12,7 +12,7 @@ class serviceController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-        $sql = "SELECT services.id, template.template_name,services.icon, services.title, services.description, services.status FROM services JOIN template ON services.template_id = template.id";
+        $sql = "SELECT * FROM services ";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
         $this->load->view('admin/pages/Service', $data);
@@ -28,7 +28,6 @@ class serviceController extends CI_Controller{
     public function add_service(){
         if (isset($_POST['add_data'])) {
 
-            $template_id=$_POST['template_id'];
             $title=$_POST['title'];
             $description=$_POST['description'];
             $status=$_POST['status'];
@@ -55,7 +54,6 @@ class serviceController extends CI_Controller{
                     $result=move_uploaded_file($_FILES['file']['tmp_name'],$path);
                     if ($result) {
                         $data = array(
-                            'template_id' => $template_id,
                             'icon' => $path,
                             'title' => $title,
                             'description' => $description,
@@ -84,7 +82,6 @@ class serviceController extends CI_Controller{
     public function update_service(){
         if (isset($_POST['update_data'])) {
 
-            $template_id=$_POST['update_template_id'];
             $id=$_POST['update_service_id'];
             $title=$_POST['update_title'];
             $description=$_POST['update_description'];
@@ -125,7 +122,7 @@ class serviceController extends CI_Controller{
             }else{
                 $path= $_POST['old_image'];
             }
-            $this->db->query("UPDATE `services` SET `template_id`='$template_id',`title`='$title',`description`='$description',`icon`='$path',`status`='$status' WHERE id='$id' "); 
+            $this->db->query("UPDATE `services` SET `title`='$title',`description`='$description',`icon`='$path',`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }

@@ -26,7 +26,6 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
-                                                    <th class="th-sm">Template Name</th>
                                                     <th class="th-sm">Name</th>
                                                     <th class="th-sm">Post Title </th>
                                                     <th class="th-sm">Message</th>
@@ -39,7 +38,6 @@
                                                 
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
-                                                    <td><?php echo $item->template_name; ?></td>
                                                     <td><?php echo $item->first_name; ?></td>
                                                     <td><?php echo $item->title; ?></td>
                                                     <td><?php echo $item->message; ?></td>

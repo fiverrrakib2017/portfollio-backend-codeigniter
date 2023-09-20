@@ -13,9 +13,8 @@ class blog_commentController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-        $sql = "SELECT pc.id, t.template_name, pc.first_name, bp.title, pc.message, pc.email_address
+        $sql = "SELECT pc.id,  pc.first_name, bp.title, pc.message, pc.email_address
         FROM post_comment pc
-        JOIN template t ON pc.template_id = t.id
         JOIN blog_post bp ON pc.post_id = bp.id where pc.status=0";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
