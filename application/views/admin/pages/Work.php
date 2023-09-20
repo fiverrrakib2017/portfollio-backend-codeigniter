@@ -31,7 +31,6 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
-                                                    <th class="th-sm">Template Name</th>
                                                     <th class="th-sm">Category Name</th>
                                                     <th class="th-sm">Title</th>
                                                     <th class="th-sm">Image</th>
@@ -46,7 +45,6 @@
                                                 
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
-                                                    <td><?php echo $item->template_name; ?></td>
                                                     <td><?php echo $item->name; ?></td>
                                                     <td><?php echo $item->title; ?></td>
                                                     
@@ -142,12 +140,7 @@
                             <label >ID</label>
                             <input type="text" id="update_work_id"class="form-control" value="">
                         </div>
-                        <div class="form-group mb-3 ">
-                        <label for="name">Select Template</label>
-                            <select type="text" id="update_template_id" class="form-select">
-                                <option value=""></option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group mb-3 ">
                              <label for="name">Select Category</label>
                             <select type="text" id="update_category_id" class="form-select">
@@ -204,12 +197,7 @@
                 </div>
                 <div class="modal-body card shadow">
                 <form id="addForm" enctype="multipart/form-data">
-                        <div class="form-group mb-3 ">
-                            <label for="name">Select Template</label>
-                            <select type="text" id="template_id" class="form-select">
-                                <option value="">----Select----</option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group mb-3 ">
                             <label for="category">Select Category</label>
                             <select type="text" id="category_id" class="form-select">
@@ -273,32 +261,9 @@
 			}
     	}
 
-    /* Get template data Ajax call  */
-    get_template();
-    get_category()
-        function get_template(){
-            $.ajax({
-            type: 'GET',
-            url:'<?=base_url('template/get')?>',
-            data: {get_template:0},
-            cache: false,
-                success: function(response) {
-                    var templates = JSON.parse(response);
-
-                    var selectElement = document.getElementById('template_id');
-                    //var selectElement = document.getElementById('update_template_id');
-
-                    // Loop through the templates
-                    for(var i = 0; i < templates.length; i++) {
-                        var template = templates[i];
-                        var option = document.createElement('option');
-                        option.value = template.id;
-                        option.textContent = template.template_name;
-                        selectElement.appendChild(option);
-                    }
-                }
-            });
-        }
+    /* Get Category data Ajax call  */
+        get_category()
+      
         function get_category(){
             $.ajax({
             type: 'GET',
@@ -325,7 +290,6 @@
     /*  Add data Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
-		var template_id=$("#template_id").val();
 		var category_id=$("#category_id").val();
 		var title=$("#title").val();
 		
@@ -338,9 +302,7 @@
         
 		
 		/* Validation ruls  */
-		if (template_id.length==0) {
-			toastr.error('Template is Require');
-		}else if(category_id.length==0){
+		if(category_id.length==0){
 			toastr.error('Category is Require');
 		}else if(title.length==0){
 			toastr.error('Title is Require');
@@ -360,7 +322,6 @@
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
 			form_data.append('file', imageData);
-			form_data.append('template_id', template_id);
 			form_data.append('category_id', category_id);
 			form_data.append('title', title);
 			form_data.append('link', link);
@@ -411,7 +372,6 @@
 
     // GET the form data
     var update_work_id= $('#update_work_id').val();
-    var update_template_id= $('#update_template_id').val();
     var update_category_id= $('#update_category_id').val();
     var update_title= $('#update_title').val();
     var update_link= $('#update_link').val();
@@ -434,9 +394,7 @@
 		//console.log("Image Name: " + imageName);
 
     /* Validation rules */
-    if (update_template_id.length == 0) {
-        toastr.error('Template is required');
-    }else if(update_category_id.length == 0){
+    if(update_category_id.length == 0){
          toastr.error('Category is required');
     }
      else if (update_link.length == 0) {
@@ -450,7 +408,6 @@
         form_data.append('update_image', update_image);
         form_data.append('old_image', imageName);
         form_data.append('update_work_id', update_work_id);
-        form_data.append('update_template_id', update_template_id);
         form_data.append('update_category_id', update_category_id);
         form_data.append('update_title', update_title);
         form_data.append('update_link', update_link);
@@ -523,7 +480,7 @@
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
-
+    $('#update_status').html('');
     $.ajax({
         type: 'GET',
         url:'<?=base_url('work/get')?>',
@@ -590,46 +547,7 @@ $(document).on('click','#editModalBtn',function(){
                             }
                         });
                     }
-                });
-                // Fetch template name based on template_id
-                $.ajax({
-                    type: 'GET',
-                    url:'<?=base_url('template/get')?>',
-                    data: { template_id: data.template_id },
-                    cache: false,
-                    success: function (response) {
-                        var templateData = JSON.parse(response);
-                        // Populate the select element with options
-
-                        for(var i=0; i<templateData.length; i++){
-                            var template_data=templateData[i];
-                            var selectElement = $('#update_template_id');
-                            selectElement.empty(); 
-
-                            // Add the selected option
-                            var selectedOption = $('<option></option>');
-                            selectedOption.val(template_data.id).text(template_data.template_name);
-                            selectElement.append(selectedOption);
-                        }
-                        //Fetch and add other template names
-                        $.ajax({
-                            type: 'GET',
-                            url: '<?=base_url('template/get')?>', 
-                            data: { get_template: 0 },
-                            cache: false,
-                            success: function (responsedata) {
-                                var data = JSON.parse(responsedata);
-                                data.forEach(function (template) {
-                                    var option = $('<option></option>');
-                                    option.val(template.id).text(template.template_name);
-                                    selectElement.append(option);
-                                });
-                            }
-                        });
-                    }
-                });
-
-                
+                });               
                 
             }
             

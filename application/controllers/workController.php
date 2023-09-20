@@ -15,9 +15,8 @@ class workController extends CI_Controller{
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
 
-        $sql = "SELECT works.id, template.template_name, category.name, works.title, works.image, works.link, works.link_type,works.status
+        $sql = "SELECT works.id,  category.name, works.title, works.image, works.link, works.link_type,works.status
         FROM works 
-        JOIN template  ON works.template_id = template.id
         JOIN category  ON works.category_id = category.id";
 
         $query = $this->db->query($sql);
@@ -26,8 +25,6 @@ class workController extends CI_Controller{
     }
     public function add_work(){
         if (isset($_POST['add_data'])) {
-
-            $template_id=$_POST['template_id'];
             $category_id=$_POST['category_id'];
             $title=$_POST['title'];
             $link=$_POST['link'];
@@ -59,7 +56,6 @@ class workController extends CI_Controller{
                     $result=move_uploaded_file($_FILES['file']['tmp_name'],$path);
                     if ($result) {
                         $data = array(
-                            'template_id' => $template_id,
                             'category_id' => $category_id,
                             'title' => $title,
                             'image' => $path,
@@ -104,7 +100,6 @@ class workController extends CI_Controller{
         if (isset($_POST['update_data'])) {
 
             $id=$_POST['update_work_id'];
-            $template_id=$_POST['update_template_id'];
             $category_id=$_POST['update_category_id'];
             $title=$_POST['update_title'];
             $link=$_POST['update_link'];
@@ -147,7 +142,7 @@ class workController extends CI_Controller{
                 $path= $_POST['old_image'];
             }
             
-            $this->db->query("UPDATE `works` SET `template_id`='$template_id',`category_id`='$category_id',`title`='$title' ,`image`='$path', `link`='$link', `link_type`='$link_type', `status`='$status' WHERE id='$id' "); 
+            $this->db->query("UPDATE `works` SET `category_id`='$category_id',`title`='$title' ,`image`='$path', `link`='$link', `link_type`='$link_type', `status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }
