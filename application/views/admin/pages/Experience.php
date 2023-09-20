@@ -424,7 +424,7 @@
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
-
+   $("#update_status").html(' ');
     $.ajax({
         type: 'GET',
         url:'<?=base_url('experience/get')?>',
@@ -444,21 +444,15 @@ $(document).on('click','#editModalBtn',function(){
                 $("#update_edate").val(data.end_date);
 
 
-                    // if (data.status == '1') {
-                    //     $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
-                    //     $('#update_status').append('<option value="0" >inActive</option>');
-                    // } else {
-                    //     // Set to "active"
-                    //     $('#update_status').append('<option value="0" >inActive</option>');
-                    //     $('#update_status').append('<option value="1" selected>Active</option>'); 
-                    // }
-                    var status = data.status;
-
-                    var activeOption = '<option value="1" selected>Active</option>';
-                    var inactiveOption = '<option value="0">Inactive</option>';
-
-                    $('#update_status').append(status === '1' ? activeOption + inactiveOption : inactiveOption + activeOption);
-
+                    if (data.status == '1') {
+                        $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
+                        $('#update_status').append('<option value="0" >inActive</option>');
+                    } else {
+                        // Set to "active"
+                        $('#update_status').append('<option value="0" selected>inActive</option>');
+                        $('#update_status').append('<option value="1" >Active</option>'); 
+                    }
+                    
                 // Fetch template name based on template_id
                 $.ajax({
                     type: 'GET',

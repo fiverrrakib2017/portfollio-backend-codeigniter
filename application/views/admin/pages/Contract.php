@@ -394,7 +394,7 @@
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
-
+    $('#update_status').html(' ');
     $.ajax({
         type: 'GET',
         url:'<?=base_url('contract/get')?>',
@@ -410,11 +410,12 @@ $(document).on('click','#editModalBtn',function(){
                 $('#update_email').val(home.email_address);
                 $('#update_phone').val(home.phone_number);
                 $('#update_location').val(home.location);
-                    if (home.status === '1'||home.status==='0') {
-                        $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
+                    if (home.status === '1') {
+                        $('#update_status').append('<option value="1" selected>Active</option>'); 
                         $('#update_status').append('<option value="0" >inActive</option>');
                     } else {
-                       // $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "inactive"
+                        $('#update_status').append('<option value="1" >Active</option>'); 
+                        $('#update_status').append('<option value="0" selected>inActive</option>');
                     }
                 // Fetch template name based on template_id
                 $.ajax({

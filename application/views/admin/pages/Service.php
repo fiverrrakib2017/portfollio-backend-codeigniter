@@ -390,7 +390,7 @@
             success: function (response) {
                 if (response == 1) {
                     $("#editModal").modal('hide');
-                        toastr.success('Template Update');
+                        toastr.success('Update Successfull');
                         setTimeout(() => {
                             location.reload();
                         }, 1000);
@@ -443,7 +443,7 @@
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
-
+ $('#update_status').html('');
     $.ajax({
         type: 'GET',
         url:'<?=base_url('service/get')?>',
@@ -459,11 +459,12 @@ $(document).on('click','#editModalBtn',function(){
                 $('#update_title').val(service_data.title);
                 $('#update_description').val(service_data.description);
                 $('#old_image').attr('src', service_data.icon);
-                    if (service_data.status === '1'||service_data.status==='0') {
+                if (service_data.status === '1') {
                         $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
                         $('#update_status').append('<option value="0" >inActive</option>');
                     } else {
-                       // $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "inactive"
+                        $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "active"
+                        $('#update_status').append('<option value="1">Active</option>');
                     }
                 // Fetch template name based on template_id
                 $.ajax({

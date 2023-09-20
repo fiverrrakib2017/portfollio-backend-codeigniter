@@ -90,7 +90,7 @@ class Template extends CI_Controller{
 
     public function update_template(){
         if (isset($_POST['update_data'])) {
-           
+            
 
             $template_name=$_POST['template_name'];
             $template_status=$_POST['template_status'];

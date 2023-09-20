@@ -435,7 +435,7 @@
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
-
+    $('#update_status').html('');
     $.ajax({
         type: 'GET',
         url:'<?=base_url('home/get')?>',
@@ -451,11 +451,12 @@ $(document).on('click','#editModalBtn',function(){
                 $('#update_title').val(home.title);
                 $('#update_description').val(home.description);
                 $('#old_image').attr('src', home.banner);
-                    if (home.status === '1'||home.status==='0') {
+                    if (home.status === '1') {
                         $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
                         $('#update_status').append('<option value="0" >inActive</option>');
                     } else {
-                       // $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "inactive"
+                        $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "active"
+                        $('#update_status').append('<option value="1">Active</option>');
                     }
                 // Fetch template name based on template_id
                 $.ajax({

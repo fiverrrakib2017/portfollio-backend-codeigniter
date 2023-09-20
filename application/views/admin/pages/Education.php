@@ -424,7 +424,7 @@
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
-
+    $('#update_status').html('');
     $.ajax({
         type: 'GET',
         url:'<?=base_url('education/get')?>',
@@ -444,13 +444,12 @@ $(document).on('click','#editModalBtn',function(){
                 $("#update_edate").val(data.end_date);
 
 
-                    if (data.status === '1') {
+                if (data.status === '1') {
                         $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
                         $('#update_status').append('<option value="0" >inActive</option>');
                     } else {
-                        // Set to "active"
-                        $('#update_status').append('<option value="0" >inActive</option>');
-                        $('#update_status').append('<option value="1" selected>Active</option>'); 
+                        $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "active"
+                        $('#update_status').append('<option value="1">Active</option>');
                     }
                 // Fetch template name based on template_id
                 $.ajax({

@@ -55,7 +55,7 @@
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#editModal<?php echo  $item->id;?>"><i class="fas fa-edit"></i></button>
+                                                            <!-- <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#editModal<?php echo  $item->id;?>"><i class="fas fa-edit"></i></button> -->
                                                             <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo  $item->id;?>"><i class="fas fa-trash"></i></button>
                                                         </td>
                                                     </tr>
@@ -84,12 +84,12 @@
                                                     </div>
 
 
-                                                    <div class="modal fade" id="editModal<?php echo  $item->id;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <!-- <div class="modal fade" id="editModal<?php echo  $item->id;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog card shadow">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="exampleModalLabel">Update Template </h5>
-                                                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body ">
                                                                     <form id="editForm" enctype="multipart/form-data">
@@ -113,19 +113,19 @@
                                                                             <div class="form-group mb-3 ">
                                                                                 <label >Class</label>
                                                                                 <select id="update_status" class="form-select">
-                                                                                    <option value="1" <?php if($item->status == 'Active') echo "selected"; ?>>Active</option>
-                                                                                <option value="0" <?php if($item->status == 'inActive') echo "selected"; ?>>inActive</option>
+                                                                                    <option value="1" <?php if($item->status == '1') echo "selected"; ?>>Active</option>
+                                                                                <option value="0" <?php if($item->status == '0') echo "selected"; ?>>inActive</option>
                                                                                 </select>
                                                                             </div>
                                                                         </form>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                                         <button type="button" id="updateBtn"  class="btn btn-success">Update Template</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
-							                        </div>
+							                        </div> -->
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>
@@ -276,9 +276,11 @@
 
     // GET the form data
     var update_template_id = $("#update_template_id").val();
+    alert(update_template_id);
     var template_name = $("#update_name").val();
     var template_status = $("#update_status").val();
     var update_image = $("#update_image").prop('files')[0];
+
 	var update_data=0;
 
 
@@ -316,15 +318,16 @@
             contentType: false,
             processData: false,
             success: function (response) {
-                if (response == 1) {
-                    $("#editModal"+update_template_id).modal('hide');
-                        toastr.success('Template Update');
-                        setTimeout(() => {
-                            location.reload();
-                        }, 1000);
-                } else {
-                    alert('Something went wrong: ' + response);
-                }
+                console.log(response);
+                // if (response == 1) {
+                //     $("#editModal"+update_template_id).modal('hide');
+                //         toastr.success('Template Update');
+                //         setTimeout(() => {
+                //             location.reload();
+                //         }, 1000);
+                // } else {
+                //     alert('Something went wrong: ' + response);
+                // }
             },
             error: function (xhr, status, error) {
                 alert('Error: ' + error);

@@ -68,7 +68,7 @@
                     <li>
                         <a href="<?= base_url('blog/comment');?>" class="waves-effect">
                         <i class="mdi mdi-comment"></i>
-                            <span>Blog Comment <span class="badge  bg-danger pull-right">5</span></span>
+                            <span>Blog Comment </span>
                         </a>
                     </li>
                     <li>
@@ -105,3 +105,4 @@
     </div>
 </div>
 <!-- Left Sidebar End -->
+
