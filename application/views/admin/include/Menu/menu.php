@@ -121,7 +121,7 @@
                                     </a>
                                 </li>                             
                                 <li>
-                                    <a href="<?= base_url('language');?>" class="waves-effect">
+                                    <a href="<?= base_url('testimonial');?>" class="waves-effect">
                                     <i class="fas fa-user-graduate"></i>
                                         <span>Testimonial</span>
                                     </a>
@@ -140,7 +140,27 @@
                             <span>Contract Section</span>
                         </a>
                     </li>
-                    
+                    <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                                <span>Site Settings</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                
+                                <li>
+                                    <a href="<?= base_url('setting/social');?>" class="waves-effect">
+                                    <i class="fas fa-thumbs-up"></i>
+                                        <span>Social Icon</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('setting/profile');?>" class="waves-effect">
+                                    <i class="fas fa-user"></i>
+                                        <span>Profile</span>
+                                    </a>
+                                </li>                              
+                            </ul>
+                        </li>
                     
 
                     
