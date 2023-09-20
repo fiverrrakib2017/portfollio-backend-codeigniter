@@ -31,7 +31,6 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
-                                                    <th class="th-sm">Template Name</th>
                                                     <th class="th-sm">Title</th>
                                                     <th class="th-sm">Description</th>
                                                     <th class="th-sm">Image</th>
@@ -44,7 +43,6 @@
                                                 
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
-                                                    <td><?php echo $item->template_name; ?></td>
                                                     <td><?php echo $item->title; ?></td>
                                                     <td>
                                                         <?php 
@@ -139,12 +137,6 @@
                             <input type="text" id="update_blog_id"class="form-control" value="">
                         </div>
                         <div class="form-group mb-3 ">
-                        <label for="name">Select Template</label>
-                            <select type="text" id="update_template_id" class="form-select">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-3 ">
                             <label for="image">Title</label>
                             <input type="text" id="update_title" class="form-control" placeholder="Enter Title">
                         </div>
@@ -186,12 +178,7 @@
                 </div>
                 <div class="modal-body card shadow">
                 <form id="addForm" enctype="multipart/form-data">
-                        <div class="form-group mb-3 ">
-                            <label for="name">Select Template</label>
-                            <select type="text" id="template_id" class="form-select">
-                                <option value="">----Select----</option>
-                            </select>
-                        </div>
+                       
                         <div class="form-group mb-3 ">
                             <label for="image">Title</label>
                             <input type="text" id="title" class="form-control" placeholder="Enter Title">
@@ -240,36 +227,9 @@
 				imgPreview.src = URL.createObjectURL(file)
 			}
     	}
-
-    /* Get template data Ajax call  */
-    get_template();
-        function get_template(){
-            $.ajax({
-            type: 'GET',
-            url:'<?=base_url('template/get')?>',
-            data: {get_template:0},
-            cache: false,
-                success: function(response) {
-                    var templates = JSON.parse(response);
-
-                    var selectElement = document.getElementById('template_id');
-                    //var selectElement = document.getElementById('update_template_id');
-
-                    // Loop through the templates
-                    for(var i = 0; i < templates.length; i++) {
-                        var template = templates[i];
-                        var option = document.createElement('option');
-                        option.value = template.id;
-                        option.textContent = template.template_name;
-                        selectElement.appendChild(option);
-                    }
-                }
-            });
-        }
-    /* Service Add Ajax call  */
+    /* Blog Add Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
-		var template_id=$("#template_id").val();
 		var title=$("#title").val();
 		var description=$("#description").val();
 		var imageData = $("#image").prop('files')[0];
@@ -290,7 +250,6 @@
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
 			form_data.append('file', imageData);
-			form_data.append('template_id', template_id);
 			form_data.append('title', title);
 			form_data.append('description', description);
 			form_data.append('status', status);
@@ -333,13 +292,12 @@
 		}
 	});
 
-    /* service Update Ajax call  */
+    /* Blog Update Ajax call  */
 	$(document).on('click', '#updateBtn', function (e) {
     e.preventDefault();
 
     // GET the form data
     var update_blog_id= $('#update_blog_id').val();
-    var update_template_id= $('#update_template_id').val();
     var update_title=   $('#update_title').val();
     var update_description=$('#update_description').val();
    
@@ -371,7 +329,6 @@
         form_data.append('update_image', update_image);
         form_data.append('old_image', imageName);
         form_data.append('update_blog_id', update_blog_id);
-        form_data.append('update_template_id', update_template_id);
         form_data.append('update_title', update_title);
         form_data.append('update_description', update_description);
         form_data.append('update_status', update_status);

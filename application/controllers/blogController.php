@@ -12,7 +12,7 @@ class blogController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-        $sql = "SELECT blog_post.id, template.template_name, blog_post.title, blog_post.description,blog_post.image,blog_post.status FROM blog_post JOIN template ON blog_post.template_id = template.id";
+        $sql = "SELECT * FROM blog_post";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
         $this->load->view('admin/pages/Blog', $data);
@@ -20,7 +20,6 @@ class blogController extends CI_Controller{
     public function add_blog(){
         if (isset($_POST['add_data'])) {
 
-            $template_id=$_POST['template_id'];
             $title=$_POST['title'];
             $description=$_POST['description'];
             $status=$_POST['status'];
@@ -50,7 +49,6 @@ class blogController extends CI_Controller{
                     $result=move_uploaded_file($_FILES['file']['tmp_name'],$path);
                     if ($result) {
                         $data = array(
-                            'template_id' => $template_id,
                             'title' => $title,
                             'description' => $description,
                             'image' => $path,
@@ -78,8 +76,6 @@ class blogController extends CI_Controller{
     }
     public function update_blog(){
         if (isset($_POST['update_data'])) {
-
-            $template_id=$_POST['update_template_id'];
            $id=$_POST['update_blog_id'];
            $title=$_POST['update_title'];
            $description=$_POST['update_description'];
@@ -122,7 +118,7 @@ class blogController extends CI_Controller{
                $path= $_POST['old_image'];
            }
            
-           $this->db->query("UPDATE `blog_post` SET `template_id`='$template_id',`title`='$title',`description`='$description',`image`='$path',`create_date`=NOW(),`status`='$status' WHERE id='$id' "); 
+           $this->db->query("UPDATE `blog_post` SET `title`='$title',`description`='$description',`image`='$path',`create_date`=NOW(),`status`='$status' WHERE id='$id' "); 
            echo 1;
        }
     }
