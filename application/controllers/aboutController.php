@@ -12,7 +12,7 @@ class aboutController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-        $sql = "SELECT about.id, template.template_name, about.title, about.description,about.image, about.website, about.phone,about.age,about.degree,about.city,about.status FROM about JOIN template ON about.template_id = template.id";
+        $sql = "SELECT * FROM about ";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
         $this->load->view('admin/pages/About', $data);
@@ -20,7 +20,6 @@ class aboutController extends CI_Controller{
     public function add_about(){
         if (isset($_POST['add_data'])) {
 
-            $template_id=$_POST['template_id'];
             $title=$_POST['title'];
             $description=$_POST['description'];
             $phone=$_POST['phone'];
@@ -55,7 +54,6 @@ class aboutController extends CI_Controller{
                     $result=move_uploaded_file($_FILES['file']['tmp_name'],$path);
                     if ($result) {
                         $data = array(
-                            'template_id' => $template_id,
                             'image' => $path,
                             'title' => $title,
                             'description' => $description,
@@ -105,7 +103,6 @@ class aboutController extends CI_Controller{
     public function update_about(){
         if (isset($_POST['update_data'])) {
 
-             $template_id=$_POST['update_template_id'];
             $id=$_POST['update_about_id'];
             $title=$_POST['update_title'];
             $description=$_POST['update_description'];
@@ -154,7 +151,7 @@ class aboutController extends CI_Controller{
                 $path= $_POST['old_image'];
             }
             
-            $this->db->query("UPDATE `about` SET `template_id`='$template_id',`title`='$title',`description`='$description',`image`='$path',`website`='$website',`phone`='$phone',`age`='$age',`degree`='$degree',`city`='$city',`date`=NOW(),`status`='$status' WHERE id='$id' "); 
+            $this->db->query("UPDATE `about` SET `title`='$title',`description`='$description',`image`='$path',`website`='$website',`phone`='$phone',`age`='$age',`degree`='$degree',`city`='$city',`date`=NOW(),`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
 

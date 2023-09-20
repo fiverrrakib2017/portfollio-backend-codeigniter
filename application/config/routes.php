@@ -91,4 +91,10 @@ $route=array(
     'work/delete'=>'workController/delete_work',
     'work/get'=>'workController/get_work',
     'work/update'=>'workController/update_work',
+    /* Design Skill  Route */
+    'design/skill'=>'designController/index',
+    'design/skill/add'=>'designController/add_design_skill',
+    'design/skill/delete'=>'designController/delete_data',
+    'design/skill/get'=>'designController/get_data',
+    'design/skill/update'=>'designController/update_data',
 );

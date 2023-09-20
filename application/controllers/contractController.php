@@ -13,7 +13,7 @@ class contractController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-        $sql = "SELECT contracts.id, template.template_name, contracts.email_address, contracts.phone_number, contracts.location, contracts.status FROM contracts JOIN template ON contracts.template_id = template.id";
+        $sql = "SELECT * FROM contracts ";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
         $this->load->view('admin/pages/Contract', $data);
@@ -28,14 +28,12 @@ class contractController extends CI_Controller{
     public function add_contract(){
         if (isset($_POST['add_data'])) {
             
-              $template_id=$_POST['template_id'];
              $email=$_POST['email'];
              $phone=$_POST['phone'];
              $location=$_POST['location'];
             $status=$_POST['status'];
 
             $data = array(
-                    'template_id' => $template_id,
                     'email_address' => $email,
                     'phone_number' => $phone,
                     'location' => $location,
@@ -59,7 +57,6 @@ class contractController extends CI_Controller{
     public function update_contract(){
         if (isset($_POST['update_data'])) {
 
-            $template_id=$_POST['update_template_id'];
             $id=$_POST['update_contract_id'];
             $email=$_POST['update_email'];
             $phone=$_POST['update_phone'];
@@ -67,7 +64,7 @@ class contractController extends CI_Controller{
             $status=$_POST['update_status'];
 
           
-            $this->db->query("UPDATE `contracts` SET `template_id`='$template_id',`email_address`='$email',`phone_number`='$phone',`location`='$location',`status`='$status' WHERE id='$id' "); 
+            $this->db->query("UPDATE `contracts` SET `email_address`='$email',`phone_number`='$phone',`location`='$location',`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }

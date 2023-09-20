@@ -33,7 +33,7 @@
                                                     <th class="th-sm">ID</th>
                                                     <th class="th-sm">Title</th>
                                                     <th class="th-sm">Description</th>
-                                                    <th class="th-sm">Banner Image</th>
+                                                    <th class="th-sm">Background Image</th>
                                                     <th class="th-sm">Status</th>
                                                     <th class="th-sm">Action</th>
                                                 </tr>
@@ -145,7 +145,7 @@
                             <textarea type="text" id="update_description" class="form-control" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="image">Banner Image</label>
+                            <label for="image">Background Image</label>
                             <input type="file" id="update_image"  class="form-control">
                         </div>
                         <div class="form-group mb-3">
@@ -189,7 +189,7 @@
                             <textarea type="text" id="description" class="form-control" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="image">Banner</label>
+                            <label for="image">Background Image</label>
                             <input type="file" id="image" class="form-control">
                         </div>
                         <div class="form-group mb-3 ">

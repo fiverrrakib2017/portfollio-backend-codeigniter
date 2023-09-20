@@ -31,7 +31,6 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
-                                                    <th class="th-sm">Template Name</th>
                                                     <th class="th-sm">Title</th>
                                                     <th class="th-sm">Description</th>
                                                     <th class="th-sm">Image</th>
@@ -46,7 +45,6 @@
                                                 
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
-                                                    <td><?php echo $item->template_name; ?></td>
                                                     <td><?php echo $item->title; ?></td>
                                                     <td>
                                                         <?php 
@@ -141,12 +139,7 @@
                             <label >ID</label>
                             <input type="text" id="update_about_id"class="form-control" value="">
                         </div>
-                        <div class="form-group mb-3 ">
-                        <label for="name">Select Template</label>
-                            <select type="text" id="update_template_id" class="form-select">
-                                <option value=""></option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group mb-3 ">
                             <label for="image">Title</label>
                             <input type="text" id="update_title" class="form-control" placeholder="Enter Title">
@@ -209,12 +202,7 @@
                 </div>
                 <div class="modal-body card shadow">
                 <form id="addForm" enctype="multipart/form-data">
-                        <div class="form-group mb-3 ">
-                            <label for="name">Select Template</label>
-                            <select type="text" id="template_id" class="form-select">
-                                <option value="">----Select----</option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group mb-3 ">
                             <label for="name">Upload Image</label>
                             <input type="file" id="image" class="form-control">
@@ -283,35 +271,10 @@
 			}
     	}
 
-    /* Get template data Ajax call  */
-    get_template();
-        function get_template(){
-            $.ajax({
-            type: 'GET',
-            url:'<?=base_url('template/get')?>',
-            data: {get_template:0},
-            cache: false,
-                success: function(response) {
-                    var templates = JSON.parse(response);
-
-                    var selectElement = document.getElementById('template_id');
-                    //var selectElement = document.getElementById('update_template_id');
-
-                    // Loop through the templates
-                    for(var i = 0; i < templates.length; i++) {
-                        var template = templates[i];
-                        var option = document.createElement('option');
-                        option.value = template.id;
-                        option.textContent = template.template_name;
-                        selectElement.appendChild(option);
-                    }
-                }
-            });
-        }
-    /* Service Add Ajax call  */
+    
+    /* About Add Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
-		var template_id=$("#template_id").val();
 		var title=$("#title").val();
 		var description=$("#description").val();
 		var phone=$("#phone").val();
@@ -326,9 +289,7 @@
         
 		
 		/* Validation ruls  */
-		if (template_id.length==0) {
-			toastr.error('Please Template Select');
-		}else if(title.length==0){
+		if(title.length==0){
 			toastr.error('Title is Require');
 		}else if(description.length==0){
 			toastr.error('Description is Require');
@@ -351,7 +312,6 @@
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
 			form_data.append('file', imageData);
-			form_data.append('template_id', template_id);
 			form_data.append('title', title);
 			form_data.append('description', description);
 			form_data.append('phone', phone);
@@ -405,7 +365,6 @@
 
     // GET the form data
     var update_about_id= $('#update_about_id').val();
-    var update_template_id= $('#update_template_id').val();
     var update_title=   $('#update_title').val();
     var update_description=$('#update_description').val();
     var update_website=$('#update_website').val();
@@ -447,7 +406,6 @@
         form_data.append('update_image', update_image);
         form_data.append('old_image', imageName);
         form_data.append('update_about_id', update_about_id);
-        form_data.append('update_template_id', update_template_id);
         form_data.append('update_title', update_title);
         form_data.append('update_description', update_description);
         form_data.append('update_website', update_website);

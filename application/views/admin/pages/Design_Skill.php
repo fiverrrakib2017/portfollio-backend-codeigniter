@@ -20,8 +20,8 @@
                         <div class="col-md-12">
                             <div class="card shadow">
                                 <div class="card-header">
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn-sm btn btn-success mb-2"><i class="fas fa-solid fa-user-graduate"></i>
-                                         Add New Education 
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn-sm btn btn-success mb-2">
+                                         Add Design Skill 
                                     </button>
                                 </div>
                                 <div class="card-body">
@@ -31,11 +31,8 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
-                                                    <th class="th-sm">Title</th>
-                                                    <th class="th-sm">Description</th>
-                                                    <th class="th-sm">Start Date</th>
-                                                    <th class="th-sm">End Date</th>
-                                                    <th class="th-sm">Status</th>
+                                                    <th class="th-sm">Item</th>
+                                                    <th class="th-sm">Percentage</th>
                                                     <th class="th-sm">Action</th>
                                                 </tr>
                                             </thead>
@@ -44,29 +41,10 @@
                                                 
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
-                                                    <td><?php echo $item->title; ?></td>
-                                                        <td>
+                                                    <td><?php echo $item->item; ?></td>
                                                         
-                                                            <?php 
-                                                                $description = $item->description; 
-                                                                $maxChars = 50;
-                                                                if (strlen($description) > $maxChars) {
-                                                                    echo $trimmedDescription = substr($description, 0, $maxChars).'...........';
-                                                                } else {
-                                                                    echo $description;
-                                                                }
-                                                                ?>
-                                                
-                                                        </td>
-                                                    <td><?php echo $item->start_date; ?></td>
-                                                    <td><?php echo $item->end_date; ?></td>
-                                                    <td>
-                                                        <?php if ($item->status == 1) : ?>
-                                                            <span class="badge bg-success">Active</span>
-                                                        <?php else : ?>
-                                                            <span class="badge bg-danger">inActive</span>
-                                                        <?php endif; ?>
-                                                    </td>
+                                                    <td><?php echo $item->percentage; ?></td>
+                                                    
                                                     <td>
                                                         <button type="button" data-id="<?php echo $item->id; ?>" class="btn btn-primary"  id="editModalBtn"><i class="fas fa-edit"></i></button>
 
@@ -130,43 +108,29 @@
         <div class="modal-dialog card shadow">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-solid fa-user-graduate"></i> Update Education </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Update Design Skill </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
-                <form id="editForm" enctype="multipart/form-data">
+                    <form id="editForm" enctype="multipart/form-data">
                         <div class="form-group d-none">
                             <label >ID</label>
-                            <input type="text" id="update_education_id"class="form-control" value="">
+                            <input type="text" id="update_id"class="form-control" value="">
                         </div>
                         
                         <div class="form-group mb-3 ">
-                            <label for="title">Title</label>
-                            <input type="text" id="update_title" class="form-control" placeholder="Enter Title">
+                            <label for="title">Item </label>
+                            <input type="text" id="update_title" class="form-control" placeholder="Enter Item">
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="description">Description</label>
-                            <textarea type="text" id="update_description" class="form-control" placeholder="Enter Description"></textarea>
-                        </div>
-                        <div class="form-group mb-3 ">
-                            <label for="sdate">Start Date</label>
-                            <input type="date" id="update_sdate" class="form-control" placeholder="Start Date">
-                        </div>
-                        <div class="form-group mb-3 ">
-                            <label for="edate">End Date</label>
-                            <input type="date" id="update_edate" class="form-control" placeholder="End Date">
-                        </div>
-                        <div class="form-group mb-3 ">
-                            <label for="Status">Status</label>
-                            <select id="update_status"  class="form-select">
-                                
-                            </select>
+                            <label for="title">Percentage </label>
+                            <input type="text" id="update_percentage" class="form-control" placeholder="Enter Percentage">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="updateBtn"  class="btn btn-success"><i class="fas fa-solid fa-user-graduate"></i> Update Now</button>
+                    <button type="button" id="updateBtn"  class="btn btn-success">Update Now</button>
                 </div>
             </div>
         </div>
@@ -177,41 +141,25 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-solid fa-user-graduate"></i> Add New Education </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Add New Design Skill </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body card shadow">
-                <form id="addForm" enctype="multipart/form-data">
-                        
+                    <form id="addForm" enctype="multipart/form-data">
+                                                
                         <div class="form-group mb-3 ">
-                            <label for="title">Title</label>
-                            <input type="text" id="title" class="form-control" placeholder="Enter Title">
+                            <label for="title">Item </label>
+                            <input type="text" id="add_title" class="form-control" placeholder="Enter Item">
                         </div>
                         <div class="form-group mb-3 ">
-                            <label for="description">Description</label>
-                            <textarea type="text" id="description" class="form-control" placeholder="Enter Description"></textarea>
-                        </div>
-                        <div class="form-group mb-3 ">
-                            <label for="sdate">Start Date</label>
-                            <input type="date" id="sdate" class="form-control" placeholder="Start Date">
-                        </div>
-                        <div class="form-group mb-3 ">
-                            <label for="edate">End Date</label>
-                            <input type="date" id="edate" class="form-control" placeholder="End Date">
-                        </div>
-                        <div class="form-group mb-3 ">
-                            <label for="Status">Status</label>
-                            <select id="_status"  class="form-select">
-                                <option >----Select---</option>
-                                <option value="1">Active</option>
-                                <option value="0">inActive</option>
-                            </select>
+                            <label for="title">Percentage </label>
+                            <input type="text" id="add_percentage" class="form-control" placeholder="Enter Percentage">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="addBtn"  class="btn btn-success"><i class="fas fa-solid fa-user-graduate"></i> Add New Education</button>
+                    <button type="button" id="addBtn"  class="btn btn-success"> Add Design Skill </button>
                 </div>
             </div>
         </div>
@@ -228,24 +176,15 @@
     /* Education Add Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
-		var title=$("#title").val();
-		var description=$("#description").val();
-		var sdate=$("#sdate").val();
-		var edate=$("#edate").val();
-		var status=$("#_status").val();
+		var title=$("#add_title").val();
+		var percentage=$("#add_percentage").val();
 
 
 		/* Validation ruls  */
-		if(title.length==0){
-			toastr.error('Title  Require');
-		}else if(description.length==0){
-			toastr.error('Description  Require');
-		}else if(sdate.length==0){
-			toastr.error('Start Date Require');
-		}else if(edate.length==0){
-			toastr.error('End Date Require');
-		}else if(status.length==0){
-			toastr.error('Status is Require');
+		 if(title.length==0){
+			toastr.error('Title  Required');
+		}else if(percentage.length==0){
+			toastr.error('Percentage Required');
 		}
         
         else{
@@ -254,15 +193,12 @@
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
 			form_data.append('title', title);
-			form_data.append('description', description);
-			form_data.append('sdate', sdate);
-			form_data.append('edate', edate);
-			form_data.append('status', status);
+			form_data.append('percentage', percentage);
 			form_data.append('add_data', add_data);
 			/*Ajax calll Request Start */
 			$.ajax({
 				type: 'POST',
-				url:'<?=base_url('education/add')?>',
+				url:'<?=base_url('design/skill/add')?>',
 				data: form_data,
 				dataType: 'script',
 				cache: false,
@@ -290,12 +226,9 @@
     e.preventDefault();
 
     // GET the form data
-   var update_education_id= $('#update_education_id').val();
+   var update_id= $('#update_id').val();
    var update_title= $('#update_title').val();
-   var update_description= $('#update_description').val();
-   var update_sdate= $('#update_sdate').val();
-   var update_edate= $('#update_edate').val();
-   var update_status= $('#update_status').val();
+   var update_percentage= $('#update_percentage').val();
 
 	var update_data=0;
 
@@ -304,28 +237,21 @@
     /* Validation rules */
     if (update_title.length == 0) {
         toastr.error('Title is required');
-    } else if (update_description.length == 0) {
-        toastr.error('Description is required');
-    } else if (update_sdate.length == 0) {
-        toastr.error('Start Date is required');
-    } else if (update_edate.length == 0) {
-        toastr.error('End Date is required');
-    } else {
+    } else if (update_percentage.length == 0) {
+        toastr.error('Percentage is required');
+    }  else {
         $('#updateBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
         // Create a FormData object and append the data
         var form_data = new FormData();
-        form_data.append('update_education_id', update_education_id);
+        form_data.append('update_id', update_id);
         form_data.append('update_title', update_title);
-        form_data.append('update_description', update_description);
-        form_data.append('update_sdate', update_sdate);
-        form_data.append('update_edate', update_edate);
-        form_data.append('update_status', update_status);
+        form_data.append('update_percentage', update_percentage);
         form_data.append('update_data', update_data);
 
         // AJAX call to update the student data
         $.ajax({
             type: 'POST',
-            url: '<?=base_url('education/update')?>', 
+            url: '<?=base_url('design/skill/update')?>', 
             data: form_data,
             dataType: 'script',
             cache: false,
@@ -354,7 +280,7 @@
     $(document).on('click','#deleteConfirmBtn',function(){
 		var id=$(this).data('id');
 		$.ajax({
-            url: '<?=base_url('education/delete')?>', 
+            url: '<?=base_url('design/skill/delete')?>', 
             type: 'POST',
             data: { id: id , delete_data:0},
             success: function(response) {
@@ -380,11 +306,10 @@
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
-    $('#update_status').html('');
     $.ajax({
         type: 'GET',
-        url:'<?=base_url('education/get')?>',
-        data: {get_education_data:0,id:dataId},
+        url:'<?=base_url('design/skill/get')?>',
+        data: {get__data:0,id:dataId},
         cache: false,
         success: function(response) {
              var jsonData = JSON.parse(response);
@@ -392,21 +317,10 @@ $(document).on('click','#editModalBtn',function(){
             for(var i = 0; i < jsonData.length; i++) {
                 var data = jsonData[i];
 
-                $('#update_education_id').val(data.id);
+                $('#update_id').val(data.id);
 
-                $("#update_title").val(data.title);
-                $("#update_description").val(data.description);
-                $("#update_sdate").val(data.start_date);
-                $("#update_edate").val(data.end_date);
-
-
-                if (data.status === '1') {
-                        $('#update_status').append('<option value="1" selected>Active</option>'); // Set to "active"
-                        $('#update_status').append('<option value="0" >inActive</option>');
-                    } else {
-                        $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "active"
-                        $('#update_status').append('<option value="1">Active</option>');
-                    }               
+                $("#update_title").val(data.item);
+                $("#update_percentage").val(data.percentage);             
                 
             }
             
