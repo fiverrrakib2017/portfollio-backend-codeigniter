@@ -31,7 +31,6 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
-                                                    <th class="th-sm">Template Name</th>
                                                     <th class="th-sm">Title</th>
                                                     <th class="th-sm">Description</th>
                                                     <th class="th-sm">Start Date</th>
@@ -45,7 +44,6 @@
                                                 
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
-                                                    <td><?php echo $item->template_name; ?></td>
                                                     <td><?php echo $item->title; ?></td>
                                                         <td>
                                                         
@@ -141,12 +139,7 @@
                             <label >ID</label>
                             <input type="text" id="update_education_id"class="form-control" value="">
                         </div>
-                        <div class="form-group mb-3 ">
-                        <label for="name">Select Template</label>
-                            <select type="text" id="update_template_id" class="form-select">
-                                <option value=""></option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group mb-3 ">
                             <label for="title">Title</label>
                             <input type="text" id="update_title" class="form-control" placeholder="Enter Title">
@@ -189,12 +182,7 @@
                 </div>
                 <div class="modal-body card shadow">
                 <form id="addForm" enctype="multipart/form-data">
-                        <div class="form-group mb-3 ">
-                            <label for="name">Select Template</label>
-                            <select type="text" id="template_id" class="form-select">
-                                <option value="">----Select----</option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group mb-3 ">
                             <label for="title">Title</label>
                             <input type="text" id="title" class="form-control" placeholder="Enter Title">
@@ -236,44 +224,17 @@
 
 <script type="text/javascript">
     $("#template_table").DataTable();
-        /* Get template data Ajax call  */
-    get_template();
-        function get_template(){
-            $.ajax({
-            type: 'GET',
-            url:'<?=base_url('template/get')?>',
-            data: {get_template:0},
-            cache: false,
-                success: function(response) {
-                    var templates = JSON.parse(response);
-
-                    var selectElement = document.getElementById('template_id');
-                    //var selectElement = document.getElementById('update_template_id');
-
-                    // Loop through the templates
-                    for(var i = 0; i < templates.length; i++) {
-                        var template = templates[i];
-                        var option = document.createElement('option');
-                        option.value = template.id;
-                        option.textContent = template.template_name;
-                        selectElement.appendChild(option);
-                    }
-                }
-            });
-        }
-    /* Contract Add Ajax call  */
+    
+    /* Education Add Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
-		var template_id=$("#template_id").val();
 		var title=$("#title").val();
 		var description=$("#description").val();
 		var sdate=$("#sdate").val();
 		var edate=$("#edate").val();
 		var status=$("#_status").val();
-        
 
-        
-		
+
 		/* Validation ruls  */
 		if (template_id.length==0) {
 			toastr.error('Please Template Select');
@@ -294,7 +255,6 @@
             $('#addBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
-			form_data.append('template_id', template_id);
 			form_data.append('title', title);
 			form_data.append('description', description);
 			form_data.append('sdate', sdate);
@@ -333,7 +293,6 @@
 
     // GET the form data
    var update_education_id= $('#update_education_id').val();
-   var update_template_id= $('#update_template_id').val();
    var update_title= $('#update_title').val();
    var update_description= $('#update_description').val();
    var update_sdate= $('#update_sdate').val();
@@ -358,7 +317,6 @@
         // Create a FormData object and append the data
         var form_data = new FormData();
         form_data.append('update_education_id', update_education_id);
-        form_data.append('update_template_id', update_template_id);
         form_data.append('update_title', update_title);
         form_data.append('update_description', update_description);
         form_data.append('update_sdate', update_sdate);
@@ -450,46 +408,7 @@ $(document).on('click','#editModalBtn',function(){
                     } else {
                         $('#update_status').append('<option value="0" selected>inActive</option>'); // Set to "active"
                         $('#update_status').append('<option value="1">Active</option>');
-                    }
-                // Fetch template name based on template_id
-                $.ajax({
-                    type: 'GET',
-                    url:'<?=base_url('template/get')?>',
-                    data: { template_id: data.template_id },
-                    cache: false,
-                    success: function (response) {
-                        var templateData = JSON.parse(response);
-                        // Populate the select element with options
-
-                        for(var i=0; i<templateData.length; i++){
-                            var template_data=templateData[i];
-                            var selectElement = $('#update_template_id');
-                            selectElement.empty(); 
-
-                            // Add the selected option
-                            var selectedOption = $('<option></option>');
-                            selectedOption.val(template_data.id).text(template_data.template_name);
-                            selectElement.append(selectedOption);
-                        }
-                        //Fetch and add other template names
-                        $.ajax({
-                            type: 'GET',
-                            url: '<?=base_url('template/get')?>', 
-                            data: { get_template: 0 },
-                            cache: false,
-                            success: function (responsedata) {
-                                var data = JSON.parse(responsedata);
-                                data.forEach(function (template) {
-                                    var option = $('<option></option>');
-                                    option.val(template.id).text(template.template_name);
-                                    selectElement.append(option);
-                                });
-                            }
-                        });
-                    }
-                });
-
-                
+                    }               
                 
             }
             
