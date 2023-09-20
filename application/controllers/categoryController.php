@@ -12,7 +12,7 @@ class categoryController extends CI_Controller{
 		$data['sidebar'] = $this->load->view('admin/include/Menu/menu', '', TRUE);
         $data['header'] = $this->load->view('admin/include/Header/header', '', TRUE);
 		$data['footer'] = $this->load->view('admin/include/Footer/footer', '', TRUE);
-        $sql = "SELECT category.id, template.template_name,category.name,category.status FROM category JOIN template ON category.template_id = template.id";
+        $sql = "SELECT * FROM category ";
         $query = $this->db->query($sql);
         $data['data'] = $query->result(); // Fetch the result
         $this->load->view('admin/pages/Category', $data);
@@ -32,12 +32,9 @@ class categoryController extends CI_Controller{
     }
     public function add_category(){
         if (isset($_POST['add_data'])) {
-
-            $template_id=$_POST['template_id'];
             $name=$_POST['category_name'];
             $status=$_POST['status'];
             $data = array(
-                'template_id' => $template_id,
                 'name' => $name,
                 'status' => $status,
             );
@@ -51,14 +48,12 @@ class categoryController extends CI_Controller{
     }
     public function update_category(){
         if (isset($_POST['update_data'])) {
-            
-            $template_id=$_POST['update_template_id'];
             $id=$_POST['update_category_id'];
             $name=$_POST['update_category'];
             $status=$_POST['update_status'];
 
 
-            $this->db->query("UPDATE `category` SET `template_id`='$template_id',`name`='$name',`status`='$status' WHERE id='$id' "); 
+            $this->db->query("UPDATE `category` SET `name`='$name',`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }
