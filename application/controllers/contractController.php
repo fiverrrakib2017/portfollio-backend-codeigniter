@@ -32,11 +32,13 @@ class contractController extends CI_Controller{
              $phone=$_POST['phone'];
              $location=$_POST['location'];
             $status=$_POST['status'];
+            $map_link=$_POST['map_link'];
 
             $data = array(
                     'email_address' => $email,
                     'phone_number' => $phone,
                     'location' => $location,
+                    'map_link' => $map_link,
                     'status' => $status,
                 );
             /* Insert The data contracts table Database*/
@@ -61,10 +63,11 @@ class contractController extends CI_Controller{
             $email=$_POST['update_email'];
             $phone=$_POST['update_phone'];
             $location=$_POST['update_location'];
+            $update_map_link=$_POST['update_map_link'];
             $status=$_POST['update_status'];
 
           
-            $this->db->query("UPDATE `contracts` SET `email_address`='$email',`phone_number`='$phone',`location`='$location',`status`='$status' WHERE id='$id' "); 
+            $this->db->query("UPDATE `contracts` SET `email_address`='$email',`phone_number`='$phone',`location`='$location',`map_link`='$update_map_link',`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }

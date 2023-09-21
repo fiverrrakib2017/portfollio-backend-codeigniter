@@ -138,6 +138,10 @@
                             <label for="image">Location</label>
                             <input type="text" id="update_location"  class="form-control">
                         </div>
+                        <div class="form-group mb-3">
+                            <label for="image">Map Link</label>
+                            <input type="text" id="update_map_link"  class="form-control" placeholder="Enter Map Link">
+                        </div>
 
 
                         <div class="form-group mb-3 ">
@@ -179,6 +183,10 @@
                             <label for="image">Location</label>
                             <input type="text" id="location" class="form-control" placeholder="Enter Location">
                         </div>
+                        <div class="form-group mb-3">
+                            <label for="image">Map Link</label>
+                            <input type="text" id="map_link"  class="form-control" placeholder="Enter Map Link">
+                        </div>
                         <div class="form-group mb-3 ">
                             <label for="Status">Status</label>
                             <select id="_status"  class="form-select">
@@ -211,6 +219,7 @@
 		var phone=$("#add_phone").val();
 		var location=$("#location").val();
 		var status=$("#_status").val();
+		var map_link=$("#map_link").val();
         
 
         
@@ -224,6 +233,8 @@
 			toastr.error('Location is Require');
 		}else if(status.length==0){
 			toastr.error('Status is Require');
+		}else if(map_link.length==0){
+			toastr.error('Map Link is Require');
 		}
         
         else{
@@ -231,10 +242,10 @@
             $('#addBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
-			form_data.append('template_id', template_id);
 			form_data.append('email', email);
 			form_data.append('phone', phone);
 			form_data.append('location', location);
+			form_data.append('map_link', map_link);
 			form_data.append('status', status);
 			form_data.append('add_data', add_data);
 			/*Ajax calll Request Start */
@@ -272,6 +283,8 @@
    var update_email= $('#update_email').val();
    var update_phone= $('#update_phone').val();
    var update_location= $('#update_location').val();
+   
+   var update_map_link= $('#update_map_link').val();
    var update_status= $('#update_status').val();
 
 	var update_data=0;
@@ -285,13 +298,18 @@
         toastr.error('Phone Number is required');
     } else if (update_location.length == 0) {
         toastr.error('Location is required');
-    } else {
+    } else if (update_map_link.length == 0) {
+        toastr.error('Map Link is required');
+    }
+    
+    else {
         // Create a FormData object and append the data
         var form_data = new FormData();
         form_data.append('update_contract_id', update_contract_id);
         form_data.append('update_email', update_email);
         form_data.append('update_phone', update_phone);
         form_data.append('update_location', update_location);
+        form_data.append('update_map_link', update_map_link);
         form_data.append('update_status', update_status);
         form_data.append('update_data', update_data);
 
@@ -368,6 +386,7 @@ $(document).on('click','#editModalBtn',function(){
                 $('#update_email').val(home.email_address);
                 $('#update_phone').val(home.phone_number);
                 $('#update_location').val(home.location);
+                $('#update_map_link').val(home.map_link);
                     if (home.status === '1') {
                         $('#update_status').append('<option value="1" selected>Active</option>'); 
                         $('#update_status').append('<option value="0" >inActive</option>');
