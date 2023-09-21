@@ -117,5 +117,18 @@ $route=array(
     /* Message  Route */ 
     'message'=>'messageController/index',
     'message/delete'=>'messageController/delete_message',
-    
+
+
+
+
+     /* Site Setting  Route */ 
+     'setting/social'=>'siteController/index',
+     'setting/social/update'=>'siteController/update_data',
+     'setting/social/delete'=>'siteController/delete_data',
+     'setting/social/get'=>'siteController/get_data',
+     'setting/social/add'=>'siteController/add_data',
+
+     /* Site Setting Profile  Route */ 
+     'setting/profile'=>'profileController/index',
+     'setting/profile/add'=>'profileController/update_profile',
 );
