@@ -106,4 +106,11 @@ $route=array(
     'language/update'=>'languageController/update_data',
     'language/get'=>'languageController/get_data',
     'language/delete'=>'languageController/delete_data',
+
+    /* Testimonial  Route */
+    'testimonial'=>'testimonialController/index',
+    'testimonial/add'=>'testimonialController/add_testimonial',
+    'testimonial/get'=>'testimonialController/get_testimonial',
+    'testimonial/update'=>'testimonialController/update_testimonial',
+    'testimonial/delete'=>'testimonialController/delete_data',
 );
