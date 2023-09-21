@@ -134,13 +134,20 @@
                     
                     
                     
-                    <li>
-                        <a href="<?= base_url('contract');?>" class="waves-effect">
-                        <i class="mdi mdi-contacts"></i>
-                            <span>Contract Section</span>
-                        </a>
-                    </li>
-                    <li>
+                        <li>
+                            <a href="<?= base_url('contract');?>" class="waves-effect">
+                            <i class="mdi mdi-contacts"></i>
+                                <span>Contract Section</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= base_url('message');?>" class="waves-effect">
+                            <i class="mdi mdi-message"></i>
+                                <span>Received Message</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                             <i class="fa fa-cog" aria-hidden="true"></i>
                                 <span>Site Settings</span>

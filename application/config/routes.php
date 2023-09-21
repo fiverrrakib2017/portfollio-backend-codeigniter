@@ -113,4 +113,9 @@ $route=array(
     'testimonial/get'=>'testimonialController/get_testimonial',
     'testimonial/update'=>'testimonialController/update_testimonial',
     'testimonial/delete'=>'testimonialController/delete_data',
+
+    /* Message  Route */ 
+    'message'=>'messageController/index',
+    'message/delete'=>'messageController/delete_message',
+    
 );
