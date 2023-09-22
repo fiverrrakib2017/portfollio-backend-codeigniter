@@ -39,6 +39,13 @@ $route=array(
     'about/get'=>'aboutController/get_about',
     'about/delete'=>'aboutController/delete_about',
     'about/update'=>'aboutController/update_about', 
+
+     /* Section One Route */
+    'about/section/one'=>'About/Section/section_one_controller/index',
+    'about/section/one/add'=>'About/Section/section_one_controller/add_data',
+    'about/section/one/update'=>'About/Section/section_one_controller/update_data',
+    'about/section/one/get'=>'About/Section/section_one_controller/get_data',
+    'about/section/one/delete'=>'About/Section/section_one_controller/delete_data',
     
     
     /* Blog Route */

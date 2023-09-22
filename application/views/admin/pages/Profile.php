@@ -44,7 +44,7 @@
                                                 <label for="Status">Status</label>
                                                 <select id="update_status"  class="form-select">
                                                     
-                                                    <?php if ($item->status == 1) : ?>
+                                                        <?php if ($item->status == 1) : ?>
                                                             <option value="1" selected>Active</option>
                                                             <option value="0">inActive</option>
                                                         <?php else : ?>
