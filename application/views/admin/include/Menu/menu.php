@@ -115,6 +115,12 @@
                                     </a>
                                 </li>                             
                                 <li>
+                                    <a href="<?= base_url('about/section/two');?>" class="waves-effect">
+                                    <i class="mdi mdi-arrow-right-bold-circle"></i>
+                                        <span>Section 2</span>
+                                    </a>
+                                </li>                             
+                                <li>
                                     <a href="<?= base_url('design/skill');?>" class="waves-effect">
                                     <i class="fas fa-palette"></i>
                                         <span>Design Skill</span>
