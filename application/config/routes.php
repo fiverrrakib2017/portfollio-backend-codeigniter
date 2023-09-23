@@ -6,8 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 $route=array(
-    'default_controller'=>'Dashboard/index',
+    'default_controller' => 'FrontendController/index',
 
+    'admin'=>'Dashboard/index',
 
     /* Template Route */
     'template'=>'Template/index',

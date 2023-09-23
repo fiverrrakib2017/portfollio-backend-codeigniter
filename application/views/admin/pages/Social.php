@@ -106,7 +106,7 @@
         <div class="modal-dialog card shadow">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-solid fa-user-graduate"></i> Update Education </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Social </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
@@ -124,7 +124,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="updateBtn"  class="btn btn-success"><i class="fas fa-solid fa-user-graduate"></i> Update Now</button>
+                    <button type="button" id="updateBtn"  class="btn btn-success">Update Now</button>
                 </div>
             </div>
         </div>
