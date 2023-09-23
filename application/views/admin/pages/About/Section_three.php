@@ -21,7 +21,7 @@
                             <div class="card shadow">
                                 <div class="card-header">
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#addModal" class="btn-sm btn btn-success mb-2">
-                                         Add New  
+                                         Add New 
                                     </button>
                                 </div>
                                 <div class="card-body">
@@ -31,7 +31,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
-                                                    <th class="th-sm">Icon LInk</th>
+                                                    <th class="th-sm">Item</th>
                                                     <th class="th-sm">Action</th>
                                                 </tr>
                                             </thead>
@@ -40,9 +40,9 @@
                                                 
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
-                                                    <td><?php echo $item->name; ?></td>
+                                                    <td><?php echo $item->item; ?></td>
                                                         
-                                                  
+                                                    
                                                     <td>
                                                         <button type="button" data-id="<?php echo $item->id; ?>" class="btn btn-primary"  id="editModalBtn"><i class="fas fa-edit"></i></button>
 
@@ -106,25 +106,25 @@
         <div class="modal-dialog card shadow">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-solid fa-user-graduate"></i> Update Education </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
-                <form id="editForm" enctype="multipart/form-data">
+                    <form id="editForm" enctype="multipart/form-data">
                         <div class="form-group d-none">
                             <label >ID</label>
                             <input type="text" id="update_id"class="form-control" value="">
                         </div>
                         
                         <div class="form-group mb-3 ">
-                            <label for="title">Title</label>
-                            <input type="text" id="update_title" class="form-control" placeholder="Enter Title">
+                            <label for="title">Item Name </label>
+                            <input type="text" id="update_item" class="form-control" placeholder="Enter Title">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="updateBtn"  class="btn btn-success"><i class="fas fa-solid fa-user-graduate"></i> Update Now</button>
+                    <button type="button" id="updateBtn"  class="btn btn-success">Update Now</button>
                 </div>
             </div>
         </div>
@@ -135,21 +135,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Icon </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Add New Item </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body card shadow">
-                <form id="addForm" enctype="multipart/form-data">
-                        
+                <form id="editForm" enctype="multipart/form-data">         
                         <div class="form-group mb-3 ">
-                            <label for="title">Title</label>
-                            <input type="text" id="title" class="form-control" placeholder="Enter Title">
+                            <label for="title">Item Name </label>
+                            <input type="text" id="add_item" class="form-control" placeholder="Enter Item Name">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="addBtn"  class="btn btn-success">Add New Icon</button>
+                    <button type="button" id="addBtn"  class="btn btn-success"> Add Now </button>
                 </div>
             </div>
         </div>
@@ -163,15 +162,15 @@
 <script type="text/javascript">
     $("#template_table").DataTable();
     
-    /* Education Add Ajax call  */
+    /*  Add data Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
-		var title=$("#title").val();
+		var item=$("#add_item").val();
 
 
 		/* Validation ruls  */
-		if(title.length==0){
-			toastr.error('Title  Require');
+		 if(item.length==0){
+			toastr.error('Title  Required');
 		}
         
         else{
@@ -179,12 +178,12 @@
             $('#addBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
-			form_data.append('title', title);
+			form_data.append('item', item);
 			form_data.append('add_data', add_data);
 			/*Ajax calll Request Start */
 			$.ajax({
 				type: 'POST',
-				url:'<?=base_url('setting/social/add')?>',
+				url:'<?=base_url('about/section/three/add')?>',
 				data: form_data,
 				dataType: 'script',
 				cache: false,
@@ -212,28 +211,28 @@
     e.preventDefault();
 
     // GET the form data
-   var update_id= $('#update_id').val();
-   var update_title= $('#update_title').val();
+    var update_id=$('#update_id').val();
 
+    var update_item= $("#update_item").val();
 	var update_data=0;
 
 
 	
     /* Validation rules */
-    if (update_title.length == 0) {
-        toastr.error('Text is required');
-    }  else {
+    if (update_item.length == 0) {
+        toastr.error('Item is required');
+    } else {
         $('#updateBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
         // Create a FormData object and append the data
         var form_data = new FormData();
         form_data.append('update_id', update_id);
-        form_data.append('update_title', update_title);
+        form_data.append('update_item', update_item);
         form_data.append('update_data', update_data);
 
         // AJAX call to update the student data
         $.ajax({
             type: 'POST',
-            url: '<?=base_url('setting/social/update')?>', 
+            url: '<?=base_url('about/section/three/update')?>', 
             data: form_data,
             dataType: 'script',
             cache: false,
@@ -243,7 +242,7 @@
                 if (response == 1) {
                         toastr.success('Update Successfully');
                         $("#editModal").modal('hide'); 
-                        $('#updateBtn').html(`<i class="fas fa-solid fa-user-graduate"></i> Add New Education`);
+                        $('#updateBtn').html(`Update Now`);
                         setTimeout(() => {
                             location.reload();
                         }, 1000); 
@@ -262,7 +261,7 @@
     $(document).on('click','#deleteConfirmBtn',function(){
 		var id=$(this).data('id');
 		$.ajax({
-            url: '<?=base_url('setting/social/delete')?>', 
+            url: '<?=base_url('about/section/three/delete')?>', 
             type: 'POST',
             data: { id: id , delete_data:0},
             success: function(response) {
@@ -288,10 +287,9 @@
 $(document).on('click','#editModalBtn',function(){
     $('#editModal').modal('show');
     var dataId=$(this).data('id');
-    $('#update_status').html('');
     $.ajax({
         type: 'GET',
-        url:'<?=base_url('setting/social/get')?>',
+        url:'<?=base_url('about/section/three/get')?>',
         data: {get_data:0,id:dataId},
         cache: false,
         success: function(response) {
@@ -299,8 +297,11 @@ $(document).on('click','#editModalBtn',function(){
             
             for(var i = 0; i < jsonData.length; i++) {
                 var data = jsonData[i];
+
                 $('#update_id').val(data.id);
-                $("#update_title").val(data.name);   
+
+                $("#update_item").val(data.item);         
+                
             }
             
         }

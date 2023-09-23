@@ -48,11 +48,17 @@ $route=array(
     'about/section/one/delete'=>'About/Section/section_one_controller/delete_data',
     
 
-     /* Section One Route */
+     /* Section Two Route */
     'about/section/two'=>'About/Section/section_two_controller/index',
     'about/section/two/update'=>'About/Section/section_two_controller/update_data',
     
 
+     /* Section Three Route */
+     'about/section/three'=>'About/Section/section_three_controller/index',
+     'about/section/three/add'=>'About/Section/section_three_controller/add_data',
+     'about/section/three/update'=>'About/Section/section_three_controller/update_data',
+     'about/section/three/get'=>'About/Section/section_three_controller/get_data',
+     'about/section/three/delete'=>'About/Section/section_three_controller/delete_data',
 
     /* Blog Route */
     'blog'=>'blogController/index',
