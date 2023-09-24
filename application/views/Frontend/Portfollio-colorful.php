@@ -625,78 +625,37 @@
           <h3 class="subtitle">Latest News</h3>
           <div class="boxes">
             <div class="row vertical-line">
+              <?php foreach($blog_post as $item):?>
               <!-- Item 01 -->
               <div class="col-md-6">
-                <a href="webdesigner-blog-singel-colorfull.html" class="blog-box">
+                <a href="<?=base_url('blog/details/'.$item->id);?>" class="blog-box">
                   <div class="blog-image">
-                    <img src="<?= base_url('assets/Frontend/img/webdesigner/blog-item1.jpg');?>" alt="/">
+                    <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
                     <div class="blog-icon">
                       <i class="bi bi-journal-text"></i>
                     </div>
                   </div>
                   <div class="blog-post-content">
                     <div class="blog-dates">
-                      <span>20 June 2021</span>
+                      <span>
+                        <?php
+                          $date = "$item->create_date";
+                          $timestamp = strtotime($date);
+                          $formatted_date = date("d F Y", $timestamp);
+
+                          echo $formatted_date; // output will be like  24 September 2023
+
+                        ?>
+
+                      </span>
                     </div>
-                    <h6 class="blog-header">Stay informed about the latest cameras and money of that</h6>
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+                    <h6 class="blog-header"><?php echo $item->title; ?></h6>
+                    <p class="mb-0"><?php echo $item->description; ?></p>
                   </div>
                 </a>
               </div>
-              <!-- Item 02 -->
-              <div class="col-md-6">
-                <a href="webdesigner-blog-singel-colorfull.html" class="blog-box">
-                  <div class="blog-image">
-                    <img src="<?=base_url('assets/Frontend/img/webdesigner/blog-item2.jpg');?>" alt="/">
-                    <div class="blog-icon">
-                      <i class="bi bi-journal-text"></i>
-                    </div>
-                  </div>
-                  <div class="blog-post-content">
-                    <div class="blog-dates">
-                      <span>20 June 2021</span>
-                    </div>
-                    <h6 class="blog-header">What Resources help you with your photography</h6>
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
-                  </div>
-                </a>
-              </div>
-              <!-- Item 03 -->
-              <div class="col-md-6">
-                <a href="webdesigner-blog-singel-colorfull.html" class="blog-box">
-                  <div class="blog-image">
-                    <img src="<?=base_url('assets/Frontend/img/webdesigner/blog-item3.jpg');?>" alt="/">
-                    <div class="blog-icon">
-                      <i class="bi bi-journal-text"></i>
-                    </div>
-                  </div>
-                  <div class="blog-post-content">
-                    <div class="blog-dates">
-                      <span>20 June 2021</span>
-                    </div>
-                    <h6 class="blog-header">Improve your Skills with blog posts on photography</h6>
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
-                  </div>
-                </a>
-              </div>
-              <!-- Item 04 -->
-              <div class="col-md-6">
-                <a href="webdesigner-blog-singel-colorfull.html" class="blog-box">
-                  <div class="blog-image">
-                    <img src="<?=base_url('assets/Frontend/img/webdesigner/blog-item4.jpg');?>" alt="/">
-                    <div class="blog-icon">
-                      <i class="bi bi-journal-text"></i>
-                    </div>
-                  </div>
-                  <div class="blog-post-content">
-                    <div class="blog-dates">
-                      <span>20 June 2021</span>
-                    </div>
-                    <h6 class="blog-header">Get Inspiration from photo stories, interviews, and resource</h6>
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
-                  </div>
-                </a>
-              </div>
+                <?php endforeach; ?>
+              
             </div>
           </div>
         </div>
@@ -709,12 +668,24 @@
           <h3 class="subtitle">Get in Touch</h3>
           <!-- Map -->
           <div class="row mt-5">
-            <div class="col-lg-12"><div id="my-map" data-location-lat="43.053454" data-location-lng="-76.144508" data-location-icon="<?=base_url('assets/Frontend/img/location-map.png');?>"></div></div>
+            <!-- <div class="col-lg-12"><div id="my-map" data-location-lat="23.532335777023373" data-location-lng="90.71543527851101" data-location-icon="<?=base_url('assets/Frontend/img/location-map.png');?>"></div></div>  -->
+              
+
+             <div class="col-lg-12">
+             <?php foreach($contracts as $item):?>
+              <div calss="row">
+                <iframe src="<?php echo $item->map_link; ?>" style="width:100%;"></iframe>
+                
+              </div>
+             <?php endforeach; ?>
+            </div>
           </div>
           <div class="row mt-4">
             <!-- Address Info -->
             <div class="col-12 col-xl-5">
               <div class="row">
+
+              <?php foreach($contracts as $item):?>
                 <!--  Item 01 -->
                 <div class="col-lg-12">
                   <div class="info-box">
@@ -723,7 +694,7 @@
                     </div>
                     <div class="info-text">
                       <h5>Mail Me</h5>
-                      <small><a href="https://retrina.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7d18101c14113d18051c100d1118531e1210">[email&#160;protected]</a></small>
+                      <small><?php echo $item->email_address; ?></small>
                     </div>
                   </div>
                 </div>
@@ -735,7 +706,7 @@
                     </div>
                     <div class="info-text">
                       <h5>Call Us On</h5>
-                      <small>+123 456 7890</small>
+                      <small><?php echo $item->phone_number; ?></small>
                     </div>
                   </div>
                 </div>
@@ -747,10 +718,13 @@
                     </div>
                     <div class="info-text">
                       <h5>Visit office</h5>
-                      <small>24 Street, New York, United State.</small>
+                      <small><?php echo $item->location; ?></small>
                     </div>
                   </div>
                 </div>
+
+                <?php endforeach; ?>
+
               </div>
             </div>
             <!-- Contact Form -->
@@ -873,7 +847,7 @@
     <!--  Magnific Popup Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/jquery.magnific-popup.min.js');?>"></script>
     <!-- Map Js -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRemITiP7JRWpZwLhVt-T2x5MeUFE2KWs"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRemITiP7JRWpZwLhVt-T2x5MeUFE2KWs"></script> 
     <!--  Arshia Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/arshia.js');?>"></script>
     <script type="text/javascript">
