@@ -24,6 +24,26 @@ class messageController extends CI_Controller{
             echo 1;
         }
     }   
+    public function add_message(){
+        if (isset($_POST['add_data'])) {
+            $name= $_POST['name'];
+            $email= $_POST['email'];
+            $phone_number= $_POST['phone_number'];
+            $comments= $_POST['comments'];
+
+            $data = array(
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone_number,
+                'message' => $comments,
+                'create_date' => date("Y-m-d"),
+                'status' => 1,
+            );
+            /* Insert The data Message table Database*/
+            $this->db->insert('message', $data);
+            echo 1;
+        } 
+    }
 
 }
 

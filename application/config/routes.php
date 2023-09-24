@@ -136,6 +136,7 @@ $route=array(
     /* Message  Route */ 
     'message'=>'messageController/index',
     'message/delete'=>'messageController/delete_message',
+    'message/add'=>'messageController/add_message',
 
 
 

@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/style.css');?>">
     <!--  Color Css  -->
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/colors/colorfull.css');?>">
+
+    <link href="<?=base_url('assets/css/toastr.min.css')?>"  rel="stylesheet" type="text/css">
   </head>
   <body class="max-width-d">
 
@@ -735,17 +737,17 @@
                     <div class="row">
                       <div class="col-lg-12 form-item">
                         <div class="form-group">
-                          <input name="name" id="name" type="text" class="form-control" placeholder="Complate Name*" required>
+                          <input name="name" id="name" type="text" class="form-control" placeholder="Complate Name*" >
                         </div>
                       </div>
                       <div class="col-lg-12 form-item">
                         <div class="form-group">
-                          <input name="email" id="email" type="email" class="form-control" placeholder="Email Address*" required>
+                          <input name="email" id="email" type="email" class="form-control" placeholder="Email Address*" >
                         </div>
                       </div>
                       <div class="col-lg-12 form-item">
                         <div class="form-group">
-                          <input name="subject" id="subject" type="tel" class="form-control" placeholder="Phone number*" required>
+                          <input name="phone_number" id="phone_number" type="tel" class="form-control" placeholder="Phone number*" >
                         </div>
                       </div>
                       <div class="col-12 form-item">
@@ -850,7 +852,68 @@
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRemITiP7JRWpZwLhVt-T2x5MeUFE2KWs"></script> 
     <!--  Arshia Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/arshia.js');?>"></script>
+    <script type="text/javascript" src="<?=base_url('assets/js/toastr.min.js')?>"></script>
+    
+
     <script type="text/javascript">
+      $(document).ready(function(){
+       $(document).on('submit','#contactForm',function(e){
+        e.preventDefault();
+
+
+
+          var name=$("#name").val();
+          var email=$("#email").val();
+          var phone_number=$("#phone_number").val();
+          var comments=$("#comments").val();
+          var add_data=0;
+
+          if (name.length==0) {
+            toastr.error("Name is required");
+          } else if(email.length==0){
+             toastr.error("Email Address is required");
+          }else if(phone_number.length==0){
+             toastr.error("Phone Number is required");
+          }
+          else if(comments.length==0){
+             toastr.error("Please Type Your Message");
+          }else{
+              var form_data = new FormData();
+              form_data.append('name', name);
+              form_data.append('email', email);
+              form_data.append('phone_number', phone_number);
+              form_data.append('comments', comments);
+              form_data.append('add_data', add_data);
+              /*Ajax calll Request Start */
+                $.ajax({
+                  type: 'POST',
+                  url:'<?=base_url('message/add')?>',
+                  data: form_data,
+                  dataType: 'script',
+                  cache: false,
+                  contentType: false,
+                  processData: false,
+                  success: function(response) {
+                    if (response==1) {
+                      toastr.success("Send Successfully");
+                      var name=$("#name").val('');
+                      var email=$("#email").val('');
+                      var phone_number=$("#phone_number").val('');
+                      var comments=$("#comments").val('');
+                    }else{ 
+                      toastr.error("Please Try Again");
+                      
+                    }
+                  }
+                });
+              /*Ajax calll Request End */
+          }
+         
+
+       });
+      });
+
+
        document.addEventListener('DOMContentLoaded', function() {
         var elements = document.querySelectorAll('.ajax-page-load');
 
@@ -860,7 +923,7 @@
                 window.open(this.href, '_blank');
             });
         });
-    });
+      });
     </script>
   </body>
 </html>
