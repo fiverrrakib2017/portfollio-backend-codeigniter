@@ -569,117 +569,51 @@
               <li class="list-inline-item">
                 <a href="javascript:void(0)" data-filter="*" class="active">All</a>
               </li>
+              <?php foreach($category as $item):?>
               <li class="list-inline-item">
-                <a href="javascript:void(0)" data-filter=".webdesign">Web Design</a>
+                <a href="javascript:void(0)" data-filter=".category<?php echo $item->id;?>"><?php echo $item->name;?></a>
               </li>
-              <li class="list-inline-item">
-                <a href="javascript:void(0)" data-filter=".mobiledesign">Mobile Design</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="javascript:void(0)" data-filter=".sound">Sound</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="javascript:void(0)" data-filter=".graphic">Graphic</a>
-              </li>
+              <?php endforeach;?>
             </ul>
           </div>
           <div class="portfolio-items border-line-v row">
-            <!-- Item 01 -->
-            <div class="col-md-6 col-lg-4 portfolio-item sound">
+          <?php foreach($works as $item):?>
+            <!-- Item  Start -->
+            <div class="col-md-6 col-lg-4 portfolio-item category<?php echo $item->category_id;?>">
               <div class="portfolio-box">
                 <div class="portfolio-image">
-                  <img src="<?= base_url('assets/Frontend/img/webdesigner/portfolio-item1.jpg');?>" alt="/">
+                  <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
                   <div class="portfolio-icon">
-                    <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/221650664&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="portfolio-magnific mfp-iframe">
+                  <a href="<?php echo $item->link; ?>" class="
+                        <?php if($item->link_type==1): ?>
+                            portfolio-magnific mfp-iframe
+                        <?php elseif($item->link_type==2): ?>
+                            portfolio-magnific mfp-iframe
+                        <?php elseif($item->link_type==3): ?>
+                            ajax-page-load
+                        <?php endif; ?>
+                    ">
+
+                    <?php if($item->link_type==1): ?>
                       <i class="bi bi-music-note-beamed"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="portfolio-content">
-                  <h6 class="blog-header">Tak photo on the waves</h6>
-                  <p class="mb-0">image</p>
-                </div>
-              </div>
-            </div>
-            <!-- Item 02 -->
-            <div class="col-md-6 col-lg-4 portfolio-item sound">
-              <div class="portfolio-box">
-                <div class="portfolio-image">
-                  <img src="<?= base_url('assets/Frontend/img/webdesigner/portfolio-item2.jpg');?>" alt="/">
-                  <div class="portfolio-icon">
-                    <a href="https://player.vimeo.com/video/158284739" class="portfolio-magnific mfp-iframe">
+                    <?php elseif($item->link_type==2): ?>
                       <i class="bi bi-camera-video"></i>
+                    <?php else: ?>
+                        <i class="bi bi-file-earmark-text"></i>
+                    <?php endif; ?>
+                      
+
                     </a>
                   </div>
                 </div>
                 <div class="portfolio-content">
-                  <h6 class="blog-header">Tak photo on the waves</h6>
+                  <h6 class="blog-header"><?php echo $item->title; ?></h6>
                   <p class="mb-0">image</p>
                 </div>
               </div>
             </div>
-            <!-- Item 03 -->
-            <div class="col-md-6 col-lg-4 portfolio-item sound">
-              <div class="portfolio-box">
-                <div class="portfolio-image">
-                  <img src="<?= base_url('assets/Frontend/img/webdesigner/portfolio-item3.jpg');?>" alt="/">
-                  <div class="portfolio-icon">
-                    <a href="portfolio-01-colorfull.html" class="ajax-page-load">
-                      <i class="bi bi-file-earmark-text"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="portfolio-content">
-                  <h6 class="blog-header">Tak photo on the waves</h6>
-                  <p class="mb-0">image</p>
-                </div>
-              </div>
-            </div>
-            <!-- Item 04 -->
-            <div class="col-md-6 col-lg-4 portfolio-item mobiledesign webdesign">
-              <div class="portfolio-image">
-                <img src="<?= base_url('assets/Frontend/img/webdesigner/portfolio-item4.jpg');?>" alt="/">
-                <div class="portfolio-icon">
-                  <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/221650664&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="portfolio-magnific mfp-iframe">
-                    <i class="bi bi-music-note-beamed"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <h6 class="blog-header">Detailed Project 2</h6>
-                <p class="mb-0">image</p>
-              </div>
-            </div>
-            <!-- Item 05 -->
-            <div class="col-md-6 col-lg-4 portfolio-item mobiledesign sound">
-              <div class="portfolio-image">
-                <img src="<?= base_url('assets/Frontend/img/webdesigner/portfolio-item5.jpg');?>" alt="/">
-                <div class="portfolio-icon">
-                  <a href="https://player.vimeo.com/video/158284739" class="portfolio-magnific mfp-iframe">
-                    <i class="bi bi-camera-video"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <h6 class="blog-header">Detailed Project 2</h6>
-                <p class="mb-0">image</p>
-              </div>
-            </div>
-            <!-- Item 06 -->
-            <div class="col-md-6 col-lg-4 portfolio-item mobiledesign">
-              <div class="portfolio-image">
-                <img src="<?= base_url('assets/Frontend/img/webdesigner/portfolio-item6.jpg');?>" alt="/">
-                <div class="portfolio-icon">
-                  <a href="portfolio-01-colorfull.html" class="ajax-page-load">
-                    <i class="bi bi-file-earmark-text"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <h6 class="blog-header">Detailed Project 2</h6>
-                <p class="mb-0">image</p>
-              </div>
-            </div>
+          <?php endforeach;?>
+            <!-- Item  End -->
           </div>
         </div>
       </section>
@@ -942,7 +876,17 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRemITiP7JRWpZwLhVt-T2x5MeUFE2KWs"></script>
     <!--  Arshia Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/arshia.js');?>"></script>
-  </body>
+    <script type="text/javascript">
+       document.addEventListener('DOMContentLoaded', function() {
+        var elements = document.querySelectorAll('.ajax-page-load');
 
-<!-- Mirrored from retrina.com/demo/arshia/arshia-plus/webdesigner-colorfull.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Sep 2023 05:37:10 GMT -->
+        elements.forEach(function(element) {
+            element.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.open(this.href, '_blank');
+            });
+        });
+    });
+    </script>
+  </body>
 </html>

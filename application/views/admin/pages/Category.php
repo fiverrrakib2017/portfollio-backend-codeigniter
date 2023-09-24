@@ -191,9 +191,7 @@
 		var status=$("#_status").val();
 		
 		/* Validation ruls  */
-		if (template_id.length==0) {
-			toastr.error('Please Template Select');
-		}else if(category_name.length==0){
+		 if(category_name.length==0){
 			toastr.error('Category Name is Require');
 		}
         

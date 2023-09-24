@@ -19,6 +19,8 @@ class FrontendController extends CI_Controller{
         $data['services'] =$this->db->query("SELECT * FROM `services` WHERE status=1 ")->result(); // Fetch the result
         $data['education'] =$this->db->query("SELECT * FROM `education` WHERE status=1 ")->result(); // Fetch the result
         $data['experience'] =$this->db->query("SELECT * FROM `experience` WHERE status=1 ")->result(); // Fetch the result
+        $data['category'] =$this->db->query("SELECT * FROM `category` WHERE status=1 ")->result(); // Fetch the result
+        $data['works'] =$this->db->query("SELECT * FROM `works` WHERE status=1 ")->result(); // Fetch the result
 
         /* Pass the data view File */
         $this->load->view('Frontend/Portfollio-colorful', $data);

@@ -49,7 +49,17 @@
                                                     <td><?php echo $item->title; ?></td>
                                                     
                                                     <td><img src="<?php echo base_url() . '/' . $item->image; ?>" height="50px" width="100px" class="rounded" /></td>
-                                                    <td><?php echo $item->link; ?></td>
+                                                    <td>
+                                                    <?php
+                                                         $link = $item->link; 
+                                                        $maxChars = 50;
+                                                        if (strlen($link) > $maxChars) {
+                                                            echo $link = substr($link, 0, $maxChars).'...........';
+                                                        } else {
+                                                            echo $link;
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td>
                                                     <?php if ($item->link_type == 1) : ?>
                                                         <span class="badge bg-success">Audio</span>
