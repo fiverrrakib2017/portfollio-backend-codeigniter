@@ -34,7 +34,6 @@ class experienceController extends CI_Controller{
             $edate=$_POST['edate'];
             $status=$_POST['status'];
             $data = array(
-                'template_id' => $template_id,
                 'title' => $title,
                 'description' => $description,
                 'start_date' => $sdate,

@@ -194,37 +194,40 @@
       <!--  About Start  -->
       <section id="about" class="section about">
         <div class="container">
+
+        <?php foreach ($about as $item): ?>
+
           <!-- Introducce Me -->
           <div class="about-boxes">
             <div class="row">
               <div class="col-lg-5">
                 <div class="about-img">
-                  <img src="<?=base_url('assets/Frontend/img/webdesigner/about-img.jpg');?>" alt="/">
+                  <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
                   <div class="border-img"></div>
                 </div>
               </div>
               <div class="col-lg-7">
                 <div class="about-description">
-                  <h3 class="mb-3">A short story about me , my mission, thinking and craft.</h3>
-                  <p class="about-text">I’m a web designer who aware of the tiny moments in a persons life that reveal greater truths. Aliquam erat volutpat. Nullam imperdiet sapien felis, non lobortis odio mattis in. Quisque dapibus aliquet dictum. Integer dapibus ullamcorper est, ac .</p>
+                  <h3 class="mb-3"><?php echo $item->title; ?></h3>
+                  <p class="about-text"><?php echo $item->description; ?></p>
                 </div>
                 <!-- Personal Info -->
                 <div class="row">
                   <div class="col-lg-6">
                     <ul class="list-unstyled personal-info">
-                      <li>Website : <small><a href="https://retrina.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e08d81898ca08598818d908c85ce838f8d">[email&#160;protected]</a></small>
+                      <li>Website : <small><a href="https://retrina.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e08d81898ca08598818d908c85ce838f8d"><?php echo $item->website; ?></a></small>
                       </li>
-                      <li>Phone : <small>+123 456 7890</small>
+                      <li>Phone : <small><?php echo $item->phone; ?></small>
                       </li>
-                      <li>City : <small> New York, USA</small>
+                      <li>City : <small><?php echo $item->city; ?></small>
                       </li>
                     </ul>
                   </div>
                   <div class="col-lg-6">
                     <ul class="list-unstyled personal-info">
-                      <li>Age : <small>30</small>
+                      <li>Age : <small><?php echo $item->age; ?></small>
                       </li>
-                      <li>Degree : <small>Master</small>
+                      <li>Degree : <small><?php echo $item->degree; ?></small>
                       </li>
                       <li>Freelance : <small>Available</small>
                       </li>
@@ -237,58 +240,41 @@
               </div>
             </div>
           </div>
+
+          <?php endforeach; ?>
+
           <!--  Count up  -->
           <div id="count-up" class="count-up text-center box-border">
             <div class="row">
+              <?php  foreach($section1 as $item ):?>
+
               <!-- Item-01 -->
               <div class="col-6 col-lg-3 my-4 count-item">
                 <div class="count-icon">
-                  <img src="<?=base_url('assets/Frontend/img/colorfull/prototype.png');?>" alt="/">
+                  <i class="<?php echo $item->icon; ?>"></i>
                 </div>
-                <span class="timer count-number" data-from="0" data-to="286" data-speed="5000">0</span>
-                <p class="mb-0">Logo Design</p>
+                <span class="timer count-number" data-from="0" data-to="<?php echo $item->complete_count;?>" data-speed="5000">0</span>
+                <p class="mb-0"><?php echo $item->title; ?></p>
               </div>
-              <!-- Item-02 -->
-              <div class="col-6 col-lg-3 my-4 count-item">
-                <div class="count-icon">
-                  <img src="<?= base_url('assets/Frontend/img/colorfull/ui-design.png');?>" alt="/">
-                </div>
-                <span class="timer count-number" data-from="0" data-to="6549" data-speed="5000">0</span>
-                <p class="mb-0">Web Design</p>
-              </div>
-              <!-- Item-03 -->
-              <div class="col-6 col-lg-3 my-4 count-item">
-                <div class="count-icon">
-                  <img src="<?= base_url('assets/Frontend/img/colorfull/layer.png');?>" alt="/">
-                </div>
-                <span class="timer count-number" data-from="0" data-to="793" data-speed="5000">0</span>
-                <p class="mb-0">Illustration</p>
-              </div>
-              <!-- Item-04 -->
-              <div class="col-6 col-lg-3 my-4 count-item">
-                <div class="count-icon">
-                  <img src="<?= base_url('assets/Frontend/img/colorfull/checked.png');?>" alt="/">
-                </div>
-                <span class="timer count-number" data-from="0" data-to="286" data-speed="5000">0</span>
-                <p class="mb-0">Project Done</p>
-              </div>
+                <?php endforeach; ?>
             </div>
           </div>
           <!--  Skills  -->
           <div class="skills">
             <div class="row pt-5">
               <div class="col-lg-7">
+                <?php foreach($section2 as $item):?>
                 <div class="skill-description">
-                  <h3 class="mb-3">I have been able to experience & developing this type of skill.</h3>
-                  <p class="mb-0">I was doing everything in my power to provide me with all the experiences to provide cost-effective and high quality products to satisfy my customers all over the world</p>
+                  <h3 class="mb-3"><?= $item->title; ?></h3>
+                  <p class="mb-0"><?php echo $item->description;  ?></p>
                 </div>
+              <?php endforeach; ?>
               </div>
               <div class="col-lg-5">
                 <ul class="knowledge-item">
-                  <li>Graphics and animations</li>
-                  <li>Video Formality</li>
-                  <li>Short Animationsg</li>
-                  <li>Teaching Web Design</li>
+                  <?php foreach($section3 as $item):?>
+                    <li><?php echo $item->item; ?></li>
+                  <?php endforeach; ?>
                 </ul>
               </div>
             </div>
@@ -298,83 +284,65 @@
             <div class="col-lg-6">
               <h3 class="subtitle">Design Skills</h3>
               <div id="skills">
+                <?php foreach($design_skill as $item):?>
                 <!-- Item 01 -->
                 <div class="col-lg-12 skill-box">
                   <div class="skill-text">
-                    <div class="skillbar-title">Logo Design</div>
-                    <div class="skill-bar-percent"><span data-from="0" data-to="100" data-speed="4000">100</span>%</div>
+                    <div class="skillbar-title"><?php echo $item->item; ?></div>
+                    <div class="skill-bar-percent"><span data-from="0" data-to="<?php echo $item->percentage;?>" data-speed="4000"><?php echo $item->percentage;?></span>%</div>
                   </div>
-                  <div class="skillbar clearfix" data-percent="100%">
+                  <div class="skillbar clearfix" data-percent="<?php echo $item->percentage;?>%">
                     <div class="skillbar-bar"></div>
                   </div>
                 </div>
-                <!-- Item 02 -->
-                <div class="col-lg-12 skill-box">
-                  <div class="skill-text">
-                    <div class="skillbar-title">Web Design</div>
-                    <div class="skill-bar-percent"><span data-from="0" data-to="95" data-speed="4000">95</span>%</div>
-                  </div>
-                  <div class="skillbar clearfix" data-percent="95%">
-                    <div class="skillbar-bar"></div>
-                  </div>
-                </div>
-                <!-- Item 03 -->
-                <div class="col-lg-12 skill-box">
-                  <div class="skill-text">
-                    <div class="skillbar-title">Illustration</div>
-                    <div class="skill-bar-percent"><span data-from="0" data-to="85" data-speed="4000">85</span>%</div>
-                  </div>
-                  <div class="skillbar clearfix" data-percent="85%">
-                    <div class="skillbar-bar"></div>
-                  </div>
-                </div>
+              <?php endforeach; ?>
+                
               </div>
             </div>
             <div class="col-lg-5 ms-auto mt-5 mt-lg-0">
               <h3 class="subtitle">Language</h3>
               <div class="language-bar">
+                <?php foreach($language as $item):?>
                 <!-- Item 01 -->
                 <div class="language-skill">
-                  <h6 class="mb-0">English <span> Fluent</span>
+                  <h6 class="mb-0"><?php echo $item->item; ?> <span> Fluent</span>
                   </h6>
-                  <ul class="list-inline text-right">
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-fill"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="bi bi-circle-half"></i>
-                    </li>
-                  </ul>
-                </div>
-                <!-- Item 02 -->
-                <div class="language-skill">
-                  <h6 class="mb-0">Germany <span>Basic</span>
-                  </h6>
-                  <ul class="list-inline text-right">
+
+                      <?php if ($item->percentage > 90) : ?>
+                        <ul class="list-inline text-right">
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-fill"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="bi bi-circle-half"></i>
+                      </li>
+                    </ul>
+                      <?php elseif($item->percentage> 50) : ?>
+                        <ul class="list-inline text-right">
                     <li class="list-inline-item">
                       <i class="bi bi-circle-fill"></i>
                     </li>
@@ -406,12 +374,8 @@
                       <i class="bi bi-circle"></i>
                     </li>
                   </ul>
-                </div>
-                <!-- Item 03 -->
-                <div class="language-skill">
-                  <h6 class="mb-0">Turkey <span>Basic</span>
-                  </h6>
-                  <ul class="list-inline text-right">
+                  <?php else : ?>
+                    <ul class="list-inline text-right">
                     <li class="list-inline-item">
                       <i class="bi bi-circle-fill"></i>
                     </li>
@@ -443,52 +407,33 @@
                       <i class="bi bi-circle"></i>
                     </li>
                   </ul>
+                      <?php endif; ?>
+                    
                 </div>
+                <?php endforeach; ?>
               </div>
             </div>
           </div>
           <!--  Client  -->
           <div class="testimonial mt-5">
             <div class="owl-carousel">
+
+            <?php foreach($testimonial as $item):?>
               <!-- Item 01 -->
               <div class="testimonial-box">
-                <p class="testimonial-comment">"My motivation is customer satisfaction. Trust me and trust your growth asset management to my expertise gained over the years. My goal is continuous achievement.!"</p>
+                <p class="testimonial-comment"><?php echo $item->mouth_word; ?></p>
                 <div class="testimonial-item">
                   <div class="testimonial-image">
-                    <img src="<?= base_url('assets/Frontend/img/colorfull/man.png');?>" alt="/">
+                    <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
                   </div>
                   <div class="testimonial-info">
-                    <p class="mb-0">Leo Anderson</p>
-                    <small class="testimonial-jub">Web Designer</small>
+                    <p class="mb-0"><?php echo $item->name; ?></p>
+                    <small class="testimonial-jub"><?php echo $item->designation;?></small>
                   </div>
                 </div>
               </div>
-              <!-- Item 02 -->
-              <div class="testimonial-box">
-                <p class="testimonial-comment">"My motivation is customer satisfaction. Trust me and trust your growth asset management to my expertise gained over the years. My goal is continuous achievement.!"</p>
-                <div class="testimonial-item">
-                  <div class="testimonial-image">
-                    <img src="<?=base_url('assets/Frontend/img/colorfull/woman.png');?>" alt="/">
-                  </div>
-                  <div class="testimonial-info">
-                    <p class="mb-0">Hanah Smith</p>
-                    <small class="testimonial-jub">Web Developer</small>
-                  </div>
-                </div>
-              </div>
-              <!-- Item 03 -->
-              <div class="testimonial-box">
-                <p class="testimonial-comment">"My motivation is customer satisfaction. Trust me and trust your growth asset management to my expertise gained over the years. My goal is continuous achievement.!"</p>
-                <div class="testimonial-item">
-                  <div class="testimonial-image">
-                    <img src="<?= base_url('assets/Frontend/img/colorfull/man1.png');?>" alt="/">
-                  </div>
-                  <div class="testimonial-info">
-                    <p class="mb-0">Angela Anderson</p>
-                    <small class="testimonial-jub">Web Designer</small>
-                  </div>
-                </div>
-              </div>
+              <?php endforeach; ?>
+              
             </div>
           </div>
         </div>
@@ -503,66 +448,18 @@
             <div class="boxes">
               <h3 class="subtitle">Services</h3>
               <div class="row vertical-line">
-                <!-- Item 01 -->
+              <?php foreach($services as $item):?>
+                
                 <div class="col-md-6">
                   <div class="services-box">
-                    <img src="<?= base_url('assets/Frontend/img/colorfull/ui-design.png');?>" alt="/">
+                    <img src="<?php echo base_url() . '/' . $item->icon; ?>" alt="/">
                     <div class="services-content">
-                      <h6 class="services-head">Web Design</h6>
-                      <p class="services-description mb-0">In a professional context it often happens that private or corporate clients corder a publication to be made.</p>
+                      <h6 class="services-head"><?php echo $item->title; ?></h6>
+                      <p class="services-description mb-0"><?php echo $item->description; ?></p>
                     </div>
                   </div>
                 </div>
-                <!-- Item 02 -->
-                <div class="col-md-6">
-                  <div class="services-box">
-                    <img src="<?= base_url('assets/Frontend/img/colorfull/prototype.png');?>" alt="/">
-                    <div class="services-content">
-                      <h6 class="services-head">Logo Design</h6>
-                      <p class="services-description mb-0">In a professional context it often happens that private or corporate clients corder a publication to be made.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Item 03 -->
-                <div class="col-md-6">
-                  <div class="services-box">
-                    <img src="<?=base_url('assets/Frontend/img/colorfull/layer.png');?>" alt="/">
-                    <div class="services-content">
-                      <h6 class="services-head">Web Development</h6>
-                      <p class="services-description mb-0">In a professional context it often happens that private or corporate clients corder a publication to be made.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Item 04 -->
-                <div class="col-md-6">
-                  <div class="services-box">
-                    <img src="<?= base_url('assets/Frontend/img/colorfull/movie-frame.png');?>" alt="/">
-                    <div class="services-content">
-                      <h6 class="services-head">Short Animations</h6>
-                      <p class="services-description mb-0">In a professional context it often happens that private or corporate clients corder a publication to be made.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Item 05 -->
-                <div class="col-md-6">
-                  <div class="services-box">
-                    <img src="<?= base_url('assets/Frontend/img/colorfull/bar-graph.png');?>" alt="/">
-                    <div class="services-content">
-                      <h6 class="services-head">Advetising</h6>
-                      <p class="services-description mb-0">In a professional context it often happens that private or corporate clients corder a publication to be made.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Item 06 -->
-                <div class="col-md-6">
-                  <div class="services-box">
-                    <img src="<?= base_url('assets/Frontend/img/colorfull/console.png');?>" alt="/">
-                    <div class="services-content">
-                      <h6 class="services-head">Game Development</h6>
-                      <p class="services-description mb-0">In a professional context it often happens that private or corporate clients corder a publication to be made.</p>
-                    </div>
-                  </div>
-                </div>
+                <?php endforeach;?>
               </div>
             </div>
           </div>
@@ -572,108 +469,86 @@
             <div class="boxes my-6">
               <h3 class="subtitle">Education</h3>
               <div class="row vertical-line">
+              <?php foreach($education as $item):?>
                 <!--  Item 01  -->
                 <div class="col-md-6">
                   <div class="timeline-box">
                     <div class="time-line-header">
-                      <p class="timeline-year">2012 - 2015</p>
-                      <h6 class="timeline-title">Art University - New York</h6>
+                      <p class="timeline-year">
+                        <?php  
+
+                        $dateString = "$item->start_date";
+                        $year = date("Y", strtotime($dateString));
+                        echo $year; // get the year 
+                        
+                        ?> 
+                        
+                        
+                        - 
+                        <?php  
+
+                          $dateString = "$item->end_date";
+                          $year = date("Y", strtotime($dateString));
+                          echo $year; // get the year 
+
+                          ?> 
+                      
+                      </p>
+                      <h6 class="timeline-title"><?php echo $item->title; ?></h6>
                     </div>
                     <div class="timeline-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.</p>
+                      <p><?php echo $item->description; ?></p>
                     </div>
                   </div>
                 </div>
-                <!--  Item 02  -->
-                <div class="col-md-6">
-                  <div class="timeline-box">
-                    <div class="time-line-header">
-                      <p class="timeline-year">2015 - 2017</p>
-                      <h6 class="timeline-title">Photographer Course - Canada</h6>
-                    </div>
-                    <div class="timeline-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.</p>
-                    </div>
-                  </div>
-                </div>
-                <!--  Item 03  -->
-                <div class="col-md-6">
-                  <div class="timeline-box">
-                    <div class="time-line-header">
-                      <p class="timeline-year">2017 - 2019</p>
-                      <h6 class="timeline-title">Writing Course - New York</h6>
-                    </div>
-                    <div class="timeline-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.</p>
-                    </div>
-                  </div>
-                </div>
-                <!--  Item 04  -->
-                <div class="col-md-6">
-                  <div class="timeline-box">
-                    <div class="time-line-header">
-                      <p class="timeline-year">2019 - 2021</p>
-                      <h6 class="timeline-title">Advetising Course - Canada</h6>
-                    </div>
-                    <div class="timeline-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.</p>
-                    </div>
-                  </div>
-                </div>
+                <?php endforeach;?>
               </div>
             </div>
             <!--  TimeLine Experience  -->
             <div class="boxes mt-6 mb-3">
               <h3 class="subtitle">Experience</h3>
               <div class="row vertical-line">
+
+
+              <?php foreach($experience as $item):?>
+
                 <!--   Item 01   -->
                 <div class="col-md-6">
                   <div class="timeline-box">
                     <div class="time-line-header">
-                      <p class="timeline-year">2017 - 2018</p>
-                      <h6 class="timeline-title">Team Leader</h6>
+                      <p class="timeline-year">
+
+                      <?php  
+
+                        $dateString = "$item->start_date";
+                        $year = date("Y", strtotime($dateString));
+                        echo $year; // get the year 
+
+                        ?> 
+
+
+                        - 
+                        <?php  
+
+                          $dateString = "$item->end_date";
+                          $year = date("Y", strtotime($dateString));
+                          echo $year; // get the year 
+
+                          ?> 
+
+                      </p>
+                      <h6 class="timeline-title"><?php echo $item->title; ?></h6>
                     </div>
                     <div class="timeline-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.</p>
+                    <p><?php echo $item->description; ?></p>
                     </div>
                   </div>
                 </div>
-                <!--   Item 02   -->
-                <div class="col-md-6">
-                  <div class="timeline-box">
-                    <div class="time-line-header">
-                      <p class="timeline-year">2019 - 2021</p>
-                      <h6 class="timeline-title">Business Photographer</h6>
-                    </div>
-                    <div class="timeline-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.</p>
-                    </div>
-                  </div>
-                </div>
-                <!--   Item 03   -->
-                <div class="col-md-6">
-                  <div class="timeline-box">
-                    <div class="time-line-header">
-                      <p class="timeline-year">2019 - 2021</p>
-                      <h6 class="timeline-title">Marketing Managment</h6>
-                    </div>
-                    <div class="timeline-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.</p>
-                    </div>
-                  </div>
-                </div>
-                <!--   Item 04   -->
-                <div class="col-md-6">
-                  <div class="timeline-box">
-                    <div class="time-line-header">
-                      <p class="timeline-year">2021 - 2021</p>
-                      <h6 class="timeline-title">Advetising</h6>
-                    </div>
-                    <div class="timeline-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.</p>
-                    </div>
-                  </div>
-                </div>
+
+
+                <?php endforeach;?>
+
+
               </div>
             </div>
           </div>

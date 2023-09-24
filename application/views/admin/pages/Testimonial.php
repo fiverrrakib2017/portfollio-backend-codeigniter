@@ -195,7 +195,7 @@
                         </div>
                         <div class="form-group mb-3 ">
                             <label for="mouth_word">Mouth Word</label>
-                            <textarea type="text" id="mouth_word" class="form-control" placeholder="Enter Mouth Word"></textarea>
+                            <textarea type="text" id="add_mouth_word" class="form-control" placeholder="Enter Mouth Word"></textarea>
                         </div>
                         <div class="form-group mb-3 ">
                             <label for="image">Upload Image</label>
@@ -242,7 +242,7 @@
 		// GET the form data
 		var name=$("#name").val();
 		var designation=$("#designation").val();
-		var mouth_word=$("#mouth_word").val();
+		var mouth_word=$("#add_mouth_word").val();
 		var imageData = $("#image").prop('files')[0];
         var status=$("#_status").val();
 
