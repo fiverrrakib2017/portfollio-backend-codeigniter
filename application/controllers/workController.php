@@ -28,6 +28,11 @@ class workController extends CI_Controller{
             $category_id=$_POST['category_id'];
             $title=$_POST['title'];
             $link=$_POST['link'];
+            if (!empty($link)) {
+                $__new_link=$link;
+            }else{
+                $__new_link=NULL;
+            }
             $link_type=$_POST['link_type'];
             $status=$_POST['status'];
 
@@ -59,7 +64,7 @@ class workController extends CI_Controller{
                             'category_id' => $category_id,
                             'title' => $title,
                             'image' => $path,
-                            'link' => $link,
+                            'link' => $__new_link,
                             'link_type' => $link_type,
                             'status' => $status,
                         );

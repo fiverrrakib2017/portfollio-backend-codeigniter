@@ -168,10 +168,7 @@
                         <div class="form-group mb-3">
                             <img src="" alt="" class="img-fluid img-thumbnail" id="old_image" style="max-width: 200px; height: 100px;">
                         </div>                               
-                        <div class="form-group mb-3 ">
-                            <label for="image">Link</label>
-                            <input type="text" id="update_link" class="form-control" placeholder="Enter Link">
-                        </div>
+                        
                         <div class="form-group mb-3 ">
                             <label for="image">Link Type</label>
                             <select type="text" id="update_link_type" class="form-select">
@@ -180,7 +177,11 @@
                                  <option value="2">Video</option>                           
                                  <option value="3">Docs</option>                           
                             </select>
-                        </div>                                   
+                        </div> 
+                        <div class="form-group mb-3 ">
+                            <label for="image">Link</label>
+                            <input type="text" id="update_link" class="form-control" placeholder="Enter Link">
+                        </div>                                  
                         <div class="form-group mb-3 ">
                             <label >Status</label>
                             <select id="update_status" class="form-select">
@@ -225,10 +226,7 @@
                         <div class="form-group mb-3 ">
                             <img src="https://www.pngitem.com/pimgs/m/35-350426_profile-icon-png-default-profile-picture-png-transparent.png" alt="" class="img-fluid img-thumbnail" id="imgPreview" style="max-width: 200px; height: 100px;">
                         </div>
-                        <div class="form-group mb-3 ">
-                            <label for="image">Link</label>
-                            <input type="text" id="link" class="form-control" placeholder="Enter Link">
-                        </div>
+                        
                         <div class="form-group mb-3 ">
                             <label for="image">Link Type</label>
                             <select type="text" id="link_type" class="form-select">
@@ -237,6 +235,10 @@
                                  <option value="2">Video</option>                           
                                  <option value="3">Docs</option>                           
                             </select>
+                        </div>
+                        <div class="form-group mb-3 ">
+                            <label for="image">Link</label>
+                            <input type="text" id="link" class="form-control" placeholder="Enter Link">
                         </div>
                         <div class="form-group mb-3 ">
                             <label for="Status">Status</label>
@@ -297,6 +299,27 @@
                 }
             });
         }
+
+
+
+    /* add data modal > add modal > link type change */
+    $(document).on("change",'#link_type',function(){
+        var link_type=$('#link_type').val();
+        if (link_type==3) {
+            $("#link").attr('disabled','disabled');
+        }else{
+            $("#link").removeAttr('disabled');
+        }
+    });
+    /* update data modal > edit modal > link type change */
+    $(document).on("change",'#update_link_type',function(){
+        var link_type=$('#update_link_type').val();
+        if (link_type==3) {
+            $("#update_link").attr('disabled','disabled');
+        }else{
+            $("#update_link").removeAttr('disabled');
+        }
+    });
     /*  Add data Ajax call  */
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
@@ -312,20 +335,19 @@
         
 		
 		/* Validation ruls  */
-		if(category_id.length==0){
-			toastr.error('Category is Require');
-		}else if(title.length==0){
-			toastr.error('Title is Require');
-		}
-        
-        else if(link.length==0){
-			toastr.error('Link is Require');
-		}else if(link_type.length==0){
-			toastr.error('Link Type is Require');
-		}
-        else if(status.length==0){
-			toastr.error('Status is Require');
-		}
+		if(category_id.length == 0){
+            toastr.error('Category is Required');
+        }else if(title.length == 0){
+            toastr.error('Title is Required');
+        }else if(link_type == 3 && link.length != 0){
+            toastr.error('Link should not be provided for Link Type 3');
+        }else if(link_type != 3 && link.length == 0){
+            toastr.error('Link is Required ');
+        }else if(link_type.length == 0){
+            toastr.error('Link Type is Required');
+        }else if(status.length == 0){
+            toastr.error('Status is Required');
+        }
         else{
 			var add_data = "0";
             $('#addBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
@@ -405,13 +427,13 @@
 
     /* Validation rules */
     if(update_category_id.length == 0){
-         toastr.error('Category is required');
+        toastr.error('Category is required');
     }
-     else if (update_link.length == 0) {
-        toastr.error('Link is required');
-    } else if (update_link_type.length == 0) {
+    else if (update_link_type.length == 0) {
         toastr.error('Link Type is required');
-    }
+    } else if (update_link_type != 3 && update_link.length == 0) {
+        toastr.error('Link is required');
+    } 
      else {
         // Create a FormData object and append the data
         var form_data = new FormData();
@@ -506,7 +528,12 @@ $(document).on('click','#editModalBtn',function(){
                 $('#update_title').val(data.title);
                 $('#update_link').val(data.link);
                 $('#update_link_type').val(data.link_type);
-                //$('#update_status').val(data.status);
+                
+                if (data.link_type==3) {
+                    $("#update_link").attr('disabled','disabled');
+                }else{
+                    $("#update_link").removeAttr('disabled');
+                }
                
                 $('#old_image').attr('src', data.image);
 
