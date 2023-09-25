@@ -44,6 +44,12 @@
                                         <span>Add Work</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="<?=base_url('work/details'); ?>" class="waves-effect">
+                                    <i class="fas fa-business-time"></i>
+                                        <span>Add Work Details</span>
+                                    </a>
+                                </li>
                                 
                             </ul>
                         </li>

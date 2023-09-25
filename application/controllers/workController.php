@@ -99,7 +99,16 @@ class workController extends CI_Controller{
                 $id=$_GET['id'];
                 $query =$this->db->query("SELECT * FROM works WHERE id='$id'");
                echo json_encode($query->result());
-            } 
+
+            }else if(isset($_GET['get_docs_work'])){
+                $query =$this->db->query("SELECT * FROM works WHERE link_type='3'");
+               echo json_encode($query->result());
+            }else{
+                echo "No Data Found";
+            }
+
+            
+
     }
     public function update_work(){
         if (isset($_POST['update_data'])) {
@@ -151,5 +160,6 @@ class workController extends CI_Controller{
             echo 1;
         }
     }
+   
 
 }

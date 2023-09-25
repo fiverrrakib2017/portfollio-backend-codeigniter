@@ -111,6 +111,12 @@ $route=array(
     'work/update'=>'workController/update_work',
 
 
+    'work/details'=>'work_detailsController/index',
+    'work/details/add'=>'work_detailsController/add_data',
+    'work/details/delete'=>'work_detailsController/delete_data',
+    'work/details/get'=>'work_detailsController/get_data',
+
+
     /* Design Skill  Route */
     'design/skill'=>'designController/index',
     'design/skill/add'=>'designController/add_design_skill',
