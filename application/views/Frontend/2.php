@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en" class="max-width-d">
   
-<!-- Mirrored from retrina.com/demo/arshia/arshia-plus/webdesigner-colorfull.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Sep 2023 05:37:06 GMT -->
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -52,15 +51,13 @@
           <span>Follow Me</span>
         </div>
         <div class="social d-none d-lg-block">
+        <?php foreach($social_icon as $item):?>
           <a href="javascript:void(0);">
-            <i class="bi bi-whatsapp t-green"></i>
+            <i class="<?php echo  $item->name; ?>"></i>
           </a>
-          <a href="javascript:void(0);">
-            <i class="bi bi-instagram t-purple"></i>
-          </a>
-          <a href="javascript:void(0);">
-            <i class="bi bi-dribbble t-red"></i>
-          </a>
+
+          <?php endforeach; ?>
+
         </div>
       </div>
       <div class="next-prev-page">
@@ -76,11 +73,12 @@
 
     <!--  Left Side Start  -->
     <div class="left-side  nav-close">
+      <?php foreach($profile as $item):?>
       <div class="menu-content-align">
         <div class="left-side-image">
-          <img src="<?= base_url('assets/Frontend/img/webdesigner/profile-img.jpg');?>" alt="/">
+          <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
         </div>
-        <h1 class="mt-1">Alex Martin</h1>
+        <h1 class="mt-1"><?php echo  $item->name;?></h1>
         <a class="download-cv primary-button d-none d-lg-inline-block" href="javascript:void(0);">Download CV</a>
         <div class="container d-lg-none d-inline-block">
           <div class="row">
@@ -90,6 +88,8 @@
           </div>
         </div>
       </div>
+    <?php endforeach; ?>
+
       <div class="menu-align">
         <ul class="list-group menu text-center " id="menu">
           <li class="list-group-item">

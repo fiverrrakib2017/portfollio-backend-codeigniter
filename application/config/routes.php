@@ -14,8 +14,7 @@ $route=array(
     'template'=>'Template/index',
     'template/get'=>'Template/get_template',
     'template/add'=>'Template/add_template',
-    'template/delete'=>'Template/delete_template',
-    'template/update'=>'Template/update_template',
+    'template/approve'=>'Template/approve',
 
     /* Home Route */
     'home'=>'homeController/index',

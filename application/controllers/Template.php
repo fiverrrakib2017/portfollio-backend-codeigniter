@@ -79,13 +79,23 @@ class Template extends CI_Controller{
         }
 
     }
-    public function delete_template(){
-        if (isset($_POST['delete_data'])) {
-            $template_id= $_POST['id'];
-            $this->db->delete('template', array('id' => $template_id));
+    public function approve(){
+        if (isset($_POST['approve_template'])) {
+            $template_id = $_POST['id'];
+            
+            // Set all statuses to 0
+            $this->db->set('status', 0);
+            $this->db->update('template');
+            
+            // Set the selected id's status to 1
+            $this->db->set('status', 1);
+            $this->db->where('id', $template_id);
+            $this->db->update('template');
+            
             echo 1;
         }
     }
+    
 
 
     public function update_template(){

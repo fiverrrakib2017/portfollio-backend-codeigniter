@@ -23,8 +23,11 @@ class FrontendController extends CI_Controller{
         $data['works'] =$this->db->query("SELECT * FROM `works` WHERE status=1 ")->result(); 
         $data['blog_post'] =$this->db->query("SELECT * FROM `blog_post` WHERE status=1 ")->result(); 
         $data['contracts'] =$this->db->query("SELECT * FROM `contracts` WHERE status=1 ")->result(); 
-
+        $data['social_icon'] =$this->db->query("SELECT * FROM `social_icon`")->result(); 
+        $data['profile'] =$this->db->query("SELECT * FROM `profile` LIMIT 1 ")->result(); 
+        
+        $_theme_selection = $this->db->query("select id from template where status = '1'")->row()->id;
         /* Pass the data view File */
-        $this->load->view('Frontend/Portfollio-colorful', $data);
+        $this->load->view('Frontend/' . $_theme_selection . '', $data);
     }
 }
