@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en" class="max-width-d">
   
-<!-- Mirrored from retrina.com/demo/arshia/arshia-plus/portfolio-01-colorfull.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Sep 2023 05:37:16 GMT -->
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -192,11 +191,8 @@
     <script src="<?php echo base_url('assets/Frontend/js/arshia.js');?>"></script>
     <script type="text/javascript" src="<?=base_url('assets/js/toastr.min.js')?>"></script>
     
-    <!-- Map Js -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRemITiP7JRWpZwLhVt-T2x5MeUFE2KWs"></script> -->
-    <!--  Arshia Js  -->
+   
     <script src="assets/js/arshia.js"></script>
   </body>
 
-<!-- Mirrored from retrina.com/demo/arshia/arshia-plus/portfolio-01-colorfull.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Sep 2023 05:37:17 GMT -->
 </html>

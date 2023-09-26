@@ -41,4 +41,24 @@ class FrontendController extends CI_Controller{
         /* Pass the data view File */
         $this->load->view('Frontend/Work_details/' . $_page_selection . '', $data);
     }
+    public function get_blog_details($clid){
+
+        $data['profile'] =$this->db->query("SELECT * FROM `profile` LIMIT 1 ")->result(); 
+        $data['social_icon'] =$this->db->query("SELECT * FROM `social_icon`")->result(); 
+
+
+        $data['blog_post'] =$this->db->query("SELECT * FROM blog_post where id='$clid' ")->result(); 
+
+        $data['post_comment'] =$this->db->query("SELECT * FROM post_comment where post_id='$clid' ")->result(); 
+
+        $result = $this->db->query("SELECT * FROM post_comment WHERE post_id='$clid'");
+        if ($result === false) {
+            die("Error executing the query: " . $this->db->error);
+        }
+        $data['post_comment_count'] = $result->num_rows();
+
+        $_page_selection = $this->db->query("select id from template where status = '1'")->row()->id;
+        /* Pass the data view File */
+        $this->load->view('Frontend/Blog_details/' . $_page_selection . '', $data);
+    }
 }

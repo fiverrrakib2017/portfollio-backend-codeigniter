@@ -28,6 +28,27 @@ class blog_commentController extends CI_Controller{
             echo 1;
         }
     }
+    public function add_comment(){
+        if (isset($_POST['add_data'])) {
+            $name= $_POST['name'];
+            $email= $_POST['email'];
+            $message= $_POST['message'];
+            $post_id= $_POST['post_id'];
+
+            $data = array(
+                'message' => $message,
+                'post_id' => $post_id,
+                'first_name' => $name,
+                'create_date' => date("Y-m-d"),
+                'email_address' => $email,
+                'status' => 0,
+            );
+            /* Insert The data blog table Database*/
+            $this->db->insert('post_comment', $data);
+            //insert successfully; 
+            echo 1;
+        }  
+    }
 
 }
 

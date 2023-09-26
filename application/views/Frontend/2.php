@@ -658,7 +658,20 @@
                       </span>
                     </div>
                     <h6 class="blog-header"><?php echo $item->title; ?></h6>
-                    <p class="mb-0"><?php echo $item->description; ?></p>
+                    <p class="mb-0">
+                  
+                    <?php
+                     $new_base_url=base_url();
+                      $link = $item->description; 
+                      $maxChars = 50;
+                      if (strlen($link) > $maxChars) {
+                        echo $link = substr($link, 0, $maxChars).'';
+                      } else {
+                        echo $link;
+                      }
+                    ?>
+                  
+                  </p>
                   </div>
                 </a>
               </div>

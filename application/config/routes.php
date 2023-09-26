@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route=array(
     'default_controller' => 'FrontendController/index',
     'portfollio/works/details/(:any)' => 'FrontendController/get_works_details/$1',
+    'blog/details/(:any)' => 'FrontendController/get_blog_details/$1',
 
     'admin'=>'Dashboard/index',
 
@@ -73,6 +74,7 @@ $route=array(
      /* Blog Comment  Route */
     'blog/comment'=>'blog_commentController/index',
     'blog/comment/approve'=>'blog_commentController/approve_comment',
+    'blog/comment/add'=>'blog_commentController/add_comment',
 
 
     /* Contract  Route */
