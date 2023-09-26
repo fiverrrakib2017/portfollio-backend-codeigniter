@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" class="max-width-d">
   
+<!-- Mirrored from retrina.com/demo/arshia/arshia-plus/webdesigner-dark.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Sep 2023 05:36:51 GMT -->
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -10,30 +11,30 @@
     <meta name="keywords" content="" />
     <meta name="author" content="Retrina Group" />
     <!--  FavIcon  -->
-    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/Frontend/img/favicon.png');?>">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
     <!-- Bootstrap Css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/bootstrap.css');?>">
     <!-- Bootstrap Icon -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/bootstrap-icons.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/bootstrap-icons.css')?>">
     <!-- Malihu Jquery Custom ScrollBar Css -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/jquery.mCustomScrollbar.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/jquery.mCustomScrollbar.css')?>">
     <!-- Animate Css -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/animate.min.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/animate.min.css')?>">
     <!-- Swiper Css -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/owl.carousel.min.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/owl.carousel.min.css')?>">
     <!-- Magnific Popup Css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/magnific-popup.css');?>">
     <!--  Custom Style Css  -->
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/style.css');?>">
     <!--  Color Css  -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/colors/colorfull.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/colors/golden.css');?>"  id="option-color">
 
     <link href="<?=base_url('assets/css/toastr.min.css')?>"  rel="stylesheet" type="text/css">
   </head>
-  <body class="max-width-d">
+  <body class="dark-arshia max-width-d">
 
     <!-- Preloader -->
     <div id="line-loader">
@@ -57,7 +58,6 @@
           </a>
 
           <?php endforeach; ?>
-
         </div>
       </div>
       <div class="next-prev-page">
@@ -73,10 +73,10 @@
 
     <!--  Left Side Start  -->
     <div class="left-side  nav-close">
-      <?php foreach($profile as $item):?>
+    <?php foreach($profile as $item):?>
       <div class="menu-content-align">
         <div class="left-side-image">
-          <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
+        <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
         </div>
         <h1 class="mt-1"><?php echo  $item->name;?></h1>
         <a class="download-cv primary-button d-none d-lg-inline-block" href="javascript:void(0);">Download CV</a>
@@ -88,7 +88,7 @@
           </div>
         </div>
       </div>
-    <?php endforeach; ?>
+      <?php endforeach; ?>
 
       <div class="menu-align">
         <ul class="list-group menu text-center " id="menu">
@@ -133,13 +133,13 @@
           <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="javascript:void(0);">Download CV</a>
           <div class="social d-lg-none d-block">
             <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-whatsapp t-green"></i>
+              <i class="bi bi-whatsapp"></i>
             </a>
             <a href="javascript:void(0);" class="d-inline-block mx-4">
-              <i class="bi bi-instagram t-purple"></i>
+              <i class="bi bi-instagram"></i>
             </a>
             <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-dribbble t-red"></i>
+              <i class="bi bi-dribbble"></i>
             </a>
           </div>
         </div>
@@ -150,61 +150,53 @@
     <!--  Main Start  -->
     <main id="main" class="main-2">
 
-
-    
       <!--  Hero Start  -->
-      <section id="hero" class="section hero w-100"> 
-        <?php foreach ($home as $item): ?>
+      <section id="hero" class="section hero w-100">
+      <?php foreach ($home as $item): ?>
         <img class="extend-icon" src="<?php echo base_url() . '/' . $item->banner; ?>" alt="/">
-       
         <div class="hero-center">
           <div class="container">
             <div class="row">
               <div class="col-lg-12 text-center text-lg-start">
                 <div class="hero-image d-inline-block d-lg-none">
-                  <img src="<?php echo base_url() . '/' . $item->banner; ?>" alt="/">
+                <img src="<?php echo base_url() . '/' . $item->banner; ?>" alt="/">
                 </div>
                 <div class="hero-content mt-4 mx-auto mx-lg-0 text-lg-left mt-lg-none">
-                  <p class="base-color"><?php echo $item->title;?></p>
-                  <!-- <h2>Hello , I’m <span class="base-color">Rakib Mahmud </span>Welcome to my World. </h2> -->
+                <p class="base-color"><?php echo $item->title;?></p>
                   <h2><?php echo $item->description; ?></h2>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
         <?php endforeach; ?>
-        
         <div class="hero-footer d-block d-lg-none">
           <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="javascript:void(0);">Download CV</a>
           <div class="social d-lg-none mb-4 d-block">
             <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-whatsapp t-green"></i>
+              <i class="bi bi-whatsapp"></i>
             </a>
             <a href="javascript:void(0);" class="d-inline-block mx-4">
-              <i class="bi bi-instagram t-purple"></i>
+              <i class="bi bi-instagram"></i>
             </a>
             <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-dribbble t-red"></i>
+              <i class="bi bi-dribbble"></i>
             </a>
           </div>
         </div>
       </section>
       <!--  Hero End  -->
-      
+
       <!--  About Start  -->
       <section id="about" class="section about">
         <div class="container">
-
         <?php foreach ($about as $item): ?>
-
           <!-- Introducce Me -->
           <div class="about-boxes">
             <div class="row">
               <div class="col-lg-5">
                 <div class="about-img">
-                  <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
+                <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
                   <div class="border-img"></div>
                 </div>
               </div>
@@ -217,7 +209,7 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <ul class="list-unstyled personal-info">
-                      <li>Website : <small><a target="__blank" href="<?php echo $item->website; ?>" class="__cf_email__"><?php echo $item->website; ?></a></small>
+                        <li>Website : <small><a target="__blank" href="<?php echo $item->website; ?>" class="__cf_email__"><?php echo $item->website; ?></a></small>
                       </li>
                       <li>Phone : <small><?php echo $item->phone; ?></small>
                       </li>
@@ -227,7 +219,7 @@
                   </div>
                   <div class="col-lg-6">
                     <ul class="list-unstyled personal-info">
-                      <li>Age : <small><?php echo $item->age; ?></small>
+                    <li>Age : <small><?php echo $item->age; ?></small>
                       </li>
                       <li>Degree : <small><?php echo $item->degree; ?></small>
                       </li>
@@ -242,14 +234,11 @@
               </div>
             </div>
           </div>
-
           <?php endforeach; ?>
-
           <!--  Count up  -->
           <div id="count-up" class="count-up text-center box-border">
             <div class="row">
-              <?php  foreach($section1 as $item ):?>
-
+                <?php  foreach($section1 as $item ):?>
               <!-- Item-01 -->
               <div class="col-6 col-lg-3 my-4 count-item">
                 <div class="count-icon">
@@ -258,25 +247,25 @@
                 <span class="timer count-number" data-from="0" data-to="<?php echo $item->complete_count;?>" data-speed="5000">0</span>
                 <p class="mb-0"><?php echo $item->title; ?></p>
               </div>
-                <?php endforeach; ?>
+              <?php endforeach; ?>
             </div>
           </div>
           <!--  Skills  -->
           <div class="skills">
             <div class="row pt-5">
               <div class="col-lg-7">
-                <?php foreach($section2 as $item):?>
+              <?php foreach($section2 as $item):?>
                 <div class="skill-description">
-                  <h3 class="mb-3"><?= $item->title; ?></h3>
-                  <p class="mb-0"><?php echo $item->description;  ?></p>
+                    <h3 class="mb-3"><?= $item->title; ?></h3>
+                     <p class="mb-0"><?php echo $item->description;  ?></p>
                 </div>
-              <?php endforeach; ?>
+                <?php endforeach; ?>
               </div>
               <div class="col-lg-5">
                 <ul class="knowledge-item">
-                  <?php foreach($section3 as $item):?>
-                    <li><?php echo $item->item; ?></li>
-                  <?php endforeach; ?>
+                    <?php foreach($section3 as $item):?>
+                        <li><?php echo $item->item; ?></li>
+                    <?php endforeach; ?>
                 </ul>
               </div>
             </div>
@@ -285,26 +274,26 @@
           <div class="row mt-5 skills">
             <div class="col-lg-6">
               <h3 class="subtitle">Design Skills</h3>
-              <div id="skills">
+             
+              <div id="skills"> 
                 <?php foreach($design_skill as $item):?>
                 <!-- Item 01 -->
                 <div class="col-lg-12 skill-box">
-                  <div class="skill-text">
-                    <div class="skillbar-title"><?php echo $item->item; ?></div>
-                    <div class="skill-bar-percent"><span data-from="0" data-to="<?php echo $item->percentage;?>" data-speed="4000"><?php echo $item->percentage;?></span>%</div>
+                    <div class="skill-text">
+                        <div class="skillbar-title"><?php echo $item->item; ?></div>
+                        <div class="skill-bar-percent"><span data-from="0" data-to="<?php echo $item->percentage;?>" data-speed="4000"><?php echo $item->percentage;?></span>%</div>
                   </div>
-                  <div class="skillbar clearfix" data-percent="<?php echo $item->percentage;?>%">
-                    <div class="skillbar-bar"></div>
-                  </div>
+                    <div class="skillbar clearfix" data-percent="<?php echo $item->percentage;?>%">
+                        <div class="skillbar-bar"></div>
+                    </div>
                 </div>
-              <?php endforeach; ?>
-                
+                <?php endforeach; ?>
               </div>
             </div>
             <div class="col-lg-5 ms-auto mt-5 mt-lg-0">
               <h3 class="subtitle">Language</h3>
               <div class="language-bar">
-                <?php foreach($language as $item):?>
+              <?php foreach($language as $item):?>
                 <!-- Item 01 -->
                 <div class="language-skill">
                   <h6 class="mb-0"><?php echo $item->item; ?> <span> Fluent</span>
@@ -419,9 +408,8 @@
           <!--  Client  -->
           <div class="testimonial mt-5">
             <div class="owl-carousel">
-
-            <?php foreach($testimonial as $item):?>
               <!-- Item 01 -->
+              <?php foreach($testimonial as $item):?>
               <div class="testimonial-box">
                 <p class="testimonial-comment"><?php echo $item->mouth_word; ?></p>
                 <div class="testimonial-item">
@@ -435,7 +423,6 @@
                 </div>
               </div>
               <?php endforeach; ?>
-              
             </div>
           </div>
         </div>
@@ -451,10 +438,10 @@
               <h3 class="subtitle">Services</h3>
               <div class="row vertical-line">
               <?php foreach($services as $item):?>
-                
+                <!-- Item 01 -->
                 <div class="col-md-6">
                   <div class="services-box">
-                    <img src="<?php echo base_url() . '/' . $item->icon; ?>" alt="/">
+                        <img src="<?php echo base_url() . '/' . $item->icon; ?>" alt="/">
                     <div class="services-content">
                       <h6 class="services-head"><?php echo $item->title; ?></h6>
                       <p class="services-description mb-0"><?php echo $item->description; ?></p>
@@ -477,29 +464,28 @@
                   <div class="timeline-box">
                     <div class="time-line-header">
                       <p class="timeline-year">
-                        <?php  
+                      <?php  
 
-                        $dateString = "$item->start_date";
-                        $year = date("Y", strtotime($dateString));
-                        echo $year; // get the year 
-                        
-                        ?> 
-                        
-                        
-                        - 
-                        <?php  
+                            $dateString = "$item->start_date";
+                            $year = date("Y", strtotime($dateString));
+                            echo $year; // get the year 
 
-                          $dateString = "$item->end_date";
-                          $year = date("Y", strtotime($dateString));
-                          echo $year; // get the year 
+                            ?> 
 
-                          ?> 
-                      
+
+                            - 
+                            <?php  
+
+                            $dateString = "$item->end_date";
+                            $year = date("Y", strtotime($dateString));
+                            echo $year; // get the year 
+
+                            ?> 
                       </p>
                       <h6 class="timeline-title"><?php echo $item->title; ?></h6>
                     </div>
                     <div class="timeline-content">
-                      <p><?php echo $item->description; ?></p>
+                        <p><?php echo $item->description; ?></p>
                     </div>
                   </div>
                 </div>
@@ -510,47 +496,38 @@
             <div class="boxes mt-6 mb-3">
               <h3 class="subtitle">Experience</h3>
               <div class="row vertical-line">
-
-
               <?php foreach($experience as $item):?>
-
                 <!--   Item 01   -->
                 <div class="col-md-6">
                   <div class="timeline-box">
                     <div class="time-line-header">
                       <p class="timeline-year">
-
                       <?php  
 
-                        $dateString = "$item->start_date";
-                        $year = date("Y", strtotime($dateString));
-                        echo $year; // get the year 
+                            $dateString = "$item->start_date";
+                            $year = date("Y", strtotime($dateString));
+                            echo $year; // get the year 
 
-                        ?> 
+                            ?> 
 
 
-                        - 
-                        <?php  
+                            - 
+                            <?php  
 
-                          $dateString = "$item->end_date";
-                          $year = date("Y", strtotime($dateString));
-                          echo $year; // get the year 
+                            $dateString = "$item->end_date";
+                            $year = date("Y", strtotime($dateString));
+                            echo $year; // get the year 
 
-                          ?> 
-
+                            ?> 
                       </p>
                       <h6 class="timeline-title"><?php echo $item->title; ?></h6>
                     </div>
                     <div class="timeline-content">
-                    <p><?php echo $item->description; ?></p>
+                        <p><?php echo $item->description; ?></p>
                     </div>
                   </div>
                 </div>
-
-
                 <?php endforeach;?>
-
-
               </div>
             </div>
           </div>
@@ -621,7 +598,7 @@
               </div>
             </div>
           <?php endforeach;?>
-            <!-- Item  End -->
+            
           </div>
         </div>
       </section>
@@ -632,7 +609,7 @@
         <div class="container">
           <h3 class="subtitle">Latest News</h3>
           <div class="boxes">
-            <div class="row vertical-line">
+          <div class="row vertical-line">
               <?php foreach($blog_post as $item):?>
               <!-- Item 01 -->
               <div class="col-md-6">
@@ -685,7 +662,7 @@
 
       <!-- Contact Start -->
       <section id="contact" class="section contact w-100">
-        <div class="container">
+      <div class="container">
           <h3 class="subtitle">Get in Touch</h3>
           <!-- Map -->
           <div class="row mt-5">
@@ -826,17 +803,48 @@
       </ul>
     </div>
     <!--  Background Shapes End  -->
+
     <!--  Color Pallet  -->
     <div id="color-switcher" class="color-switcher">
       <div class="text-center color-pallet hide">
         <h6 class="theme-skin-title">Light &amp; Dark</h6>
-        <ul class="color-scheme mb-0 list-inline">
+        <ul class="color-scheme list-inline">
             <li class="list-inline-item">
                 <a href="javascript:void(0)" class="light-scheme"><i class="bi bi-brightness-high"></i> Light</a>
             </li>
             <li class="list-inline-item">
                 <a href="javascript:void(0)" class="dark-scheme active"><i class="bi bi-moon"></i> Dark</a>
             </li>
+          </ul>
+          <h6 class="text-center mt-3 text-dark">Select your color</h6>
+          <ul class="pattern">
+              <li>
+                  <a class="color1" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color2" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color3" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color4" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color5" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color6" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color7" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color8" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color9" href="javascript:void(0)"></a>
+              </li>
           </ul>
       </div>
       <div class="pallet-button hide">
@@ -869,10 +877,9 @@
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRemITiP7JRWpZwLhVt-T2x5MeUFE2KWs"></script> 
     <!--  Arshia Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/arshia.js');?>"></script>
-    <script type="text/javascript" src="<?=base_url('assets/js/toastr.min.js')?>"></script>
-    
-
-    <script type="text/javascript">
+      <script type="text/javascript" src="<?=base_url('assets/js/toastr.min.js')?>"></script>
+  </body>
+  <script type="text/javascript">
       $(document).ready(function(){
        $(document).on('submit','#contactForm',function(e){
         e.preventDefault();
@@ -942,5 +949,4 @@
         });
       });
     </script>
-  </body>
 </html>

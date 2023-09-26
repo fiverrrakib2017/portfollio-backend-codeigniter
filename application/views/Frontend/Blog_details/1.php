@@ -26,14 +26,14 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/owl.carousel.min.css');?>">
     <!-- Magnific Popup Css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/magnific-popup.css');?>">
+
     <!--  Custom Style Css  -->
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/css/style.css');?>">
     <!--  Color Css  -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/colors/colorfull.css');?>">
-
+    <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/colors/golden.css" ');?>" id="option-color">
     <link href="<?=base_url('assets/css/toastr.min.css')?>"  rel="stylesheet" type="text/css">
   </head>
-  <body class="max-width-d">
+  <body class="blog-single-page dark-arshia max-width-d">
 
     <!-- Preloader -->
     <div id="line-loader">
@@ -42,7 +42,8 @@
 
     <!--   Menu Overlay Mobile -->
     <div class="menu-overlay d-none"></div>
- <!--   Right Side Start  -->
+
+    <!--   Right Side Start  -->
     <div class="right-side d-none d-lg-block">
       <div id="date"></div>
       <div class="social-box">
@@ -56,42 +57,41 @@
           </a>
 
           <?php endforeach; ?>
-
         </div>
       </div>
-      <div class="next-prev-page">
-        <button type="button" class="prev-page bg-base-color hstack">
-          <i class="bi bi-chevron-compact-up mx-auto"></i>
-        </button>
-        <button type="button" class="next-page bg-base-color mt-3 hstack">
-          <i class="bi bi-chevron-compact-down mx-auto"></i>
-        </button>
+      <div class="blog-next-prev-page">
+        <a class="blog-prev-page bg-base-color hstack" href="<?php echo base_url();?>#hero">
+          <i class="bi bi-chevron-compact-up"></i>
+        </a>
+        <a class="blog-next-page bg-base-color mt-1 mt-lg-3 hstack" href="<?php echo base_url();?>#hero">
+          <i class="bi bi-chevron-compact-down"></i>
+        </a>
       </div>
     </div>
-     <!--   Right Side End  -->
-     <!--  Left Side Start  -->
+    <!--  Right Side End  -->
+
+    <!--  Left Side Start  -->
     <div class="left-side  nav-close">
-      <?php foreach($profile as $item):?>
+        <?php foreach($profile as $item):?>
       <div class="menu-content-align">
         <div class="left-side-image">
-          <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
+            <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
         </div>
         <h1 class="mt-1"><?php echo  $item->name;?></h1>
-        <a class="download-cv primary-button d-none d-lg-inline-block" href="javascript:void(0);">Download CV</a>
         <div class="container d-lg-none d-inline-block">
           <div class="row">
             <div class="col-12 text-center">
-              <p class="text-muted mb-0"><?php echo  $item->name;?></p>
+            <p class="text-muted mb-0"><?php echo  $item->name;?></p>
             </div>
           </div>
         </div>
       </div>
-    <?php endforeach; ?>
+      <?php endforeach; ?>
 
       <div class="menu-align">
         <ul class="list-group menu text-center " id="menu">
           <li class="list-group-item">
-            <a href="<?php echo base_url();?>">
+            <a href="<?php echo base_url();?>#hero">
               <i class="bi bi-house"></i>
               <span>home</span>
             </a>
@@ -131,24 +131,25 @@
           <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="javascript:void(0);">Download CV</a>
           <div class="social d-lg-none d-block">
             <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-whatsapp t-green"></i>
+              <i class="bi bi-whatsapp"></i>
             </a>
             <a href="javascript:void(0);" class="d-inline-block mx-4">
-              <i class="bi bi-instagram t-purple"></i>
+              <i class="bi bi-instagram"></i>
             </a>
             <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-dribbble t-red"></i>
+              <i class="bi bi-dribbble"></i>
             </a>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
     <!--  Left Side End  -->
 
     <!--  Main Start  -->
     <main id="main" class="main-2">
- <!--  blog Single Start  -->
- <section id="blog-single" class="blog-single section py-6">
+
+      <!--  blog Single Start  -->
+      <section id="blog-single" class="blog-single section py-6">
         <div class="container">  
           <div class="row">
             <div class="col-lg-12 mt-3">
@@ -290,24 +291,23 @@
             </div>
         </div>
     </section>
-    <!--  blog Single End  -->
-
+    <!--  blog Single End  --> 
     </main>
     <!--  Main End  -->
 
     <!--  Mobile Next and Prev Button Start -->
-    <div class="next-prev-page d-block d-lg-none">
-      <button type="button" class="prev-page bg-base-color hstack">      
+    <div class="mobile-blog-nav blog-next-prev-page d-lg-none">
+      <a class="blog-prev-page bg-base-color hstack" href="webdesigner-dark.html#hero">
         <i class="bi bi-chevron-compact-left mx-auto"></i>
-      </button>
-      <button type="button" class="next-page bg-base-color mt-1 mt-lg-3 hstack">
+      </a>
+      <a class="blog-next-page bg-base-color mt-1 mt-lg-3 hstack" href="webdesigner-dark.html#hero">
         <i class="bi bi-chevron-compact-right mx-auto"></i>
-      </button>
+      </a>
     </div>
     <!--  Mobile Next and Prev Button End -->
 
     <!--  Navbar Button Mobile Start -->
-    <div class="menu-toggle">
+    <div class="menu-toggle ">
       <span></span>
       <span></span>
       <span></span>
@@ -334,13 +334,43 @@
     <div id="color-switcher" class="color-switcher">
       <div class="text-center color-pallet hide">
         <h6 class="theme-skin-title">Light &amp; Dark</h6>
-        <ul class="color-scheme mb-0 list-inline">
+        <ul class="color-scheme list-inline">
             <li class="list-inline-item">
                 <a href="javascript:void(0)" class="light-scheme"><i class="bi bi-brightness-high"></i> Light</a>
             </li>
             <li class="list-inline-item">
                 <a href="javascript:void(0)" class="dark-scheme active"><i class="bi bi-moon"></i> Dark</a>
             </li>
+          </ul>
+          <h6 class="text-center mt-3 text-dark">Select your color</h6>
+          <ul class="pattern">
+              <li>
+                  <a class="color1" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color2" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color3" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color4" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color5" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color6" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color7" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color8" href="javascript:void(0)"></a>
+              </li>
+              <li>
+                  <a class="color9" href="javascript:void(0)"></a>
+              </li>
           </ul>
       </div>
       <div class="pallet-button hide">
@@ -355,7 +385,6 @@
 
     <!--  JavaScripts  -->
     <!--  Jquery 3.4.1  -->
-    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="<?php echo base_url('assets/Frontend/js/jquery-3.4.1.min.js');?>"></script>
     <!--  Bootstrap Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/bootstrap.js');?>"></script>
@@ -364,16 +393,14 @@
     <!--  CountTo Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/jquery.countTo.js');?>"></script>
     <!--  Swiper Js  -->
-    <script src="<?php echo  base_url('assets/Frontend/js/owl.carousel.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/Frontend/js/owl.carousel.min.js');?>"></script>
     <!--  Isotope Js  -->
-    <script src="<?php echo  base_url('assets/Frontend/js/isotope.pkgd.min.js');?> "></script>
+    <script src="<?php echo base_url('assets/Frontend/js/isotope.pkgd.min.js');?>"></script>
     <!--  Magnific Popup Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/jquery.magnific-popup.min.js');?>"></script>
-    <!-- Map Js -->
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRemITiP7JRWpZwLhVt-T2x5MeUFE2KWs"></script> 
-    <!--  Arshia Js  -->
-    <script src="<?php echo base_url('assets/Frontend/js/arshia.js');?>"></script>
+
     <script type="text/javascript" src="<?=base_url('assets/js/toastr.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/Frontend/js/arshia.js');?>"></script>
     <script type="text/javascript">
       $(document).ready(function(){
        $(document).on('submit','#contactForm',function(e){
@@ -431,7 +458,5 @@
        });
       });
     </script>
-
-   
   </body>
 </html>
