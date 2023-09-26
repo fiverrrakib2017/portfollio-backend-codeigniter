@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route=array(
     'default_controller' => 'FrontendController/index',
+    'portfollio/works/details/(:any)' => 'FrontendController/get_works_details/$1',
 
     'admin'=>'Dashboard/index',
 

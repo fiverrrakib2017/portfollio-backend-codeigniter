@@ -586,7 +586,13 @@
                 <div class="portfolio-image">
                   <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
                   <div class="portfolio-icon">
-                  <a href="<?php echo $item->link; ?>" class="
+                  <a href="
+                  <?php if($item->link_type==3):?>
+                    <?php echo  base_url('/portfollio/works/details/'.$item->id)?>
+                   <?php else:?>
+                    <?php echo $item->link; ?>
+                  <?php endif; ?>
+                    " class="
                         <?php if($item->link_type==1): ?>
                             portfolio-magnific mfp-iframe
                         <?php elseif($item->link_type==2): ?>

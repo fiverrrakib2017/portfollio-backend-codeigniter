@@ -34,7 +34,6 @@
                                                     <th class="th-sm">Category Name</th>
                                                     <th class="th-sm">Title</th>
                                                     <th class="th-sm">Image</th>
-                                                    <th class="th-sm">Link</th>
                                                     <th class="th-sm">Link Type</th>
                                                     <th class="th-sm">Status</th>
                                                     <th class="th-sm">Action</th>
@@ -49,17 +48,7 @@
                                                     <td><?php echo $item->title; ?></td>
                                                     
                                                     <td><img src="<?php echo base_url() . '/' . $item->image; ?>" height="50px" width="100px" class="rounded" /></td>
-                                                    <td>
-                                                    <?php
-                                                         $link = $item->link; 
-                                                        $maxChars = 50;
-                                                        if (strlen($link) > $maxChars) {
-                                                            echo $link = substr($link, 0, $maxChars).'...........';
-                                                        } else {
-                                                            echo $link;
-                                                        }
-                                                        ?>
-                                                    </td>
+                                                    
                                                     <td>
                                                     <?php if ($item->link_type == 1) : ?>
                                                         <span class="badge bg-success">Audio</span>

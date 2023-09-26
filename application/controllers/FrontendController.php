@@ -30,4 +30,15 @@ class FrontendController extends CI_Controller{
         /* Pass the data view File */
         $this->load->view('Frontend/' . $_theme_selection . '', $data);
     }
+    public function get_works_details($ciid=''){
+        $sql = "SELECT work_details.id, works.title , category.name, work_details.project_details, work_details.project_overview, work_details.client_name, work_details.project_value,work_details.location,work_details.designer,work_details.image1,work_details.image2,work_details.image3,work_details.status,work_details.date
+        FROM work_details 
+        JOIN works ON work_details.work_id=works.id
+        JOIN category  ON works.category_id = category.id WHERE work_details.id=$ciid";
+
+        $data['work_details'] =$this->db->query($sql)->result(); 
+        $_page_selection = $this->db->query("select id from template where status = '1'")->row()->id;
+        /* Pass the data view File */
+        $this->load->view('Frontend/Work_details/' . $_page_selection . '', $data);
+    }
 }
