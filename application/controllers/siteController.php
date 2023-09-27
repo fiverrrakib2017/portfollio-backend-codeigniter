@@ -29,8 +29,10 @@ class siteController extends CI_Controller{
         if (isset($_POST['add_data'])) {
 
             $title=$_POST['title'];
+            $link=$_POST['link'];
             $data = array(
                 'name' => $title,
+                'link' => $link,
             );
             /* Insert The data education table Database*/
             $this->db->insert('social_icon', $data);
@@ -45,9 +47,10 @@ class siteController extends CI_Controller{
 
             $id=$_POST['update_id'];
             $name=$_POST['update_title'];
+            $update_link=$_POST['update_link'];
 
 
-            $this->db->query("UPDATE `social_icon` SET `name`='$name' WHERE id='$id' "); 
+            $this->db->query("UPDATE `social_icon` SET `name`='$name', `link`='$update_link' WHERE id='$id' "); 
             echo 1;
         }
     }

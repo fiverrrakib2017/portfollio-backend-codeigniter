@@ -31,6 +31,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
+                                                    <th class="th-sm">Icon </th>
                                                     <th class="th-sm">Icon LInk</th>
                                                     <th class="th-sm">Action</th>
                                                 </tr>
@@ -41,6 +42,7 @@
                                                 <tr>
                                                     <td><?php echo $item->id; ?></td>
                                                     <td><?php echo $item->name; ?></td>
+                                                    <td><?php echo $item->link; ?></td>
                                                         
                                                   
                                                     <td>
@@ -120,6 +122,10 @@
                             <label for="title">Title</label>
                             <input type="text" id="update_title" class="form-control" placeholder="Enter Title">
                         </div>
+                        <div class="form-group mb-3 ">
+                            <label for="">Link</label>
+                            <input type="text" id="update_link" class="form-control" placeholder="Enter Link">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -145,6 +151,10 @@
                             <label for="title">Title</label>
                             <input type="text" id="title" class="form-control" placeholder="Enter Title">
                         </div>
+                        <div class="form-group mb-3 ">
+                            <label for="title">Link</label>
+                            <input type="text" id="link" class="form-control" placeholder="Enter Link">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -167,12 +177,16 @@
 	$(document).on('click','#addBtn',function(){
 		// GET the form data
 		var title=$("#title").val();
+		var link=$("#link").val();
 
 
 		/* Validation ruls  */
 		if(title.length==0){
 			toastr.error('Title  Require');
-		}
+		}else if(link.length==0){
+            toastr.error('Link is Require');
+            
+        }
         
         else{
 			var add_data = "0";
@@ -180,6 +194,7 @@
 			/* Create a Form Data and append this  */
 			var form_data = new FormData();
 			form_data.append('title', title);
+			form_data.append('link', link);
 			form_data.append('add_data', add_data);
 			/*Ajax calll Request Start */
 			$.ajax({
@@ -214,6 +229,7 @@
     // GET the form data
    var update_id= $('#update_id').val();
    var update_title= $('#update_title').val();
+   var update_link= $('#update_link').val();
 
 	var update_data=0;
 
@@ -222,12 +238,17 @@
     /* Validation rules */
     if (update_title.length == 0) {
         toastr.error('Text is required');
-    }  else {
+    }else if(update_link.length==0){
+        toastr.error('Link is required');
+    }
+    
+    else {
         $('#updateBtn').html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>')
         // Create a FormData object and append the data
         var form_data = new FormData();
         form_data.append('update_id', update_id);
         form_data.append('update_title', update_title);
+        form_data.append('update_link', update_link);
         form_data.append('update_data', update_data);
 
         // AJAX call to update the student data
@@ -301,6 +322,7 @@ $(document).on('click','#editModalBtn',function(){
                 var data = jsonData[i];
                 $('#update_id').val(data.id);
                 $("#update_title").val(data.name);   
+                $("#update_link").val(data.link);   
             }
             
         }

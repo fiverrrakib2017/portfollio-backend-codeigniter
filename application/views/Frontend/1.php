@@ -53,7 +53,7 @@
         </div>
         <div class="social d-none d-lg-block">
         <?php foreach($social_icon as $item):?>
-          <a href="javascript:void(0);">
+          <a href="<?php echo $item->link?>">
             <i class="<?php echo  $item->name; ?>"></i>
           </a>
 
@@ -135,15 +135,12 @@
             Download CV</a>
             <?php endforeach; ?>
           <div class="social d-lg-none d-block">
-            <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-whatsapp"></i>
-            </a>
-            <a href="javascript:void(0);" class="d-inline-block mx-4">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-dribbble"></i>
-            </a>
+              <?php foreach($social_icon as $item):?>
+              
+              <a href="<?php echo $item->link?>" class="d-inline-block">
+                <i class="<?php echo  $item->name; ?>"></i>
+              </a>
+            <?php endforeach;?>
           </div>
         </div>
       </div>
@@ -179,15 +176,12 @@
             Download CV</a>
             <?php endforeach; ?>
           <div class="social d-lg-none mb-4 d-block">
-            <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-whatsapp"></i>
-            </a>
-            <a href="javascript:void(0);" class="d-inline-block mx-4">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="javascript:void(0);" class="d-inline-block">
-              <i class="bi bi-dribbble"></i>
-            </a>
+            <?php foreach($social_icon as $item):?>
+              
+              <a href="<?php echo $item->link?>" class="d-inline-block">
+                <i class="<?php echo  $item->name; ?>"></i>
+              </a>
+            <?php endforeach;?>
           </div>
         </div>
       </section>
