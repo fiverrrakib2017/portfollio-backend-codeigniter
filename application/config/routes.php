@@ -10,6 +10,19 @@ $route=array(
     'portfollio/works/details/(:any)' => 'FrontendController/get_works_details/$1',
     'blog/details/(:any)' => 'FrontendController/get_blog_details/$1',
 
+    /* Login Route Start */
+    'login'=>'loginController/index',
+    'logout'=>'loginController/logout',
+    //''=>'loginController/authenticate',
+
+    /* Login Route End */
+
+
+
+
+
+
+
     'admin'=>'Dashboard/index',
 
     /* Template Route */

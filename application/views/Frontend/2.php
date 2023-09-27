@@ -79,7 +79,10 @@
           <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="/">
         </div>
         <h1 class="mt-1"><?php echo  $item->name;?></h1>
-        <a class="download-cv primary-button d-none d-lg-inline-block" href="javascript:void(0);">Download CV</a>
+
+        <?php foreach($profile as $item):?>
+          <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="<?php echo base_url(). $item->resume_upload; ?>" download>Download CV</a>
+          <?php endforeach; ?>
         <div class="container d-lg-none d-inline-block">
           <div class="row">
             <div class="col-12 text-center">
@@ -130,7 +133,11 @@
           </li>
         </ul>
         <div class="menu-footer">
-          <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="javascript:void(0);">Download CV</a>
+
+        <?php foreach($profile as $item):?>
+          <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="<?php echo base_url(). $item->resume_upload; ?>" download>Download CV</a>
+          <?php endforeach; ?>
+
           <div class="social d-lg-none d-block">
               <?php foreach($social_icon as $item):?>
               
@@ -174,7 +181,9 @@
         <?php endforeach; ?>
         
         <div class="hero-footer d-block d-lg-none">
-          <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="javascript:void(0);">Download CV</a>
+        <?php foreach($profile as $item):?>
+          <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="<?php echo base_url(). $item->resume_upload; ?>" download>Download CV</a>
+          <?php endforeach; ?>
           <div class="social d-lg-none mb-4 d-block">
           <?php foreach($social_icon as $item):?>
               

@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
     <head>
-    
         <meta charset="utf-8">
         <title>Portfollio |Admin Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +26,7 @@
             <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
 
          <!-- Begin page -->
-         <div class="accountbg" style="background: url('images/gym-wallpaper-hero-final.jpg');background-size: cover;background-position: center;"></div>
+         <div class="accountbg" ></div>
 
         <div class="account-pages mt-2 pt-5">
             <div class="container">
@@ -44,16 +43,16 @@
                                     <h4 class="font-size-18 mt-2 text-center">Welcome Back !</h4>
                                     <p class="text-muted text-center mb-4">Sign in to continue to Neways PORTFOLLIO ADMIN-Dashboard</p>
     
-                                    <form >
+                                    <form action="<?php echo base_url('loginController/authenticate'); ?>" method="post">
     
                                         <div class="mb-3">
                                             <label class="form-label" for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
                                         </div>
     
                                         <div class="mb-3">
                                             <label class="form-label" for="password">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
                                         </div>
                                         <div>
                                                                                     </div>
@@ -68,13 +67,18 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 text-end">
-                                                <button id="loginBtnConfirm" name="login" class="btn btn-primary w-md waves-effect waves-light" type="button">Log In</button>
+                                                <button type="submit" name="login" class="btn btn-primary w-md waves-effect waves-light" >Log In</button>
                                             </div>
                                         </div>
     
                                         <div class="mb-0 row">
                                             <div class="col-12 mt-4">
-                                                <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a>
+                                            <?php
+        // Check if flash data 'error' exists
+        if($this->session->flashdata('error')) {
+            echo '<div style="color:red">'.$this->session->flashdata('error').'</div>';
+        }
+    ?>
                                             </div>
                                         </div>
                                     </form>
@@ -103,41 +107,49 @@
 
     <script src="assets/js/app.js"></script>
     <script type="text/javascript">
-     $(document).ready(function(){
-        $("#loginBtnConfirm").click(function(){
-        var username=$("#username").val();
-        var password=$("#password").val();
+        <?php 
+        
+        
+        // Check if flash data 'error' exists
+        
+        
+        ?>
+        toastr.error($error);
+    //  $(document).ready(function(){
+    //     $("#loginBtnConfirm").click(function(){
+    //     var username=$("#username").val();
+    //     var password=$("#password").val();
 
-        if (username.length==0) {
-            toastr.warning("Username is require");
-        }else if(password.length==0){
-            toastr.warning("Password is require");
-        }else{
-            //loginFunction(userEmail,userPassword);
-            loginFunction(username,password);
-        }
+    //     if (username.length==0) {
+    //         toastr.warning("Username is require");
+    //     }else if(password.length==0){
+    //         toastr.warning("Password is require");
+    //     }else{
+    //         //loginFunction(userEmail,userPassword);
+    //         loginFunction(username,password);
+    //     }
 
-    });
-    function loginFunction(username,password){
-        $.ajax({
-            url:'include/login.php',
-            type:'POST',
-            data:{username:username,password:password},
-            success:function(response){
-                if (response==1) {
-                    toastr.success("Login Successful");
-                    toastr.success("Thank You");
-                    setTimeout(()=>{
-                      location.href="index.php";
-                    },1000);
-                }else{
-                    toastr.error("Email Or Password Wrong!");
-                    //toastr.error("Please Try Again");
-                }
-            }
-        });
-    }
-     }); 
+    // });
+    // function loginFunction(username,password){
+    //     $.ajax({
+    //         url:'include/login.php',
+    //         type:'POST',
+    //         data:{username:username,password:password},
+    //         success:function(response){
+    //             if (response==1) {
+    //                 toastr.success("Login Successful");
+    //                 toastr.success("Thank You");
+    //                 setTimeout(()=>{
+    //                   location.href="index.php";
+    //                 },1000);
+    //             }else{
+    //                 toastr.error("Email Or Password Wrong!");
+    //                 //toastr.error("Please Try Again");
+    //             }
+    //         }
+    //     });
+    // }
+    //  }); 
 </script>
     </body>
 </html>
