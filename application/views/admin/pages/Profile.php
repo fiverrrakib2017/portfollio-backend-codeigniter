@@ -41,6 +41,13 @@
                                                 <img src="<?php echo base_url() . '/' . $item->image; ?>" alt="" class="img-fluid img-thumbnail" id="old_image" style="max-width: 200px; height: 100px;">
                                             </div>
                                             <div class="form-group mb-3 ">
+                                                <label for="image">Resume Upload</label>
+                                                <input type="file" id="update_resume" class="form-control">
+                                            </div>
+                                            <div class="form-group mb-3 d-none">
+                                                <img src="<?php echo base_url() . '/' . $item->resume_upload; ?>" alt="PDF" id="old_resume">
+                                            </div>
+                                            <div class="form-group mb-3 ">
                                                 <label for="Status">Status</label>
                                                 <select id="update_status"  class="form-select">
                                                     
@@ -110,6 +117,7 @@
    var update_status= $('#update_status').val();
 
     var update_image = $("#update_image").prop('files')[0];
+    var update_resume = $("#update_resume").prop('files')[0];
 	var update_data=0;
 
 
@@ -122,6 +130,13 @@
 
 		//console.log("Image Name: " + imageName);
 
+
+	    var old_resume = $("#old_resume").attr("src");
+		var resumeName = old_resume.replace("<?=base_url()?>/", "");
+        
+        $("#old_resume").attr("src", resumeName);
+
+
     /* Validation rules */
     if (update_name.length == 0) {
         toastr.error('Name is required');
@@ -130,6 +145,8 @@
         var form_data = new FormData();
         form_data.append('update_image', update_image);
         form_data.append('old_image', imageName);
+        form_data.append('update_resume', update_resume);
+        form_data.append('old_resume', old_resume);
         form_data.append('update_id', update_id);
         form_data.append('update_name', update_name);
         form_data.append('update_status', update_status);

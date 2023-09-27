@@ -128,7 +128,7 @@
           </li>
         </ul>
         <div class="menu-footer">
-          <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="javascript:void(0);">Download CV</a>
+          <a class="download-cv primary-button mt-3 mb-4 d-lg-none" href="#">Download CV</a>
           <div class="social d-lg-none d-block">
             <a href="javascript:void(0);" class="d-inline-block">
               <i class="bi bi-whatsapp t-green"></i>

@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://10.100.93.148/template/';
+$config['base_url'] = 'http://10.100.93.173/template/';
 
 /*
 |--------------------------------------------------------------------------

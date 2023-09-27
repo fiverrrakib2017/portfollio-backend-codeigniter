@@ -68,7 +68,44 @@ class profileController extends CI_Controller{
             }else{
                 $path= $_POST['old_image'];
             }
-            $this->db->query("UPDATE `profile` SET `name`='$name',`image`='$path',`status`='$status' WHERE id='$id' "); 
+
+
+            if (isset($_FILES['update_resume'])) {
+                /* GET THE FILE NAME AND SIZE */
+                $file_name= $_FILES['update_resume']['name'];
+                $file_size= $_FILES['update_resume']['size'];
+
+                /* GET The file name path extension*/
+                $extension=pathinfo($file_name,PATHINFO_EXTENSION);
+
+                /* SET The file Valid extension*/
+                $valid_extension=array("pdf");
+
+                /* SET The file Size*/
+                $maxSize=2*1024*1024;
+                /* Check The file Size*/
+                if($file_size >$maxSize){
+                    echo 2;
+                }else{
+                    if (in_array($extension,$valid_extension)) {
+                        $new_name=rand().".".$extension;
+                        $resume="image/".$new_name;
+                        move_uploaded_file($_FILES['update_resume']['tmp_name'],$resume);
+
+                        // Delete the old image file if it exists
+                        if (file_exists($_POST['old_resume'])) {
+                            unlink('./'.$_POST['old_resume']);
+                        } 
+
+                    }else{
+                        // 'Invalid file extension.';
+                        echo 0;
+                    }
+                }
+            }else{
+                $resume= $_POST['old_resume'];
+            }
+            $this->db->query("UPDATE `profile` SET `name`='$name',`image`='$path',`resume_upload`='$resume',`status`='$status' WHERE id='$id' "); 
             echo 1;
         }
     }
