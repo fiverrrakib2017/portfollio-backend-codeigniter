@@ -51,7 +51,7 @@
           <span>Follow Me</span>
         </div>
         <div class="social d-none d-lg-block">
-        <?php foreach($social_icon as $item):?>
+          <?php foreach($social_icon as $item):?>
           <a href="javascript:void(0);">
             <i class="<?php echo  $item->name; ?>"></i>
           </a>
@@ -512,43 +512,43 @@
               <div class="row vertical-line">
 
 
-              <?php foreach($experience as $item):?>
+                <?php foreach($experience as $item):?>
 
-                <!--   Item 01   -->
-                <div class="col-md-6">
-                  <div class="timeline-box">
-                    <div class="time-line-header">
-                      <p class="timeline-year">
+                  <!--   Item 01   -->
+                  <div class="col-md-6">
+                    <div class="timeline-box">
+                      <div class="time-line-header">
+                        <p class="timeline-year">
 
-                      <?php  
-
-                        $dateString = "$item->start_date";
-                        $year = date("Y", strtotime($dateString));
-                        echo $year; // get the year 
-
-                        ?> 
-
-
-                        - 
                         <?php  
 
-                          $dateString = "$item->end_date";
+                          $dateString = "$item->start_date";
                           $year = date("Y", strtotime($dateString));
                           echo $year; // get the year 
 
                           ?> 
 
-                      </p>
-                      <h6 class="timeline-title"><?php echo $item->title; ?></h6>
-                    </div>
-                    <div class="timeline-content">
-                    <p><?php echo $item->description; ?></p>
+
+                          - 
+                          <?php  
+
+                            $dateString = "$item->end_date";
+                            $year = date("Y", strtotime($dateString));
+                            echo $year; // get the year 
+
+                            ?> 
+
+                        </p>
+                        <h6 class="timeline-title"><?php echo $item->title; ?></h6>
+                      </div>
+                      <div class="timeline-content">
+                      <p><?php echo $item->description; ?></p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
 
-                <?php endforeach;?>
+                  <?php endforeach;?>
 
 
               </div>

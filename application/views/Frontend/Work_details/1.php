@@ -32,7 +32,6 @@
     <!--  Color Css  -->
     <link rel="stylesheet" href="<?php echo base_url('assets/Frontend/colors/colorfull.css');?>">
 
-    <link href="<?=base_url('assets/css/toastr.min.css')?>"  rel="stylesheet" type="text/css">
   </head>
   <body class="ajax-page-visible dark-arshia max-width-d">
     <div id="ajax-page" class="ajax-page-content">
@@ -44,7 +43,7 @@
               
             </div>
             <div class="nav-item ajax-page-close-button">
-              <a class="ajax-page-close-button"  href="<?php echo base_url();?>">
+              <a class="ajax-page-close-button"  href="<?php echo base_url();?>#portfolio">
                 <i class="bi bi-x"></i>
               </a>
             </div>
@@ -52,7 +51,7 @@
           <!-- Ajax-page-nav End -->
           <!--  Single Portfolio Start  -->
           <div class="portfolio-page-title">
-          <?php foreach($work_details as $item):?>
+            <?php foreach($work_details as $item):?>
             <h1><?php echo $item->title?></h1>
             <?php endforeach; ?>
           </div>
@@ -215,11 +214,9 @@
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRemITiP7JRWpZwLhVt-T2x5MeUFE2KWs"></script> 
     <!--  Arshia Js  -->
     <script src="<?php echo base_url('assets/Frontend/js/arshia.js');?>"></script>
-    <script type="text/javascript" src="<?=base_url('assets/js/toastr.min.js')?>"></script>
     
    
     <script src="assets/js/arshia.js"></script>
   </body>
 
-<!-- Mirrored from retrina.com/demo/arshia/arshia-plus/portfolio-01-dark.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Sep 2023 05:37:15 GMT -->
 </html>
